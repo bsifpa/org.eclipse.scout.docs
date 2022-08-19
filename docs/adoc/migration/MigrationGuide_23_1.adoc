@@ -165,8 +165,6 @@ import {Button, GroupBox} from '@eclipse-scout/core';
 import Button from '@eclipse-scout/core/src/form/fields/button/Button.js';
 ----
 
-// ----------------------------------------------------------------------------
-
 == options-parameter for filter-methods in menus.js (Scout JS)
 
 The methods `filter` and `filterAccordingToSelection` in `menus.js` now have an options-parameter. This parameter combines the former parameters `onlyVisible`, `enableDisableKeyStrokes` and `notAllowedTypes`.
@@ -224,3 +222,25 @@ As part of this new feature a refactoring of the existing id classes was done wh
 * Completeness test for ids was improved. Use `AbstractIdStructureTest` as base for id completeness tests in own maven modules.
 ** Implementations of `AbstractStringId` are required to create a null-id instance if invoked with an empty string (e.g. use `if (StringUtility.isNullOrEmpty(id)) { return null; }` in your static `of()` method, see `FixtureStringId` as example)
 ** The former base classes `AbstractUuIdStructureTest` and `AbstractStringIdStructureTest` were integrated and removed
+=== Namespace
+
+TODO describe registerNamespace
+
+== JQuery
+
+The following functions have been removed because they are not in use anymore.
+
+. removeThis
+. suppressEventIfDisabled
+. colorOpacity
+. animateSVG
+. copyCssIfGreater
+. backupSelection
+. restoreSelection
+. onSingleOrDoubleClick
+
+The following functions have been renamed
+
+. widthToContent -> cssWidthToContentAnimated
+
+
