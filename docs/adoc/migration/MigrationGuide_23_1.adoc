@@ -254,14 +254,13 @@ The `model` property on `ProposalChooser` classes (and all its subclasses) has b
 .. Rename the `_createModel` method on subclasses of `ProposalChooser` to `_createContent`.
 .. Rename the `_renderModel` method on subclasses of `ProposalChooser` to `_renderContent`.
 
-== JQuery
+== JQuery (Scout JS)
 
 The following functions have been removed because they are not in use anymore.
 
 - removeThis
 - suppressEventIfDisabled
 - colorOpacity
-- animateSVG
 - copyCssIfGreater
 - backupSelection
 - restoreSelection
@@ -273,15 +272,16 @@ The following functions have been renamed
 
 == Table (Scout JS)
 
-TableFilter.js has been removed because it is has no benefit.
+TableFilter.js has been removed because it has no benefits.
 
 With TypeScript, the interface `Filter<TableRow>` should be used instead.
 With JavaScript, `extends from TableFilter` can be removed.
 
-== karma-jasmine-scout (Scout JS)
+== Testing / karma-jasmine-scout (Scout JS)
 
 The following functions have been removed because they are not in use anymore.
 
+- createAdapterModel
 - stripCommentsFromJson
 - definedProperty
 - sameProperty
@@ -290,7 +290,13 @@ The following functions have been removed because they are not in use anymore.
 
 The following functions have been renamed.
 
-- widgetCloneProperty
+- widgetCloneProperty -> toHaveClonedWidgetProperty
 
 The jquery-plugin jqueryExtensions has been refactored to a ES6 module to avoid pollution (of code completion) of the JQuery object outside test environment.
 In the rare case you used these functions for testing, you need to import them now, the JQuery-object does not contain them anymore.
+
+== Various Widget Adjustments (Scout JS)
+The following model properties have been removed because they are not in use.
+
+- WidgetModel.loadJsonModel
+- TooltipSupportOptions.$parent
