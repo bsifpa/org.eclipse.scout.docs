@@ -10,13 +10,13 @@
  */
 import {icons, StaticLookupCall, strings} from '@eclipse-scout/core';
 
-export default class IconIdLookupCall extends StaticLookupCall {
+export default class IconIdLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return Object.keys(icons)
       .filter(name => {
         let value = icons[name];

@@ -30,10 +30,13 @@ export {default as SpeedoGreenAreaPositionLookupCall} from './chartfield/SpeedoG
 export {default as ValuesProviderLookupCall} from './chartfield/ValuesProviderLookupCall';
 export {default as ConfigurationBox} from './common/ConfigurationBox';
 export {default as EventsTab} from './common/EventsTab';
+export {EventsTabWidgetMap} from './common/EventsTabModel';
 export {default as FormFieldLookupCall} from './common/FormFieldLookupCall';
 export {default as IconIdLookupCall} from './common/IconIdLookupCall';
 export {default as WidgetActionsBox} from './common/WidgetActionsBox';
+export {WidgetActionsBoxWidgetMap} from './common/WidgetActionsBoxModel';
 export {default as MiniForm} from './common/MiniForm';
+export {MiniFormWidgetMap} from './common/MiniFormModel';
 export {default as CheckBoxFieldForm} from './checkboxfield/CheckBoxFieldForm';
 export {default as Desktop} from './desktop/Desktop';
 export {default as DesktopForm} from './desktop/DesktopForm';

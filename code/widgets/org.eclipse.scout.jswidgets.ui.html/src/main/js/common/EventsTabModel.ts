@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {FormField} from '@eclipse-scout/core';
+import {Button, FormField, GroupBoxModel, LabelField, StringField} from '@eclipse-scout/core';
 
 export default () => ({
   id: 'jswidgets.EventsTab',
@@ -45,4 +45,10 @@ export default () => ({
       processButton: false
     }
   ]
-});
+}) as Omit<GroupBoxModel, 'parent'>;
+
+export type EventsTabWidgetMap = {
+  EventsOverviewField: LabelField;
+  EventLogField: StringField;
+  ClearEventLogButton: Button;
+};
