@@ -8,7 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {FormField, icons} from '@eclipse-scout/core';
+import {Button, CheckBoxField, FormField, FormModel, GroupBox, icons, IntegerField, LabelField, Menu, NumberField, SmartField, StringField, TabBox, TabItem, Table, TableField, TileField, TileGrid, ValueField} from '@eclipse-scout/core';
+import {Chart, ChartField, ChartFieldTile, ChartPosition, ChartType, GreenAreaPosition} from '@eclipse-scout/chart';
+import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
 export default () => ({
   id: 'jswidgets.ChartFieldForm',
@@ -463,6 +465,7 @@ export default () => ({
               objectType: 'IntegerField',
               label: 'Max. segments',
               labelPosition: FormField.LabelPosition.TOP,
+              clearable: ValueField.Clearable.NEVER,
               gridDataHints: {
                 w: 4,
                 horizontalAlignment: -1
@@ -491,4 +494,66 @@ export default () => ({
       }
     ]
   }
-});
+}) as Omit<FormModel, 'parent'>;
+
+export type ChartFieldFormWidgetMap = {
+  MainBox: GroupBox;
+  DetailBox: GroupBox;
+  ChartField: ChartField;
+  Chart: Chart;
+  ChartTileBox: TileField;
+  TileGrid: TileGrid;
+  ChartTile: ChartFieldTile;
+  TileChartField: ChartField;
+  TileChart: Chart;
+  ConfigurationBox: TabBox;
+  ChartPropertiesBox: TabItem;
+  'ChartPropertiesBox.LeftBox': GroupBox;
+  AutoColorCheckBox: CheckBoxField;
+  ClickableCheckBox: CheckBoxField;
+  CheckableCheckBox: CheckBoxField;
+  AnimatedCheckBox: CheckBoxField;
+  LegendVisibleBox: CheckBoxField;
+  LegendClickableCheckBox: CheckBoxField;
+  TooltipsEnabledBox: CheckBoxField;
+  DatalabelsVisibleCheckBox: CheckBoxField;
+  XAxisStackedCheckBox: CheckBoxField;
+  YAxisStackedCheckBox: CheckBoxField;
+  FillCheckBox: CheckBoxField;
+  TransparentCheckBox: CheckBoxField;
+  AccordingToValuesCheckbox: CheckBoxField;
+  FulfillmentStartValuePropertyCheckbox: CheckBoxField;
+  TileCheckBox: CheckBoxField;
+  'ChartPropertiesBox.RightBox': GroupBox;
+  ChartTypeField: SmartField<ChartType>;
+  ColorSchemeField: SmartField<string>;
+  TensionField: NumberField;
+  GreenAreaPositionField: SmartField<GreenAreaPosition>;
+  SizeOfLargestBubbleField: NumberField;
+  MinBubbleSizeField: NumberField;
+  LegendPositionField: SmartField<ChartPosition>;
+  CustomChartPropertiesBox: GroupBox;
+  InfoField: LabelField;
+  CustomChartPropertiesField: StringField;
+  FormFieldPropertiesBox: FormFieldPropertiesBox;
+  GridDataBox: GridDataBox;
+  ChartDataBox: TabItem;
+  'ChartDataBox.LeftBox': GroupBox;
+  ChartDataTableField: TableField;
+  Table: Table;
+  AddDatasetMenu: Menu;
+  RemoveDatasetMenu: Menu;
+  AddDataMenu: Menu;
+  RemoveDataMenu: Menu;
+  'ChartDataBox.RightBox': GroupBox;
+  RandomCheckBox: CheckBoxField;
+  FillTableCheckBox: CheckBoxField;
+  RandomDataButton: Button;
+  ValuesProviderField: SmartField<number>;
+  NumberOfDatasetsField: IntegerField;
+  RandomNumberOfDatasetsMenu: Menu;
+  MaxSegmentsField: IntegerField;
+  ActionsTab: TabItem;
+  WidgetActionsBox: WidgetActionsBox;
+  EventsTab: EventsTab;
+} & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

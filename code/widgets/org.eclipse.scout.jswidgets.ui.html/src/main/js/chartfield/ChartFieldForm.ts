@@ -8,12 +8,36 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App, arrays, colorSchemes, DesktopNotification, Form, GridData, models, objects, scout, Status, strings} from '@eclipse-scout/core';
-import {Chart} from '@eclipse-scout/chart';
+import {App, arrays, CheckBoxField, colorSchemes, Column, DesktopNotification, Form, FormModel, GridData, Menu, models, NumberColumn, objects, scout, Status, strings, Table, TableField} from '@eclipse-scout/core';
+import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
-import {ValuesProviderLookupCall} from '../index';
+import {ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
 
 export default class ChartFieldForm extends Form {
+  declare widgetMap: ChartFieldFormWidgetMap;
+
+  chart: Chart;
+  fieldChart: Chart;
+  tileChart: Chart;
+  chartConfig: Partial<ChartConfig>;
+  customChartConfig: Partial<ChartConfig>;
+  chartField: ChartField;
+  tileChartField: ChartField;
+  formFieldPropertiesBox: FormFieldPropertiesBox;
+  gridDataBox: GridDataBox;
+  widgetActionsBox: WidgetActionsBox;
+  eventsTab: EventsTab;
+  numberOfVennCircles: number;
+  numberOfDatasets: number;
+  valuesProvider: number;
+  random: boolean;
+  fillTable: boolean;
+  dataLabels: string[];
+  chartDataTableField: TableField;
+  chartDataTable: Table;
+  datasetLabelColumn: Column;
+  removeDataMenu: Menu;
+  fulfillmentStartValuePropertyCheckbox: CheckBoxField;
 
   constructor() {
     super();
@@ -54,12 +78,12 @@ export default class ChartFieldForm extends Form {
   static MAX_INTEGER = 2147483647; // 2^32 - 1
   static MIN_INTEGER = -2147483647; // - (2^32 - 1)
 
-  _jsonModel() {
+  protected override _jsonModel(): Omit<FormModel, 'parent'> {
     return models.get(ChartFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: FormModel) {
     super._init(model);
 
     this.rootGroupBox.visitFields(field => field.setStatusVisible(false));
@@ -166,7 +190,7 @@ export default class ChartFieldForm extends Form {
     });
 
     let tooltipsEnabledBox = this.widget('TooltipsEnabledBox');
-    tooltipsEnabledBox.setValue((((this._getChartConfig().options || {}).plugins || {}).tooltip || {}).enabled);
+    tooltipsEnabledBox.setValue((((this._getChartConfig().options || {}).plugins || {}).tooltip || {}).enabled as boolean);
     tooltipsEnabledBox.on('propertyChange:value', event => {
       let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
@@ -182,7 +206,7 @@ export default class ChartFieldForm extends Form {
     });
 
     let datalabelsVisibleCheckBox = this.widget('DatalabelsVisibleCheckBox');
-    datalabelsVisibleCheckBox.setValue((((this._getChartConfig().options || {}).plugins || {}).datalabels || {}).display);
+    datalabelsVisibleCheckBox.setValue((((this._getChartConfig().options || {}).plugins || {}).datalabels || {}).display as boolean);
     datalabelsVisibleCheckBox.on('propertyChange:value', event => {
       let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
@@ -198,7 +222,7 @@ export default class ChartFieldForm extends Form {
     });
 
     let xAxisStackedCheckBox = this.widget('XAxisStackedCheckBox');
-    xAxisStackedCheckBox.setValue((((this._getChartConfig().options || {}).scales || {}).x || {}).stacked);
+    xAxisStackedCheckBox.setValue((((this._getChartConfig().options || {}).scales || {}).x || {}).stacked as boolean);
     xAxisStackedCheckBox.on('propertyChange:value', event => {
       let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
@@ -214,7 +238,7 @@ export default class ChartFieldForm extends Form {
     });
 
     let yAxisStackedCheckBox = this.widget('YAxisStackedCheckBox');
-    yAxisStackedCheckBox.setValue((((this._getChartConfig().options || {}).scales || {}).y || {}).stacked);
+    yAxisStackedCheckBox.setValue((((this._getChartConfig().options || {}).scales || {}).y || {}).stacked as boolean);
     yAxisStackedCheckBox.on('propertyChange:value', event => {
       let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
@@ -230,7 +254,7 @@ export default class ChartFieldForm extends Form {
     });
 
     let fillCheckBox = this.widget('FillCheckBox');
-    fillCheckBox.setValue((((this._getChartConfig().options || {}).elements || {}).line || {}).fill);
+    fillCheckBox.setValue((((this._getChartConfig().options || {}).elements || {}).line || {}).fill as boolean);
     fillCheckBox.on('propertyChange:value', event => {
       let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
@@ -365,7 +389,7 @@ export default class ChartFieldForm extends Form {
       });
       this._setChartConfig(config);
     });
-    tensionField.setValue((((this._getChartConfig().options || {}).elements || {}).line || {}).tension || 0);
+    tensionField.setValue((((this._getChartConfig().options || {}).elements || {}).line || {}).tension as number || 0);
 
     let greenAreaPositionField = this.widget('GreenAreaPositionField');
     greenAreaPositionField.on('propertyChange:value', event => {
@@ -439,7 +463,7 @@ export default class ChartFieldForm extends Form {
       });
       this._setChartConfig(config);
     });
-    legendPositionField.setValue((((this._getChartConfig().options || {}).plugins || {}).legend || {}).position || Chart.Position.RIGHT);
+    legendPositionField.setValue((((this._getChartConfig().options || {}).plugins || {}).legend || {}).position as ChartPosition || Chart.Position.RIGHT);
 
     let customChartPropertiesField = this.widget('CustomChartPropertiesField');
     customChartPropertiesField.addValidator(value => {
@@ -484,7 +508,7 @@ export default class ChartFieldForm extends Form {
       if (objects.isNullOrUndefined(event.field.value)) {
         let column = event.column,
           row = event.row,
-          value = 0;
+          value: number | string = 0;
         if (column === this.datasetLabelColumn) {
           let rowIndex = this.chartDataTable.rows.indexOf(row);
           value = 'Dataset ' + (rowIndex + 1);
@@ -497,7 +521,7 @@ export default class ChartFieldForm extends Form {
     let addDatasetMenu = this.widget('AddDatasetMenu');
     addDatasetMenu.on('action', event => {
       let table = this.chartDataTable;
-      table.insertRow({cells: ['Dataset ' + (table.rows.length + 1)].concat(arrays.init(table.columns.length - 1, 0))});
+      table.insertRow({cells: (['Dataset ' + (table.rows.length + 1)] as ChartDataRowRaw).concat(arrays.init(table.columns.length - 1, 0))});
       this._renewData();
     });
 
@@ -536,10 +560,10 @@ export default class ChartFieldForm extends Form {
         }
       });
       inputForm.open()
-        .catch((...args) => App.get().errorHandler.handle(...args));
+        .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
       inputForm.whenSave()
         .then(() => this._addColumn(inputForm.widget('InputField').value))
-        .catch((...args) => App.get().errorHandler.handle(...args));
+        .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
     });
 
     this.removeDataMenu = this.widget('RemoveDataMenu');
@@ -593,12 +617,12 @@ export default class ChartFieldForm extends Form {
 
     let maxSegmentsField = this.widget('MaxSegmentsField');
     maxSegmentsField.on('propertyChange:value', event => {
+      let config = this._getChartConfig();
       if (objects.isNullOrUndefined(event.newValue)) {
         maxSegmentsField.setValue((config.options || {}).maxSegments || 1);
         return;
       }
 
-      let config = this._getChartConfig();
       config = $.extend(true, {}, config, {
         options: {
           maxSegments: event.newValue
@@ -663,7 +687,7 @@ export default class ChartFieldForm extends Form {
 
       this.chartDataTable.columns
         .filter(column => column !== this.datasetLabelColumn)
-        .forEach(column => {
+        .forEach((column: NumberColumn) => {
           column.maxValue = this._getMaxValue();
           column.minValue = this._getMinValue();
         });
@@ -716,7 +740,7 @@ export default class ChartFieldForm extends Form {
     randomCheckBox.setValue(this.random);
   }
 
-  _onChartValueClick(event) {
+  protected _onChartValueClick(event: ChartValueClickEvent) {
     let clickedItem = event.data;
     this.session.desktop.addNotification(scout.create(DesktopNotification, {
       parent: this,
@@ -732,7 +756,7 @@ export default class ChartFieldForm extends Form {
     }));
   }
 
-  _renewData() {
+  protected _renewData() {
     if (this.loading) {
       return;
     }
@@ -795,21 +819,21 @@ export default class ChartFieldForm extends Form {
     }
   }
 
-  _getFulfillmentChartData() {
+  protected _getFulfillmentChartData(): ChartDataRaw {
     if (this.random) {
       return this._getFulfillmentChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getFulfillmentChartDataRandom() {
+  protected _getFulfillmentChartDataRandom(): ChartDataRaw {
     return [
       [null, 'Actual'],
       ['Dataset 1', Math.floor(Math.random() * 100)]
     ];
   }
 
-  _getFulfillmentChartBean(chartData) {
+  protected _getFulfillmentChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateFulfillmentTable(chartData)) {
       return;
     }
@@ -845,19 +869,19 @@ export default class ChartFieldForm extends Form {
     };
   }
 
-  _calculatePropFulfillmentStartValue() {
+  protected _calculatePropFulfillmentStartValue(): number {
     let startValue = 0;
     if (this.fulfillmentStartValuePropertyCheckbox.value) {
       this.chart.data.chartValueGroups.forEach(chartValueGroup => {
         if (chartValueGroup.groupName === 'Actual') {
-          startValue = chartValueGroup.values[0];
+          startValue = (chartValueGroup.values as number[])[0];
         }
       });
     }
     return startValue;
   }
 
-  _validateFulfillmentTable(chartData) {
+  protected _validateFulfillmentTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     let dimensionError = 'A fulfillment chart needs exactly one value.';
     if (!this._validateTableDimensions(chartData,
@@ -872,14 +896,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getBarLineChartData(comboBarLine) {
+  protected _getBarLineChartData(comboBarLine: boolean): ChartDataRaw {
     if (this.random) {
       return this._getBarLineChartDataRandom(comboBarLine);
     }
     return this._getTableChartData();
   }
 
-  _getBarLineChartDataRandom(comboBarLine) {
+  protected _getBarLineChartDataRandom(comboBarLine: boolean): ChartDataRaw {
     let numGroups = this._getChartConfig().type === Chart.Type.BAR_HORIZONTAL ? 4 : 6,
       chartData = arrays.init(this.numberOfDatasets + 1, null);
 
@@ -908,7 +932,7 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getBarLineChartBean(chartData, comboBarLine) {
+  protected _getBarLineChartBean(chartData: ChartDataRaw, comboBarLine: boolean): ChartBean {
     if (!this._validateBarLineTable(chartData)) {
       return;
     }
@@ -922,14 +946,14 @@ export default class ChartFieldForm extends Form {
     let chartValueGroups = [];
 
     for (let i = 1; i < chartData.length; i++) {
-      let chartValueGroup = {values: []};
+      let chartValueGroup = {values: []} as ChartValueGroup;
       for (let j = 1; j < chartData[i].length; j++) {
-        chartValueGroup.values.push(chartData[i][j]);
+        (chartValueGroup.values as number[]).push(chartData[i][j] as number);
       }
 
-      let groupName = chartData[i][0];
+      let groupName = chartData[i][0] as string;
       if (comboBarLine) {
-        let type = Chart.Type.BAR,
+        let type: string = Chart.Type.BAR,
           split = groupName.split('|');
         if (split.length === 2) {
           groupName = split[0];
@@ -953,7 +977,7 @@ export default class ChartFieldForm extends Form {
     };
   }
 
-  _validateBarLineTable(chartData) {
+  protected _validateBarLineTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     if (!this._validateTableDimensions(chartData,
       2, -1, 'No dataset.',
@@ -967,14 +991,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getBubbleChartData() {
+  protected _getBubbleChartData(): ChartDataRaw {
     if (this.random) {
       return this._getBubbleChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getBubbleChartDataRandom() {
+  protected _getBubbleChartDataRandom(): ChartDataRaw {
     let numGroups = 6,
       chartData = arrays.init(this.numberOfDatasets + 1, null);
 
@@ -1003,7 +1027,7 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getBubbleChartBean(chartData) {
+  protected _getBubbleChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateBubbleTable(chartData)) {
       return;
     }
@@ -1011,16 +1035,16 @@ export default class ChartFieldForm extends Form {
     let chartValueGroups = [];
 
     for (let i = 1; i < chartData.length; i++) {
-      let chartValueGroup = {values: []};
+      let chartValueGroup = {values: []} as ChartValueGroup;
       for (let j = 1; j < chartData[i].length; j = j + 3) {
-        let nTuple = {};
-        nTuple.x = chartData[i][j];
-        nTuple.y = chartData[i][j + 1];
-        nTuple.z = chartData[i][j + 2];
-        chartValueGroup.values.push(nTuple);
+        let nTuple = {} as Record<string, number>;
+        nTuple.x = chartData[i][j] as number;
+        nTuple.y = chartData[i][j + 1] as number;
+        nTuple.z = chartData[i][j + 2] as number;
+        (chartValueGroup.values as Record<string, number>[]).push(nTuple);
       }
 
-      chartValueGroup.groupName = chartData[i][0];
+      chartValueGroup.groupName = chartData[i][0] as string;
       chartValueGroup.colorHexValue = this._randomHexColor();
       chartValueGroups.push(chartValueGroup);
     }
@@ -1034,7 +1058,7 @@ export default class ChartFieldForm extends Form {
     };
   }
 
-  _validateBubbleTable(chartData) {
+  protected _validateBubbleTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     if (!this._validateTableDimensions(chartData,
       2, -1, 'No dataset.',
@@ -1052,14 +1076,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getScatterChartData() {
+  protected _getScatterChartData(): ChartDataRaw {
     if (this.random) {
       return this._getScatterChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getScatterChartDataRandom() {
+  protected _getScatterChartDataRandom(): ChartDataRaw {
     let numGroups = 6,
       chartData = arrays.init(this.numberOfDatasets + 1, null);
 
@@ -1086,7 +1110,7 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getScatterChartBean(chartData) {
+  protected _getScatterChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateScatterTable(chartData)) {
       return;
     }
@@ -1094,15 +1118,15 @@ export default class ChartFieldForm extends Form {
     let chartValueGroups = [];
 
     for (let i = 1; i < chartData.length; i++) {
-      let chartValueGroup = {values: []};
+      let chartValueGroup = {values: []} as ChartValueGroup;
       for (let j = 1; j < chartData[i].length; j = j + 2) {
-        let nTuple = {};
-        nTuple.x = chartData[i][j];
-        nTuple.y = chartData[i][j + 1];
-        chartValueGroup.values.push(nTuple);
+        let nTuple = {} as Record<string, number>;
+        nTuple.x = chartData[i][j] as number;
+        nTuple.y = chartData[i][j + 1] as number;
+        (chartValueGroup.values as Record<string, number>[]).push(nTuple);
       }
 
-      chartValueGroup.groupName = chartData[i][0];
+      chartValueGroup.groupName = chartData[i][0] as string;
       chartValueGroup.colorHexValue = this._randomHexColor();
       chartValueGroups.push(chartValueGroup);
     }
@@ -1116,7 +1140,7 @@ export default class ChartFieldForm extends Form {
     };
   }
 
-  _validateScatterTable(chartData) {
+  protected _validateScatterTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     if (!this._validateTableDimensions(chartData,
       2, -1, 'No dataset.',
@@ -1124,7 +1148,7 @@ export default class ChartFieldForm extends Form {
       return false;
     }
     if (chartData[0].length % 2 !== 1) {
-      this.chartDataTableField.addErrorStatus(this._createErrorStatus('A scatter chart needs a multiple of two values. These are interpreted as x and y'));
+      this.chartDataTableField.addErrorStatus('A scatter chart needs a multiple of two values. These are interpreted as x and y');
       return false;
     }
     if (!this._validateTableTypes(chartData)) {
@@ -1134,14 +1158,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getSpeedoChartData() {
+  protected _getSpeedoChartData(): ChartDataRaw {
     if (this.random) {
       return this._getSpeedoChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getSpeedoChartDataRandom() {
+  protected _getSpeedoChartDataRandom(): ChartDataRaw {
     let min = Math.floor(Math.random() * 1000000),
       max = min + Math.floor(Math.random() * 1000000),
       value = min + Math.floor(Math.random() * (max - min));
@@ -1151,7 +1175,7 @@ export default class ChartFieldForm extends Form {
     ];
   }
 
-  _getSpeedoChartBean(chartData) {
+  protected _getSpeedoChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateSpeedoTable(chartData)) {
       return;
     }
@@ -1160,16 +1184,16 @@ export default class ChartFieldForm extends Form {
       data: {
         axes: [],
         chartValueGroups: [{
-          groupName: chartData[1][0],
+          groupName: chartData[1][0] as string,
           colorHexValue: this._randomHexColor(),
-          values: [chartData[1][1], chartData[1][2], chartData[1][3]]
+          values: [chartData[1][1] as number, chartData[1][2] as number, chartData[1][3] as number]
         }]
       },
       config: {}
     };
   }
 
-  _validateSpeedoTable(chartData) {
+  protected _validateSpeedoTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     let dimensionError = 'A speedo chart needs exactly one dataset with three values (min, value, max).';
     if (!this._validateTableDimensions(chartData,
@@ -1191,14 +1215,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getSalesfunnelChartData() {
+  protected _getSalesfunnelChartData(): ChartDataRaw {
     if (this.random) {
       return this._getSalesfunnelChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getSalesfunnelChartDataRandom() {
+  protected _getSalesfunnelChartDataRandom(): ChartDataRaw {
     let chartData = arrays.init(this.numberOfDatasets + 1, null);
 
     for (let i = 0; i < chartData.length; i++) {
@@ -1217,7 +1241,7 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getSalesfunnelChartBean(chartData) {
+  protected _getSalesfunnelChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateSalesfunnelTable(chartData)) {
       return;
     }
@@ -1227,11 +1251,11 @@ export default class ChartFieldForm extends Form {
       axes = [];
 
     for (let i = 1; i < chartData.length; i++) {
-      let chartValueGroup = {values: []};
-      chartValueGroup.groupName = chartData[i][0];
-      chartValueGroup.values.push(chartData[i][1]);
+      let chartValueGroup = {values: []} as ChartValueGroup;
+      chartValueGroup.groupName = chartData[i][0] as string;
+      (chartValueGroup.values as number[]).push(chartData[i][1] as number);
       if (twoValues) {
-        chartValueGroup.values.push(chartData[i][2]);
+        (chartValueGroup.values as number[]).push(chartData[i][2] as number);
       }
       chartValueGroup.colorHexValue = this._randomHexColor();
       chartValueGroups.push(chartValueGroup);
@@ -1258,7 +1282,7 @@ export default class ChartFieldForm extends Form {
     };
   }
 
-  _validateSalesfunnelTable(chartData) {
+  protected _validateSalesfunnelTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     if (!this._validateTableDimensions(chartData,
       2, -1, 'No dataset.',
@@ -1272,14 +1296,14 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getVennChartData() {
+  protected _getVennChartData(): ChartDataRaw {
     if (this.random) {
       return this._getVennChartDataRandom();
     }
     return this._getTableChartData();
   }
 
-  _getVennChartDataRandom() {
+  protected _getVennChartDataRandom(): ChartDataRaw {
     let chartData = arrays.init(2, null);
 
     if (this.numberOfVennCircles === 1) {
@@ -1302,7 +1326,7 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getVennChartBean(chartData) {
+  protected _getVennChartBean(chartData: ChartDataRaw): ChartBean {
     if (!this._validateVennTable(chartData)) {
       return;
     }
@@ -1325,14 +1349,14 @@ export default class ChartFieldForm extends Form {
       config: {
         options: {
           venn: {
-            numberOfCircles: Math.log2(chartData[0].length)
+            numberOfCircles: Math.log2(chartData[0].length) as 1 | 2 | 3
           }
         }
       }
     };
   }
 
-  _validateVennTable(chartData) {
+  protected _validateVennTable(chartData: ChartDataRaw): boolean {
     this.chartDataTableField.clearErrorStatus();
     let dimensionError = 'A venn chart needs exactly one dataset with 1 (Set A), 3 (Set A, Set B, A-B) or 7 (Set A, Set B, Set C, A-B, A-C, B-C, A-B-C) values.';
     if (!this._validateTableDimensions(chartData,
@@ -1351,7 +1375,7 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _getPieDoughnutChartData() {
+  protected _getPieDoughnutChartData(): ChartDataRaw {
     let oldValuesProvider = this.valuesProvider;
     this.valuesProvider = ValuesProviderLookupCall.Type.VALUE_PROVIDER_RANDOM_POSITIVE;
     let chartData = this._getBarLineChartData(false);
@@ -1359,11 +1383,11 @@ export default class ChartFieldForm extends Form {
     return chartData;
   }
 
-  _getPieDoughnutChartBean(chartData) {
+  protected _getPieDoughnutChartBean(chartData: ChartDataRaw): ChartBean {
     return this._getBarLineChartBean(chartData, false);
   }
 
-  _chartValue() {
+  protected _chartValue(): number {
     switch (this.valuesProvider) {
       case ValuesProviderLookupCall.Type.VALUE_PROVIDER_RANDOM:
         return Math.floor(Math.random() * (ChartFieldForm.MAX_INTEGER - ChartFieldForm.MIN_INTEGER) + ChartFieldForm.MIN_INTEGER);
@@ -1382,11 +1406,11 @@ export default class ChartFieldForm extends Form {
     }
   }
 
-  _randomHexColor() {
+  protected _randomHexColor(): string {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
 
-  _validateTableDimensions(chartData, minRows, maxRows, errorRows, minCols, maxCols, errorCols) {
+  protected _validateTableDimensions(chartData: ChartDataRaw, minRows: number, maxRows: number, errorRows: string, minCols: number, maxCols: number, errorCols: string): boolean {
     if (objects.isNullOrUndefined(chartData)) {
       this.chartDataTableField.addErrorStatus('No chart data.');
       return false;
@@ -1404,71 +1428,71 @@ export default class ChartFieldForm extends Form {
     return true;
   }
 
-  _validateTableTypes(chartData) {
+  protected _validateTableTypes(chartData: ChartDataRaw): boolean {
     if (objects.isNullOrUndefined(chartData) || chartData.length === 0 || chartData[0].length === 0) {
       this.chartDataTableField.addErrorStatus('No chart data.');
       return false;
     }
     if (chartData[0].slice(1)
-      .some(elem => !(typeof elem === 'string' || elem instanceof String))) {
+      .some(elem => typeof elem !== 'string')) {
       this.chartDataTableField.addErrorStatus('Invalid data labels.');
       return false;
     }
     if (chartData.slice(1)
       .map(arr => arr[0])
-      .some(elem => !(typeof elem === 'string' || elem instanceof String))) {
+      .some(elem => typeof elem !== 'string')) {
       this.chartDataTableField.addErrorStatus('Invalid dataset labels.');
       return false;
     }
     if (arrays.flatMap(chartData.slice(1), arr => arr.slice(1))
-      .some(elem => !(typeof elem === 'number' || elem instanceof Number))) {
+      .some(elem => typeof elem !== 'number')) {
       this.chartDataTableField.addErrorStatus('Invalid values.');
       return false;
     }
     return true;
   }
 
-  _getTableChartData() {
+  protected _getTableChartData(): ChartDataRaw {
     return [[null, ...this.dataLabels], ...this._getTableData()];
   }
 
-  _getTableData() {
+  protected _getTableData(): ChartDataRaw {
     return this.chartDataTable.rows.map(row => row.cells.map(cell => cell.value));
   }
 
-  _setTableChartData(chartData) {
+  protected _setTableChartData(chartData: ChartDataRaw) {
     if (!chartData || !chartData.length || !chartData[0].length) {
       return;
     }
 
-    this.dataLabels = chartData[0].splice(1);
+    this.dataLabels = chartData[0].splice(1) as string[];
 
     this.chartDataTable.deleteAllRows();
     this._updateColumnStructure();
 
     this._setTableData(chartData.splice(1));
 
-    this.removeDataMenu.setEnabled(this.dataLabels.length);
+    this.removeDataMenu.setEnabled(this.dataLabels.length !== 0);
   }
 
-  _setTableData(tableData) {
+  protected _setTableData(tableData: ChartDataRaw) {
     this.chartDataTable.deleteAllRows();
     this.chartDataTable.insertRows(tableData.map(row => ({
       cells: row
     })));
   }
 
-  _addColumn(label) {
+  protected _addColumn(label: string) {
     this.dataLabels.push(label);
     this._updateColumns(arr => arr.push(0));
   }
 
-  _removeColumn() {
+  protected _removeColumn() {
     this.dataLabels.pop();
     this._updateColumns(arr => arr.pop());
   }
 
-  _updateColumns(modifyRow) {
+  protected _updateColumns(modifyRow: (arr: ChartDataRowRaw) => void) {
     let tableData = this._getTableData();
 
     this.chartDataTable.deleteAllRows();
@@ -1480,11 +1504,11 @@ export default class ChartFieldForm extends Form {
 
     this._setTableData(tableData);
 
-    this.removeDataMenu.setEnabled(this.dataLabels.length);
+    this.removeDataMenu.setEnabled(this.dataLabels.length !== 0);
     this._renewData();
   }
 
-  _updateColumnStructure() {
+  protected _updateColumnStructure() {
     let columns = [this.datasetLabelColumn, ...this.dataLabels.map(label => scout.create('NumberColumn', {
       session: this.session,
       editable: true,
@@ -1499,7 +1523,7 @@ export default class ChartFieldForm extends Form {
     this.chartDataTable.updateColumnStructure(columns);
   }
 
-  _getMaxValue() {
+  protected _getMaxValue(): number {
     switch (this._getChartConfig().type) {
       case Chart.Type.FULFILLMENT:
       case Chart.Type.VENN:
@@ -1521,7 +1545,7 @@ export default class ChartFieldForm extends Form {
     }
   }
 
-  _getMinValue() {
+  protected _getMinValue(): number {
     switch (this._getChartConfig().type) {
       case Chart.Type.FULFILLMENT:
       case Chart.Type.SPEEDO:
@@ -1543,21 +1567,29 @@ export default class ChartFieldForm extends Form {
     }
   }
 
-  _getChartConfig() {
-    return this.chartConfig;
+  protected _getChartConfig(): ChartConfig {
+    return this.chartConfig as ChartConfig;
   }
 
-  _getCombinedConfig() {
-    return $.extend(true, {}, this.customChartConfig, this.chartConfig);
+  protected _getCombinedConfig(): ChartConfig {
+    return $.extend(true, {}, this.customChartConfig, this._getChartConfig());
   }
 
-  _setChartConfig(config) {
+  protected _setChartConfig(config: ChartConfig) {
     this.chartConfig = config || {};
     this.chart.setConfig(this._getCombinedConfig());
   }
 
-  _setCustomChartConfig(config) {
+  protected _setCustomChartConfig(config: Partial<ChartConfig>) {
     this.customChartConfig = config || {};
     this.chart.setConfig(this._getCombinedConfig());
   }
 }
+
+type ChartBean = {
+  data: ChartData;
+  config: Partial<ChartConfig>;
+};
+
+type ChartDataRowRaw = (number | string)[];
+type ChartDataRaw = ChartDataRowRaw[];
