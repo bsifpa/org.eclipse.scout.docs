@@ -17,7 +17,7 @@
     "npm": ">=8.1.0",
     "pnpm": ">=6.22.2"
   },
-  "main": "./src/main/js/index.js",
+  "main": "./src/main/js/index.ts",
   "files": [
     "src/main/resources/WebContent",
     "src/main/js"
