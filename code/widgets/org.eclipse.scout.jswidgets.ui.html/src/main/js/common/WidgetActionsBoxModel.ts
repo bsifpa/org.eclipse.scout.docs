@@ -8,6 +8,8 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
+import {Button, GroupBoxModel, LabelField, NumberField, SequenceBox} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.WidgetActionsBox',
   objectType: 'GroupBox',
@@ -92,4 +94,17 @@ export default () => ({
       label: 'Scroll Top'
     }
   ]
-});
+}) as Omit<GroupBoxModel, 'parent'>;
+
+export type WidgetActionsBoxWidgetMap = {
+  FocusSequenceBox: SequenceBox;
+  FocusButton: Button;
+  FocusReturnField: LabelField;
+  IsFocusableSequenceBox: SequenceBox;
+  IsFocusableButton: Button;
+  IsFocusableReturnField: LabelField;
+  RevealButton: Button;
+  ScrollToTopButton: Button;
+  ScrollToBottomButton: Button;
+  ScrollTopField: NumberField;
+};

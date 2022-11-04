@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, Form, GroupBox} from '@eclipse-scout/core';
+import {Button, Form, FormModel, GroupBox} from '@eclipse-scout/core';
 
 export default () => ({
   objectType: 'Form',
@@ -37,4 +37,8 @@ export default () => ({
       }
     }]
   }
-});
+}) as Omit<FormModel, 'parent'>;
+
+export type MiniFormWidgetMap = {
+  CloseButton: Button;
+};
