@@ -24,6 +24,7 @@ export {default as ButtonDisplayStyleLookupCall} from './button/ButtonDisplaySty
 export {default as BrowserFieldForm} from './browserfield/BrowserFieldForm';
 export {default as CarouselForm} from './carousel/CarouselForm';
 export {default as ChartFieldForm} from './chartfield/ChartFieldForm';
+export {ChartFieldFormWidgetMap} from './chartfield/ChartFieldFormModel';
 export {default as ChartTypeLookupCall} from './chartfield/ChartTypeLookupCall';
 export {default as LegendPositionLookupCall} from './chartfield/LegendPositionLookupCall';
 export {default as SpeedoGreenAreaPositionLookupCall} from './chartfield/SpeedoGreenAreaPositionLookupCall';
