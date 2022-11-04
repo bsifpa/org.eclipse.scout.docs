@@ -11,6 +11,10 @@
 import {Form, graphics, models, Rectangle, scout} from '@eclipse-scout/core';
 import PopupFormModel from './PopupFormModel';
 
+/**
+ * @typedef {Form} PopupForm
+ * @property {PopupFormWidgetMap} widgetMap
+ */
 export default class PopupForm extends Form {
 
   constructor() {

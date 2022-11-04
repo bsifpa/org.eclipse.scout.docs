@@ -11,6 +11,10 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import WidgetPopupPropertiesBoxModel from './WidgetPopupPropertiesBoxModel';
 
+/**
+ * @typedef {GroupBox} WidgetPopupPropertiesBox
+ * @property {WidgetPopupPropertiesBoxWidgetMap} widgetMap
+ */
 export default class WidgetPopupPropertiesBox extends GroupBox {
 
   constructor() {
