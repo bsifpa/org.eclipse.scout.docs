@@ -94,7 +94,7 @@ export default () => ({
       label: 'Scroll Top'
     }
   ]
-}) as Omit<GroupBoxModel, 'parent'>;
+}) as GroupBoxModel;
 
 export type WidgetActionsBoxWidgetMap = {
   FocusSequenceBox: SequenceBox;

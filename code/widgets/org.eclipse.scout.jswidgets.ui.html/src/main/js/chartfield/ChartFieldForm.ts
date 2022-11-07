@@ -12,6 +12,7 @@ import {App, arrays, CheckBoxField, colorSchemes, Column, DesktopNotification, F
 import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
 import {ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
+import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
 export default class ChartFieldForm extends Form {
   declare widgetMap: ChartFieldFormWidgetMap;
@@ -78,12 +79,12 @@ export default class ChartFieldForm extends Form {
   static MAX_INTEGER = 2147483647; // 2^32 - 1
   static MIN_INTEGER = -2147483647; // - (2^32 - 1)
 
-  protected override _jsonModel(): Omit<FormModel, 'parent'> {
+  protected override _jsonModel(): FormModel {
     return models.get(ChartFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  protected override _init(model: FormModel) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.rootGroupBox.visitFields(field => field.setStatusVisible(false));

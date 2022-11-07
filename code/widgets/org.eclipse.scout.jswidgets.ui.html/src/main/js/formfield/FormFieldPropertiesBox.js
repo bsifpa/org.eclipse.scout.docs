@@ -19,6 +19,9 @@ export default class FormFieldPropertiesBox extends GroupBox {
     this._fileDropHandler = this._onFileDrop.bind(this);
   }
 
+  /**
+   * @returns {WidgetModel}
+   */
   _jsonModel() {
     return models.get(FormFieldPropertiesBoxModel);
   }

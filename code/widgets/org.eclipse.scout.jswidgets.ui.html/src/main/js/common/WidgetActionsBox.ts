@@ -11,6 +11,7 @@
 import {Button, Event, FormField, GroupBox, GroupBoxModel, LabelField, models} from '@eclipse-scout/core';
 import WidgetActionsBoxModel from './WidgetActionsBoxModel';
 import {WidgetActionsBoxWidgetMap} from '../index';
+import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
 export default class WidgetActionsBox extends GroupBox {
   declare widgetMap: WidgetActionsBoxWidgetMap;
@@ -21,11 +22,11 @@ export default class WidgetActionsBox extends GroupBox {
     this.field = null;
   }
 
-  protected override _jsonModel(): Omit<GroupBoxModel, 'parent'> {
+  protected override _jsonModel(): GroupBoxModel {
     return models.get(WidgetActionsBoxModel);
   }
 
-  protected override _init(model: GroupBoxModel) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this._setField(this.field);
