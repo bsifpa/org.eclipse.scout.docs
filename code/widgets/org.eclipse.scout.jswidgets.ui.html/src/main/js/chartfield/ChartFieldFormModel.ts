@@ -494,7 +494,7 @@ export default () => ({
       }
     ]
   }
-}) as Omit<FormModel, 'parent'>;
+}) as FormModel;
 
 export type ChartFieldFormWidgetMap = {
   MainBox: GroupBox;

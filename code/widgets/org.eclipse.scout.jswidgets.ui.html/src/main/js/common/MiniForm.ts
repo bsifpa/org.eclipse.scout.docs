@@ -11,19 +11,16 @@
 import {Form, FormModel, models} from '@eclipse-scout/core';
 import MiniFormModel from './MiniFormModel';
 import {MiniFormWidgetMap} from '../index';
+import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
 export default class MiniForm extends Form {
   declare widgetMap: MiniFormWidgetMap;
 
-  constructor() {
-    super();
-  }
-
-  protected override _jsonModel(): Omit<FormModel, 'parent'> {
+  protected override _jsonModel(): FormModel {
     return models.get(MiniFormModel);
   }
 
-  protected override _init(model: FormModel) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
     this.widget('CloseButton').on('click', () => this.close());
   }

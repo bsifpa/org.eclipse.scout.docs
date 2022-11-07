@@ -11,6 +11,7 @@
 import {App as ScoutApp, Button, comparators, Event, EventEmitter, EventListener, GroupBoxModel, models, TabItem, Widget} from '@eclipse-scout/core';
 import EventsTabModel from './EventsTabModel';
 import {App, EventsTabWidgetMap} from '../index';
+import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
 export default class EventsTab extends TabItem {
   declare widgetMap: EventsTabWidgetMap;
@@ -26,11 +27,11 @@ export default class EventsTab extends TabItem {
     };
   }
 
-  protected override _jsonModel(): Omit<GroupBoxModel, 'parent'> {
+  protected override _jsonModel(): GroupBoxModel {
     return models.get(EventsTabModel);
   }
 
-  protected override _init(model: GroupBoxModel) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this._setField(this.field);

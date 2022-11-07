@@ -8,7 +8,8 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Action, Event, GridData, icons, Menu, scout, TabBox, TabBoxModel} from '@eclipse-scout/core';
+import {Action, Event, GridData, icons, Menu, scout, TabBox} from '@eclipse-scout/core';
+import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
 export default class ConfigurationBox extends TabBox {
 
@@ -20,7 +21,7 @@ export default class ConfigurationBox extends TabBox {
     this.cssClass = 'jswidgets-configuration';
   }
 
-  protected override _init(model: TabBoxModel) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.toggleMenu = scout.create('Menu', {

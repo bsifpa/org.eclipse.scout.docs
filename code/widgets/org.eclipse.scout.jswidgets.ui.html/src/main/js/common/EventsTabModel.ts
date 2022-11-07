@@ -45,7 +45,7 @@ export default () => ({
       processButton: false
     }
   ]
-}) as Omit<GroupBoxModel, 'parent'>;
+}) as GroupBoxModel;
 
 export type EventsTabWidgetMap = {
   EventsOverviewField: LabelField;
