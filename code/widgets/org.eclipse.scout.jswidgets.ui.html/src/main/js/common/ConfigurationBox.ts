@@ -13,6 +13,7 @@ import {Action, Event, GridData, icons, Menu, scout, TabBox, TabBoxModel} from '
 export default class ConfigurationBox extends TabBox {
 
   toggleMenu: Menu;
+  protected _origWeightY: number;
 
   constructor() {
     super();
@@ -41,13 +42,10 @@ export default class ConfigurationBox extends TabBox {
     });
     let gridData = new GridData(this.gridDataHints);
     if (expanded) {
-      // @ts-ignore
-      if (this._origWeightY !== undefined) {
-        // @ts-ignore
+      if (this._origWeightY) {
         gridData.weightY = this._origWeightY;
       }
     } else {
-      // @ts-ignore
       this._origWeightY = gridData.weightY;
       gridData.weightY = 0;
     }

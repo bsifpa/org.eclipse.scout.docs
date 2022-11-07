@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App as ScoutApp, Button, comparators, Event, EventEmitter, GroupBoxModel, models, TabItem, Widget} from '@eclipse-scout/core';
+import {App as ScoutApp, Button, comparators, Event, EventEmitter, EventListener, GroupBoxModel, models, TabItem, Widget} from '@eclipse-scout/core';
 import EventsTabModel from './EventsTabModel';
 import {App, EventsTabWidgetMap} from '../index';
 
@@ -16,7 +16,7 @@ export default class EventsTab extends TabItem {
   declare widgetMap: EventsTabWidgetMap;
 
   field: EventEmitter;
-  protected _listener: any;
+  protected _listener: EventListener;
 
   constructor() {
     super();

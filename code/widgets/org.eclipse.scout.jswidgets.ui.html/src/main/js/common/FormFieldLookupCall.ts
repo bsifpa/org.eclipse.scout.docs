@@ -12,7 +12,7 @@ import {FormField, GroupBox, RadioButtonGroup, SequenceBox, StaticLookupCall} fr
 
 export default class FormFieldLookupCall extends StaticLookupCall<FormField> {
   compositeField: GroupBox | SequenceBox | RadioButtonGroup<any>;
-  protected _rebuildDataHandler: any;
+  protected _rebuildDataHandler: () => void;
 
   constructor(compositeField: GroupBox | SequenceBox | RadioButtonGroup<any>) {
     super();
