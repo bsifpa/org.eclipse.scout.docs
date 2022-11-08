@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, TabBox, TabItem, TagField} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, TabBox, TabItem, TagField} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TagFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -99,3 +102,24 @@ export default () => ({
     ]
   }
 });
+
+export type TagFieldFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'TagField': TagField;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'TagBarProperties': GroupBox;
+    'EnabledField': CheckBoxField;
+    'ClickableField': CheckBoxField;
+    'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

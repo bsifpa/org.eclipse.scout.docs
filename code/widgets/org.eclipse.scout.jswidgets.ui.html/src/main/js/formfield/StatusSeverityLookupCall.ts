@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, Status} from '@eclipse-scout/core';
+import {StaticLookupCall, Status, StatusSeverity} from '@eclipse-scout/core';
 
-export class StatusSeverityLookupCall extends StaticLookupCall {
+export class StatusSeverityLookupCall extends StaticLookupCall<StatusSeverity> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return StatusSeverityLookupCall.DATA;
   }
 

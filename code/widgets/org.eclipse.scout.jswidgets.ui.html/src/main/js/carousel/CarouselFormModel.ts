@@ -8,10 +8,12 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Carousel, CarouselField, CheckBoxField, DateField, Form, GroupBox, Image, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {Carousel, CarouselField, CheckBoxField, DateField, Form, FormModel, GroupBox, Image, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.CarouselForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -158,3 +160,26 @@ export default () => ({
     ]
   }
 });
+
+export type CarouselFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'CarouselField': CarouselField;
+  'Carousel': Carousel;
+  'CarouselItem1': Image;
+  'CarouselItem2': Form;
+  'InnerMainBox1': GroupBox;
+  'CarouselItem3': Image;
+  'CarouselItem4': Form;
+  'InnerMainBox2': GroupBox;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'StatusEnabledField': CheckBoxField;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

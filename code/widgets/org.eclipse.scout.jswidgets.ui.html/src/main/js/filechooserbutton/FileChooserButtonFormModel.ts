@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {FileChooserButton, GroupBox, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {FileChooserButton, FormModel, GroupBox, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.FileChooserButtonForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -108,3 +111,22 @@ export default () => ({
     ]
   }
 });
+
+export type FileChooserButtonFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'FileChooserButton': FileChooserButton;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'AcceptTypesField': StringField;
+  'MaximumUploadSizeField': NumberField;
+  'IconIdField': SmartField<string>;
+  'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

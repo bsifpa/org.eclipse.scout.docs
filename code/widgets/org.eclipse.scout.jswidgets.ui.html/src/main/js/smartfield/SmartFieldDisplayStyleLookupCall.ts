@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {SmartField, StaticLookupCall} from '@eclipse-scout/core';
+import {SmartField, SmartFieldDisplayStyle, StaticLookupCall} from '@eclipse-scout/core';
 
-export class SmartFieldDisplayStyleLookupCall extends StaticLookupCall {
+export class SmartFieldDisplayStyleLookupCall extends StaticLookupCall<SmartFieldDisplayStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return SmartFieldDisplayStyleLookupCall.DATA;
   }
 

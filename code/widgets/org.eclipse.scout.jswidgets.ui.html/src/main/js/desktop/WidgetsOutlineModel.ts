@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {PageWithNodes} from '@eclipse-scout/core';
+import {OutlineModel, PageWithNodes} from '@eclipse-scout/core';
 import {
   AccordionForm, BreadcrumbBarFieldForm, BrowserFieldForm, ButtonForm, CarouselForm, ChartFieldForm, CheckBoxFieldForm, DateFieldForm, DesktopForm, DesktopNotificationForm, EditableTableForm, FileChooserButtonForm, FileChooserFieldForm,
   FileChooserForm, FormForm, GroupBoxForm, HierarchicalTableForm, ImageFieldForm, ImageForm, IntegerFieldForm, LabelFieldForm, LabelForm, ListBoxForm, LogicalGridForm, MenuBarForm, MessageBoxForm, ModeSelectorForm, MultilineSmartFieldForm,
@@ -16,7 +16,7 @@ import {
   TableSmartFieldForm, TagFieldForm, TileAccordionForm, TileGridForm, TooltipForm, TreeBoxForm, TreeForm, TreeSmartFieldForm, VirtualTileGridForm, WatchFieldForm, WidgetsOutlineOverview, WrappedFormFieldForm
 } from '../index';
 
-export default () => ({
+export default (): OutlineModel => ({
   id: 'jswidgets.WidgetsOutline',
   title: '${textKey:Widgets}',
   outlineOverview: {

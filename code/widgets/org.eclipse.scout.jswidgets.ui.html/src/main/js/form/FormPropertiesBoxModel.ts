@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+import {CheckBoxField, DisplayHint, DisplayViewId, GroupBox, GroupBoxModel, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.FormPropertiesBox',
   objectType: GroupBox,
   label: 'Properties',
@@ -102,3 +102,20 @@ export default () => ({
     }
   ]
 });
+
+export type FormPropertiesBoxWidgetMap = {
+  'TitleField': StringField;
+  'SubTitleField': StringField;
+  'IconIdField': SmartField<string>;
+  'DisplayHintField': SmartField<DisplayHint>;
+  'DisplayViewIdField': SmartField<DisplayViewId>;
+  'DisplayParentField': SmartField<string>;
+  'AskIfNeedSaveField': CheckBoxField;
+  'CacheBoundsField': CheckBoxField;
+  'ClosableField': CheckBoxField;
+  'MovableField': CheckBoxField;
+  'ResizableField': CheckBoxField;
+  'ModalField': CheckBoxField;
+  'HeaderVisibleField': CheckBoxField;
+  'MaximizedField': CheckBoxField;
+};

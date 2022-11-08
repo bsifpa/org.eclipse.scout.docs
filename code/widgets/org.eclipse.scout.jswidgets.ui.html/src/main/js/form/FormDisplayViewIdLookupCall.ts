@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall} from '@eclipse-scout/core';
+import {DisplayViewId, StaticLookupCall} from '@eclipse-scout/core';
 
-export class FormDisplayViewIdLookupCall extends StaticLookupCall {
+export class FormDisplayViewIdLookupCall extends StaticLookupCall<DisplayViewId> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return FormDisplayViewIdLookupCall.DATA;
   }
 

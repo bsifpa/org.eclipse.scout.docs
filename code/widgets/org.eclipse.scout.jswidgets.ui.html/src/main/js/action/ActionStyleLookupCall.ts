@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Action, StaticLookupCall} from '@eclipse-scout/core';
+import {Action, ActionStyle, StaticLookupCall} from '@eclipse-scout/core';
 
-export class ActionStyleLookupCall extends StaticLookupCall {
+export class ActionStyleLookupCall extends StaticLookupCall<ActionStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return ActionStyleLookupCall.DATA;
   }
 

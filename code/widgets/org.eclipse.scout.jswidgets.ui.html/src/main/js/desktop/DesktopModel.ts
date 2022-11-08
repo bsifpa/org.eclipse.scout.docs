@@ -9,9 +9,9 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {icons, WidgetsOutline} from '../index';
-import {Desktop, icons as icons_1, Menu} from '@eclipse-scout/core';
+import {Desktop, DesktopModel, icons as icons_1, Menu} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): DesktopModel => ({
   id: 'jswidgets.Desktop',
   title: '${textKey:Widgets}',
   objectType: Desktop,
@@ -58,3 +58,11 @@ export default () => ({
     }
   ]
 });
+
+export type DesktopWidgetMap = {
+  'SettingsMenu': Menu;
+  'ThemeMenu': Menu;
+  'DefaultThemeMenu': Menu;
+  'DarkThemeMenu': Menu;
+  'DenseMenu': Menu;
+};

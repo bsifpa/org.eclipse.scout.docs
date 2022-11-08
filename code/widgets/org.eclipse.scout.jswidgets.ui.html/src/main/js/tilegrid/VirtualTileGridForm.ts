@@ -9,6 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {TileGridForm} from '../index';
+import {InitModelOf} from '@eclipse-scout/core';
 
 export class VirtualTileGridForm extends TileGridForm {
 
@@ -16,7 +17,7 @@ export class VirtualTileGridForm extends TileGridForm {
     super();
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.tileGrid = this.widget('TileGrid');
@@ -28,7 +29,7 @@ export class VirtualTileGridForm extends TileGridForm {
     this.tileGrid.setGridColumnCount(5);
     let layoutConfig = this.tileGrid.layoutConfig.clone();
     layoutConfig.columnWidth = 100;
-    layoutConfig.rowWidth = 100;
+    layoutConfig.rowHeight = 100;
     this.tileGrid.setLayoutConfig(layoutConfig);
 
     // Insert 1000 tiles

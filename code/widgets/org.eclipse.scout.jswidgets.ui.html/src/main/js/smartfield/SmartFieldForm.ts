@@ -8,21 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, MessageBoxes, models} from '@eclipse-scout/core';
+import {Event, Form, InitModelOf, Menu, MessageBoxes, models, SmartField} from '@eclipse-scout/core';
 import SmartFieldFormModel from './SmartFieldFormModel';
+import {SmartFieldFormWidgetMap} from '../index';
 
 export class SmartFieldForm extends Form {
+  declare widgetMap: SmartFieldFormWidgetMap;
+
+  smartField: SmartField<any>;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel() {
     return models.get(SmartFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.smartField = this.widget('SmartField');
@@ -40,7 +44,7 @@ export class SmartFieldForm extends Form {
     this.widget('EventsTab').setField(this.smartField);
   }
 
-  _onNewLanguageMenuAction(event) {
+  protected _onNewLanguageMenuAction(event: Event<Menu>) {
     return MessageBoxes.createOk(this)
       .withHeader(this.session.text('ThanksForClickingMe'))
       .withBody(this.session.text('NewLanguageMessage'))

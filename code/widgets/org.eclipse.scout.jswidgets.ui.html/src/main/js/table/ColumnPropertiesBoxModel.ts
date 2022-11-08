@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, NumberField, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.ColumnPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -187,3 +187,34 @@ export default () => ({
     }
   ]
 });
+
+export type ColumnPropertiesBoxWidgetMap = {
+  'EditableField': CheckBoxField;
+  'DisplayableField': CheckBoxField;
+  'VisibleField': CheckBoxField;
+  'MandatoryField': CheckBoxField;
+  'AutoOptimizeWidthField': CheckBoxField;
+  'FixedWidthField': CheckBoxField;
+  'FixedPositionField': CheckBoxField;
+  'HeaderMenuEnabledField': CheckBoxField;
+  'HeaderHtmlEnabledField': CheckBoxField;
+  'HtmlEnabledField': CheckBoxField;
+  'HeaderTooltipHtmlEnabledField': CheckBoxField;
+  'TextWrapField': CheckBoxField;
+  'SortActiveField': CheckBoxField;
+  'SortAscendingField': CheckBoxField;
+  'GroupedField': CheckBoxField;
+  'ModifiableField': CheckBoxField;
+  'RemovableField': CheckBoxField;
+  'CssClassField': StringField;
+  'AutoOptimizeMaxWidthField': NumberField;
+  'HorizontalAlignmentField': NumberField;
+  'TextField': StringField;
+  'HeaderTooltipTextField': StringField;
+  'HeaderIconIdField': SmartField<string>;
+  'HeaderCssClassField': StringField;
+  'SortIndexField': NumberField;
+  'WidthField': NumberField;
+  'MinWidthField': NumberField;
+  'MaxLengthField': NumberField;
+};

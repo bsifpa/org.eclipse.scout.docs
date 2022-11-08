@@ -8,10 +8,23 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, MessageBoxes, models, Status, strings} from '@eclipse-scout/core';
+import {Button, CheckBoxField, Event, Form, FormModel, InitModelOf, MessageBoxes, models, SmartField, Status, StatusSeverity, StringField, strings} from '@eclipse-scout/core';
 import MessageBoxFormModel from './MessageBoxFormModel';
+import {MessageBoxFormWidgetMap} from '../index';
 
 export class MessageBoxForm extends Form {
+  declare widgetMap: MessageBoxFormWidgetMap;
+
+  button: Button;
+  severityField: SmartField<StatusSeverity>;
+  headerField: StringField;
+  iconField: SmartField<string>;
+  bodyField: StringField;
+  htmlField: CheckBoxField;
+  yesButtonTextField: StringField;
+  noButtonTextField: StringField;
+  cancelButtonTextField: StringField;
+  resultField: StringField;
 
   constructor() {
     super();
@@ -27,11 +40,11 @@ export class MessageBoxForm extends Form {
     this.resultField = null;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(MessageBoxFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.button = this.widget('Button');
@@ -49,7 +62,7 @@ export class MessageBoxForm extends Form {
     this._initDefaults();
   }
 
-  _initDefaults() {
+  protected _initDefaults() {
     this.severityField.setValue(Status.Severity.INFO);
     this.headerField.setValue('Lorem Ipsum');
     this.bodyField.setValue('Please answer the question using the appropriate button.');
@@ -58,7 +71,7 @@ export class MessageBoxForm extends Form {
     this.cancelButtonTextField.setValue('Cancel');
   }
 
-  _onButtonClick(event) {
+  protected _onButtonClick(event: Event<Button>) {
     let box = MessageBoxes.create(this)
       .withSeverity(this.severityField.value)
       .withHeader(this.headerField.value)

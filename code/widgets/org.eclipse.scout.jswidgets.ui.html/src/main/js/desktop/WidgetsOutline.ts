@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {models, Outline} from '@eclipse-scout/core';
+import {models, Outline, OutlineModel} from '@eclipse-scout/core';
 import WidgetsOutlineModel from './WidgetsOutlineModel';
 
 export class WidgetsOutline extends Outline {
@@ -17,7 +17,7 @@ export class WidgetsOutline extends Outline {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): OutlineModel {
     return models.get(WidgetsOutlineModel);
   }
 }

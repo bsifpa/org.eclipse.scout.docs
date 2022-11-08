@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxBorderDecoration, GroupBoxMenuBarPosition, GroupBoxModel, MenuBarEllipsisPosition, NumberField, SmartField, StatusSeverity, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.GroupBoxPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -107,3 +107,20 @@ export default () => ({
     }
   ]
 });
+
+export type GroupBoxPropertiesBoxWidgetMap = {
+  'ScrollableField': CheckBoxField;
+  'BorderVisibleField': CheckBoxField;
+  'BorderDecorationField': SmartField<GroupBoxBorderDecoration>;
+  'ExpandableField': CheckBoxField;
+  'ExpandedField': CheckBoxField;
+  'ResponsiveField': CheckBoxField;
+  'SubLabelField': StringField;
+  'GridColumnCountField': NumberField;
+  'LogicalGridField': SmartField<string>;
+  'NotificationField': SmartField<StatusSeverity>;
+  'NotificationIconField': SmartField<string>;
+  'MenuBarVisibleField': CheckBoxField;
+  'MenuBarPositionField': SmartField<GroupBoxMenuBarPosition>;
+  'MenuBarEllipsisPositionField': SmartField<MenuBarEllipsisPosition>;
+};

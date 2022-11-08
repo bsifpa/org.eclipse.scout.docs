@@ -8,22 +8,24 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {models, TabItem} from '@eclipse-scout/core';
+import {InitModelOf, models, TabItem, TabItemModel} from '@eclipse-scout/core';
 import DynamicTabModel from './DynamicTabModel';
+import {DynamicTabWidgetMap} from '../index';
 
 export class DynamicTab extends TabItem {
+  declare widgetMap: DynamicTabWidgetMap;
 
   constructor() {
     super();
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.widget('label').setValue('This is the content area of the \'TabItem\'. The selected tab is \'' + this.label + '\'.');
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): TabItemModel {
     return models.get(DynamicTabModel);
   }
 }

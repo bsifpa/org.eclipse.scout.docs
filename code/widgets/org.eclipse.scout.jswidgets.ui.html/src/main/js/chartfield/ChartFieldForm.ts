@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {
-  App, arrays, CancelMenu, CheckBoxField, colorSchemes, Column, DesktopNotification, Form, FormModel, GridData, GroupBox, InitModelOf, Menu, models, NumberColumn, objects, OkMenu, scout, Status, StringField, strings, Table, TableField
+  App, arrays, CancelMenu, CheckBoxField, colorSchemes, Column, DesktopNotification, Form, FormModel, GridData, GroupBox, InitModelOf, Menu, models, NumberColumn, objects, OkMenu, scout, Status, StringField, strings, TableField
 } from '@eclipse-scout/core';
 import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
@@ -561,10 +561,10 @@ export class ChartFieldForm extends Form {
         }
       });
       inputForm.open()
-        .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
+        .catch((...args) => App.get().errorHandler.handle(...args));
       inputForm.whenSave()
         .then(() => this._addColumn(inputForm.widget('InputField', StringField).value))
-        .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
+        .catch((...args) => App.get().errorHandler.handle(...args));
     });
 
     this.removeDataMenu = this.widget('RemoveDataMenu');

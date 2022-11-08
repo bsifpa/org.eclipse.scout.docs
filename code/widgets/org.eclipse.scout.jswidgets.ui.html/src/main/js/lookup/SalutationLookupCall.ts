@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall} from '@eclipse-scout/core';
+import {LookupRow, StaticLookupCall} from '@eclipse-scout/core';
 
-export class SalutationLookupCall extends StaticLookupCall {
+export class SalutationLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return SalutationLookupCall.DATA;
   }
 
@@ -30,7 +30,7 @@ export class SalutationLookupCall extends StaticLookupCall {
   /**
    * Use the key property as cssClass. Used to demonstrate styling possibilities with lookup-rows in smart-fields.
    */
-  _dataToLookupRow(data) {
+  protected override _dataToLookupRow(data: any[]): LookupRow<string> {
     let lookupRow = super._dataToLookupRow(data);
     lookupRow.cssClass = lookupRow.key;
     return lookupRow;

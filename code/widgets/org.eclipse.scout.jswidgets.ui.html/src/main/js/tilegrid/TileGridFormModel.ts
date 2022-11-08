@@ -8,10 +8,14 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, LabelField, Menu, NumberField, SmartField, TabItem, TileField, TileGrid} from '@eclipse-scout/core';
-import {ConfigurationBox, CustomTile, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TileGridLayoutConfigBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, LabelField, Menu, NumberField, SmartField, TabItem, TileField, TileGrid} from '@eclipse-scout/core';
+import {
+  ConfigurationBox, CustomTile, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, TileGridLayoutConfigBox,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
+import {TileGridLayoutConfigBoxWidgetMap} from './TileGridLayoutConfigBoxModel';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TileGridForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -255,3 +259,43 @@ export default () => ({
     ]
   }
 });
+
+export type TileGridFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'InsertMenu': Menu;
+    'InsertManyMenu': Menu;
+    'DeleteMenu': Menu;
+    'SelectNextMenu': Menu;
+    'SelectAllMenu': Menu;
+    'SortMenu': Menu;
+    'SortAscMenu': Menu;
+    'SortDescMenu': Menu;
+    'TileField': TileField;
+    'TileGrid': TileGrid;
+    'StatusField': LabelField;
+    'ConfigurationBox': ConfigurationBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': GroupBox;
+    'SelectableField': CheckBoxField;
+    'MultiSelectField': CheckBoxField;
+    'ScrollableField': CheckBoxField;
+    'InvertColorsField': CheckBoxField;
+    'WithPlaceholdersField': CheckBoxField;
+    'VirtualField': CheckBoxField;
+    'TextFilterEnabledField': CheckBoxField;
+    'GridColumnCountField': NumberField;
+    'LogicalGridField': SmartField<string>;
+    'ColorSchemeField': SmartField<string>;
+    'TileTypeField': SmartField<'default' | 'simple'>;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'LayoutConfigBox': TileGridLayoutConfigBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & TileGridLayoutConfigBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

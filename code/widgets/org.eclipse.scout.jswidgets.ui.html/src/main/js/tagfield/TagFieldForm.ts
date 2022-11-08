@@ -9,20 +9,22 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import TagFieldFormModel from './TagFieldFormModel';
-import {DesktopNotification, Form, models, scout, Status} from '@eclipse-scout/core';
+import {TagFieldFormWidgetMap} from '../index';
+import {DesktopNotification, Form, FormModel, InitModelOf, models, scout, Status, TagBarTagClickEvent} from '@eclipse-scout/core';
 
 export class TagFieldForm extends Form {
+  declare widgetMap: TagFieldFormWidgetMap;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(TagFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     let tagField = this.widget('TagField');
@@ -51,7 +53,7 @@ export class TagFieldForm extends Form {
     this.widget('EventsTab').setField(tagField);
   }
 
-  _onTagClick(event) {
+  protected _onTagClick(event: TagBarTagClickEvent) {
     scout.create(DesktopNotification, {
       parent: this,
       duration: 7000,

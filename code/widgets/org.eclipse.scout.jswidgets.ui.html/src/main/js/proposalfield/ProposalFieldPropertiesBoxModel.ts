@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, NumberField} from '@eclipse-scout/core';
+import {CheckBoxField, ExtensionModel, NumberField} from '@eclipse-scout/core';
+import {SmartFieldPropertiesBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): ExtensionModel => ({
   id: 'jswidgets.ProposalFieldPropertiesBox',
   type: 'extension',
   extensions: [
@@ -36,3 +37,8 @@ export default () => ({
     }
   ]
 });
+
+export type ProposalFieldPropertiesBoxWidgetMap = {
+  'MaxLengthField': NumberField;
+  'TrimTextField': CheckBoxField;
+} & SmartFieldPropertiesBoxWidgetMap;

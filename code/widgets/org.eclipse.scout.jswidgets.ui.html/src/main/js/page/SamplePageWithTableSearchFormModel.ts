@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Action, GroupBox, Menu, ResetMenu, StringField} from '@eclipse-scout/core';
+import {Action, FormModel, GroupBox, Menu, ResetMenu, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.SamplePageWithTableSearchForm',
   rootGroupBox: {
     id: 'MainBox',
@@ -45,3 +45,11 @@ export default () => ({
     ]
   }
 });
+
+export type SamplePageWithTableSearchFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'StringField': StringField;
+  'SearchButton': Menu;
+  'ResetMenu': ResetMenu;
+};

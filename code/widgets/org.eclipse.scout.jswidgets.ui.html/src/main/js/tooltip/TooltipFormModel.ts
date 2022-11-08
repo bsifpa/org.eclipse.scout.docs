@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, SmartField, StringField, TabItem} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, WidgetActionsBox} from '../index';
+import {Button, CheckBoxField, FormModel, GroupBox, SmartField, StatusSeverity, StringField, TabItem} from '@eclipse-scout/core';
+import {ConfigurationBox, EventsTab, EventsTabWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TooltipForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -107,3 +107,19 @@ export default () => ({
     ]
   }
 });
+
+export type TooltipFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'OpenTooltipButton': Button;
+  'ConfigurationBox': ConfigurationBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'AutoRemoveField': CheckBoxField;
+  'HtmlEnabledField': CheckBoxField;
+  'TextField': StringField;
+  'SeverityField': SmartField<StatusSeverity>;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

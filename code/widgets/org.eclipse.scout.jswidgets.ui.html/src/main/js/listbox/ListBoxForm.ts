@@ -8,21 +8,26 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, ListBox, LookupCall, models, SmartField} from '@eclipse-scout/core';
 import ListBoxFormModel from './ListBoxFormModel';
+import {ListBoxFormWidgetMap} from '../index';
 
 export class ListBoxForm extends Form {
+  declare widgetMap: ListBoxFormWidgetMap;
+
+  listBox: ListBox<any>;
+  lookupCallField: SmartField<LookupCall<any>>;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(ListBoxFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.listBox = this.widget('ListBox');

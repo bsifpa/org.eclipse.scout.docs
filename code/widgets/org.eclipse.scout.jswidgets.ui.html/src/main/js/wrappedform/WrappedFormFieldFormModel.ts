@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SmartField, TabBox, TabItem, WrappedFormField} from '@eclipse-scout/core';
-import {EventsTab, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox, WrappedFormLookupCall} from '../index';
+import {Button, Form, FormModel, GroupBox, SmartField, TabBox, TabItem, WrappedFormField} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap, WrappedFormLookupCall} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.WrappedFormFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -93,3 +93,18 @@ export default () => ({
     ]
   }
 });
+
+export type WrappedFormFieldFormWidgetMap = {
+  'MainBox': GroupBox;
+  'WrappedFormFieldBox': GroupBox;
+  'WrappedFormField': WrappedFormField;
+  'ConfigurationBox': TabBox;
+  'WrappedFormFieldPropertiesBox': TabItem;
+  'InnerFormField': SmartField<Form>;
+  'CloseInnerFormButton': Button;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

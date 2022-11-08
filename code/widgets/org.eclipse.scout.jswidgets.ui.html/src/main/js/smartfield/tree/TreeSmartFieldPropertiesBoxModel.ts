@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField} from '@eclipse-scout/core';
+import {CheckBoxField, ExtensionModel} from '@eclipse-scout/core';
+import {SmartFieldPropertiesBoxWidgetMap} from '../../index';
 
-export default () => ({
+export default (): ExtensionModel => ({
   id: 'jswidgets.TreeSmartFieldPropertiesBox',
   type: 'extension',
   extensions: [
@@ -36,3 +37,8 @@ export default () => ({
     }
   ]
 });
+
+export type TreeSmartFieldPropertiesBoxWidgetMap = {
+  'BrowseAutoExpandAllField': CheckBoxField;
+  'BrowseLoadIncrementalField': CheckBoxField;
+} & SmartFieldPropertiesBoxWidgetMap;

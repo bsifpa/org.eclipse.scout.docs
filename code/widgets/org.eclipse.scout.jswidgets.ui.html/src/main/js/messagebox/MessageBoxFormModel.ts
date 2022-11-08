@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+import {Button, CheckBoxField, FormModel, GroupBox, SmartField, StatusSeverity, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.MessageBoxForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -95,3 +95,19 @@ export default () => ({
     ]
   }
 });
+
+export type MessageBoxFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'Button': Button;
+  'PropertiesBox': GroupBox;
+  'SeverityField': SmartField<StatusSeverity>;
+  'HeaderField': StringField;
+  'BodyField': StringField;
+  'HtmlField': CheckBoxField;
+  'IconField': SmartField<string>;
+  'YesButtonTextField': StringField;
+  'NoButtonTextField': StringField;
+  'CancelButtonTextField': StringField;
+  'ResultField': StringField;
+};

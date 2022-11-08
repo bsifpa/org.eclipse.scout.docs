@@ -10,13 +10,13 @@
  */
 import {colorSchemes, StaticLookupCall} from '@eclipse-scout/core';
 
-export class ColorSchemeLookupCall extends StaticLookupCall {
+export class ColorSchemeLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return ColorSchemeLookupCall.DATA;
   }
 

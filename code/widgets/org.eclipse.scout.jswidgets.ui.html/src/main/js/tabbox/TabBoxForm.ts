@@ -8,21 +8,27 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, MessageBoxes, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, MessageBoxes, models} from '@eclipse-scout/core';
 import TabBoxFormModel from './TabBoxFormModel';
+import {TabBoxAddTabItemBox, TabBoxDeleteTabItemBox, TabBoxFormWidgetMap} from '../index';
 
 export class TabBoxForm extends Form {
+  declare widgetMap: TabBoxFormWidgetMap;
+
+  dynamicTabCounter: number;
+  addTabItemBox: TabBoxAddTabItemBox;
+  deleteTabItemBox: TabBoxDeleteTabItemBox;
 
   constructor() {
     super();
     this.dynamicTabCounter = 0;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(TabBoxFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
     let tabBox = this.widget('TabBox');
 

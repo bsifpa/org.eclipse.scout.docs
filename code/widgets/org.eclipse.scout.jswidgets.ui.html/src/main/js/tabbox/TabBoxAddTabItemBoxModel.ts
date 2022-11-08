@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+import {Button, GroupBox, GroupBoxModel, SmartField, StringField, TabItem} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.TabBoxAddTabItemBox',
   objectType: GroupBox,
   label: 'Add Tab Item',
@@ -41,3 +41,10 @@ export default () => ({
     }
   ]
 });
+
+export type TabBoxAddTabItemBoxWidgetMap = {
+  'AddTabItem.Label': StringField;
+  'AddTabItem.SubLabel': StringField;
+  'AddTabItem.TabItemSmartField': SmartField<TabItem>;
+  'AddTabItem.CreateButton': Button;
+};

@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {FormField, StaticLookupCall} from '@eclipse-scout/core';
+import {FormField, FormFieldLabelPosition, StaticLookupCall} from '@eclipse-scout/core';
 
-export class LabelPositionLookupCall extends StaticLookupCall {
+export class LabelPositionLookupCall extends StaticLookupCall<FormFieldLabelPosition> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return LabelPositionLookupCall.DATA;
   }
 

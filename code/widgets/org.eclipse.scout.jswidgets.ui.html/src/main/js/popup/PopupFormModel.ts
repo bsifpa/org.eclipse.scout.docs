@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, SmartField, StringField, TabItem} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, WidgetActionsBox, WidgetPopupPropertiesBox} from '../index';
+import {Button, CheckBoxField, FormModel, GroupBox, PopupAlignment, SmartField, StringField, TabItem} from '@eclipse-scout/core';
+import {ConfigurationBox, EventsTab, EventsTabWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap, WidgetPopupPropertiesBox, WidgetPopupPropertiesBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.PopupForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -172,3 +172,30 @@ export default () => ({
     ]
   }
 });
+
+export type PopupFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'OpenPopupButton': Button;
+  'ConfigurationBox': ConfigurationBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'UseButtonAsAnchorField': CheckBoxField;
+  'AnchorBoundsField': StringField;
+  'ModalField': CheckBoxField;
+  'CloseOnAnchorMouseDownField': CheckBoxField;
+  'CloseOnMouseDownOutsideField': CheckBoxField;
+  'CloseOnOtherPopupOpenField': CheckBoxField;
+  'HorizontalSwitchField': CheckBoxField;
+  'VerticalSwitchField': CheckBoxField;
+  'TrimWidthField': CheckBoxField;
+  'TrimHeightField': CheckBoxField;
+  'WithArrowField': CheckBoxField;
+  'WithGlassPaneField': CheckBoxField;
+  'HorizontalAlignmentField': SmartField<PopupAlignment>;
+  'VerticalAlignmentField': SmartField<PopupAlignment>;
+  'WidgetPopupPropertiesBox': WidgetPopupPropertiesBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & WidgetPopupPropertiesBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

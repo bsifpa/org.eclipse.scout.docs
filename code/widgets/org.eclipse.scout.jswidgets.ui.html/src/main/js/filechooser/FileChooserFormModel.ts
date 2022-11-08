@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, HtmlField, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab} from '../index';
+import {Button, CheckBoxField, FormModel, GroupBox, HtmlField, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.FileChooserForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -103,3 +103,19 @@ export default () => ({
     ]
   }
 });
+
+export type FileChooserFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'Button': Button;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'AcceptTypesField': StringField;
+  'DisplayParentField': SmartField<string>;
+  'MaximumUploadSizeField': NumberField;
+  'MultiSelectField': CheckBoxField;
+  'ChosenFilesBox': GroupBox;
+  'ChosenFilesField': HtmlField;
+  'EventsTab': EventsTab;
+} & EventsTabWidgetMap;

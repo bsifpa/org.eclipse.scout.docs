@@ -8,10 +8,12 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, ImageField, ProposalField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, ImageField, ProposalField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.ImageFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -115,3 +117,22 @@ export default () => ({
     ]
   }
 });
+
+export type ImageFieldFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'ImageField': ImageField;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'AutoFitField': CheckBoxField;
+  'UploadEnabledField': CheckBoxField;
+  'ScrollBarEnabledField': CheckBoxField;
+  'ImageUrlField': ProposalField;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

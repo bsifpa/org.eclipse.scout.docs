@@ -8,25 +8,32 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models, scout} from '@eclipse-scout/core';
-import {DisplayParentLookupCall, LifecycleForm} from '../index';
+import {Button, Event, Form, FormModel, InitModelOf, models, scout} from '@eclipse-scout/core';
+import {DisplayParentLookupCall, FormFormWidgetMap, FormPropertiesBox, LifecycleForm, LifecycleFormData} from '../index';
 import FormFormModel from './FormFormModel';
 
 export class FormForm extends Form {
+  declare widgetMap: FormFormWidgetMap;
+
+  openedByButton: boolean;
+  currentFormPropertiesBox: FormPropertiesBox;
+  lifecycleData: LifecycleFormData;
+  closeMenuVisible: boolean;
+  propertiesBox: FormPropertiesBox;
 
   constructor() {
     super();
     this.openedByButton = false;
     this.currentFormPropertiesBox = null;
-    this.LifecycleData = {};
+    this.lifecycleData = {};
     this.closeMenuVisible = false;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(FormFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.widget('OpenFormButton').on('click', this._onOpenFormButtonClick.bind(this));
@@ -56,7 +63,7 @@ export class FormForm extends Form {
     }
   }
 
-  _onOpenFormButtonClick(model) {
+  protected _onOpenFormButtonClick(model: Event<Button>) {
     let form = scout.create(FormForm, $.extend({
       parent: this,
       openedByButton: true,
@@ -67,10 +74,10 @@ export class FormForm extends Form {
     form.open();
   }
 
-  _onOpenLifecycleFormButtonClick(model) {
+  protected _onOpenLifecycleFormButtonClick(model: Event<Button>) {
     let form = scout.create(LifecycleForm, $.extend({
       parent: this,
-      data: this.LifecycleData
+      data: this.lifecycleData
     }, this._settings()));
     this.widget('EventsTab').setField(form);
 
@@ -104,11 +111,11 @@ export class FormForm extends Form {
     form.open();
   }
 
-  lifecycleDataToString(data) {
+  lifecycleDataToString(data: LifecycleFormData) {
     return 'Name: ' + data.name + ', Birthday: ' + data.birthday;
   }
 
-  _settings() {
+  protected _settings(): FormModel {
     return {
       title: this.propertiesBox.titleField.value,
       subTitle: this.propertiesBox.subTitleField.value,

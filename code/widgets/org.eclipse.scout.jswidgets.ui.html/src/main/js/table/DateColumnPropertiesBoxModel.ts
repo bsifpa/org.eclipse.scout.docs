@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, StringField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.DateColumnPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -41,3 +41,10 @@ export default () => ({
     }
   ]
 });
+
+export type DateColumnPropertiesBoxWidgetMap = {
+  'FormatField': StringField;
+  'GroupFormatField': StringField;
+  'HasDateField': CheckBoxField;
+  'HasTimeField': CheckBoxField;
+};

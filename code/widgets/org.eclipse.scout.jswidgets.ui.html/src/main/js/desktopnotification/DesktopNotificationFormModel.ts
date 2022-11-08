@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab} from '../index';
+import {Button, CheckBoxField, FormModel, GroupBox, NativeNotificationVisibility, NumberField, SmartField, StatusSeverity, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.DesktopNotificationForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -147,3 +147,26 @@ export default () => ({
     ]
   }
 });
+
+export type DesktopNotificationFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'Button': Button;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'MessageField': StringField;
+  'StatusSeverityField': SmartField<StatusSeverity>;
+  'DurationField': NumberField;
+  'IconField': SmartField<string>;
+  'ClosableField': CheckBoxField;
+  'LoadingField': CheckBoxField;
+  'HtmlEnabledField': CheckBoxField;
+  'NativeOnlyField': CheckBoxField;
+  'NativeNotificationTitleField': StringField;
+  'NativeNotificationMessageField': StringField;
+  'NativeNotificationIconIdField': SmartField<string>;
+  'NativeNotificationVisibilityField': SmartField<NativeNotificationVisibility>;
+  'DelayField': NumberField;
+  'EventsTab': EventsTab;
+} & EventsTabWidgetMap;

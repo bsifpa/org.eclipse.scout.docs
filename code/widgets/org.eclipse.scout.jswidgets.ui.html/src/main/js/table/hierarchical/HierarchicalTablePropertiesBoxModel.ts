@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, SmartField} from '@eclipse-scout/core';
+import {CheckBoxField, ExtensionModel, SmartField, TableHierarchicalStyle} from '@eclipse-scout/core';
+import {TablePropertiesBoxWidgetMap} from '../../index';
 
-export default () => ({
+export default (): ExtensionModel => ({
   id: 'jswidgets.HierarchicalTablePropertiesBox',
   type: 'extension',
   extensions: [
@@ -38,3 +39,8 @@ export default () => ({
     }
   ]
 });
+
+export type HierarchicalTablePropertiesBoxWidgetMap = {
+  'HierarchicalStyleField': SmartField<TableHierarchicalStyle>;
+  'ExtendedHierarchyPaddingField': CheckBoxField;
+} & TablePropertiesBoxWidgetMap;

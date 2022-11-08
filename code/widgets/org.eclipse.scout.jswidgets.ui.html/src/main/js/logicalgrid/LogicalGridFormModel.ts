@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {GridDataBox, GroupBoxAddFieldBox, GroupBoxDeleteFieldBox} from '../index';
+import {FormField, FormModel, GroupBox, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {GridDataBox, GridDataBoxWidgetMap, GroupBoxAddFieldBox, GroupBoxAddFieldBoxWidgetMap, GroupBoxDeleteFieldBox, GroupBoxDeleteFieldBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.LogicalGridForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -111,3 +111,22 @@ export default () => ({
     ]
   }
 });
+
+export type LogicalGridFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'StringField1': StringField;
+  'StringField2': StringField;
+  'StringField3': StringField;
+  'StringField4': StringField;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'TargetField': SmartField<FormField>;
+  'LogicalGridField': SmartField<string>;
+  'GridDataBox': GridDataBox;
+  'CalculatedGridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'Actions.AddFieldBox': GroupBoxAddFieldBox;
+  'Actions.DeleteFieldBox': GroupBoxDeleteFieldBox;
+} & GridDataBoxWidgetMap & GroupBoxAddFieldBoxWidgetMap & GroupBoxDeleteFieldBoxWidgetMap;

@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SmartField} from '@eclipse-scout/core';
+import {Button, FormField, GroupBox, GroupBoxModel, SmartField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.GroupBoxDeleteFieldBox',
   objectType: GroupBox,
   label: 'Delete field',
@@ -32,3 +32,8 @@ export default () => ({
     }
   ]
 });
+
+export type GroupBoxDeleteFieldBoxWidgetMap = {
+  'ToDeleteField': SmartField<FormField>;
+  'DeleteButton': Button;
+};

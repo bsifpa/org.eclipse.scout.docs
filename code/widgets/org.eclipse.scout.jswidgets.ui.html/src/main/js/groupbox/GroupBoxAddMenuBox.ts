@@ -8,10 +8,20 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, ButtonAdapterMenu, GroupBox, models, scout} from '@eclipse-scout/core';
+import {Button, ButtonAdapterMenu, CheckBoxField, Event, GroupBox, GroupBoxModel, InitModelOf, Menu, models, NumberField, scout, SmartField, StringField} from '@eclipse-scout/core';
 import GroupBoxAddMenuBoxModel from './GroupBoxAddMenuBoxModel';
+import {GroupBoxAddMenuBoxWidgetMap} from '../index';
 
 export class GroupBoxAddMenuBox extends GroupBox {
+  declare widgetMap: GroupBoxAddMenuBoxWidgetMap;
+
+  field: GroupBox;
+  labelField: StringField;
+  iconIdField: SmartField<string>;
+  horizontalAlignmentField: NumberField;
+  stackableField: CheckBoxField;
+  shrinkableField: CheckBoxField;
+  dynamicMenuCounter: number;
 
   constructor() {
     super();
@@ -19,22 +29,22 @@ export class GroupBoxAddMenuBox extends GroupBox {
     this.dynamicMenuCounter = 0;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): GroupBoxModel {
     return models.get(GroupBoxAddMenuBoxModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
     this._setField(this.field);
 
     this.widget('MenuBarItemType').setValue('Menu');
   }
 
-  setField(field) {
+  setField(field: GroupBox) {
     this.setProperty('field', field);
   }
 
-  _setField(field) {
+  protected _setField(field: GroupBox) {
     this._setProperty('field', field);
     if (!this.field) {
       return;
@@ -52,16 +62,16 @@ export class GroupBoxAddMenuBox extends GroupBox {
     this._updateAddMenuBarDefaultValues();
   }
 
-  _updateAddMenuBarDefaultValues() {
+  protected _updateAddMenuBarDefaultValues() {
     this.labelField.setValue('Dynamic Menu ' + this.dynamicMenuCounter);
     this.stackableField.setValue(true);
     this.shrinkableField.setValue(false);
   }
 
-  _onAddMenuButtonClick(event) {
+  protected _onAddMenuButtonClick(event: Event<Button>) {
     let label = this.labelField.value || '';
     this.dynamicMenuCounter++;
-    let newMenu = scout.create(scout.nvl(this.widget('MenuBarItemType').value, 'Menu'), {
+    let newMenu: Menu | Button = scout.create(scout.nvl(this.widget('MenuBarItemType').value, 'Menu'), {
       parent: this.field,
       id: 'DynMenu ' + this.dynamicMenuCounter,
       label: label,

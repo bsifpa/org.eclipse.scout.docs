@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, Widget} from '@eclipse-scout/core';
+import {DisabledStyle, StaticLookupCall, Widget} from '@eclipse-scout/core';
 
-export class DisabledStyleLookupCall extends StaticLookupCall {
+export class DisabledStyleLookupCall extends StaticLookupCall<DisabledStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return DisabledStyleLookupCall.DATA;
   }
 

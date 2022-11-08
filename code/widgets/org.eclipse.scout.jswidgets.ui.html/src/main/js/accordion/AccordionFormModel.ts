@@ -10,7 +10,9 @@
  */
 
 import {Accordion, AccordionField, CheckBoxField, FormModel, Group, GroupBox, GroupCollapseStyle, ImageField, LabelField, Menu, SmartField, TabItem} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {
+  ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
 export default (): FormModel => ({
   id: 'jswidgets.AccordionForm',
@@ -206,4 +208,4 @@ export type AccordionFormWidgetMap = {
   'FormFieldActionsBox': FormFieldActionsBox;
   'WidgetActionsBox': WidgetActionsBox;
   'EventsTab': EventsTab;
-};
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

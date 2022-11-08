@@ -17,13 +17,13 @@ export class LocaleTableLookupCall extends LocaleLookupCall {
     super();
   }
 
-  _dataToLookupRow(data) {
+  protected override _dataToLookupRow(data: any[]): LookupRow<string> {
     return scout.create(LookupRow, {
       key: data[0],
       text: data[1],
       additionalTableRowData: {
         tag: data[0]
       }
-    });
+    }) as LookupRow<string>;
   }
 }

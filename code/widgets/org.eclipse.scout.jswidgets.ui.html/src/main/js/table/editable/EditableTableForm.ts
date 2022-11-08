@@ -9,6 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {TableForm} from '../../index';
+import {InitModelOf} from '@eclipse-scout/core';
 
 export class EditableTableForm extends TableForm {
 
@@ -16,7 +17,7 @@ export class EditableTableForm extends TableForm {
     super();
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.table.columns.forEach(column => {

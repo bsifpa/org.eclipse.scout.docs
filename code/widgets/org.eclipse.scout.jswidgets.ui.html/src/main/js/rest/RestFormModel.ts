@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, FormField, GroupBox, StringField} from '@eclipse-scout/core';
+import {Button, FormField, FormModel, GroupBox, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.RestForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -85,3 +85,14 @@ export default () => ({
     ]
   }
 });
+
+export type RestFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'GetButton': Button;
+  'PostButton': Button;
+  'PutButton': Button;
+  'DeleteButton': Button;
+  'FailButton': Button;
+  'LogField': StringField;
+};

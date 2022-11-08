@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {AggregateTableControl, BooleanColumn, Column, GroupBox, Menu, SmartField, TabItem, Table, TableField} from '@eclipse-scout/core';
-import {ColumnPropertiesBox, ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, HierarchicalTablePropertiesBox, WidgetActionsBox} from '../../index';
+import {AggregateTableControl, BooleanColumn, Column, FormModel, GroupBox, Menu, SmartField, TabItem, Table, TableField} from '@eclipse-scout/core';
+import {
+  ColumnPropertiesBox, ColumnPropertiesBoxWidgetMap, ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox,
+  GridDataBoxWidgetMap, HierarchicalTablePropertiesBox, HierarchicalTablePropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.HierarchicalTableForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -182,3 +185,32 @@ export default () => ({
     ]
   }
 });
+
+export type HierarchicalTableFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'TableField': TableField;
+    'Table': Table;
+    'AggregateTableControl': AggregateTableControl;
+    'ContentMenu': Menu;
+    'RemoveAll': Menu;
+    'InsertFew': Menu;
+    'InsertMany': Menu;
+    'AddRowMenu': Menu;
+    'DeleteRowMenu': Menu;
+    'ConfigurationBox': ConfigurationBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': HierarchicalTablePropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ColumnProperties': TabItem;
+    'Column.TargetField': SmartField<Column>;
+    'Column.PropertiesBox': ColumnPropertiesBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & HierarchicalTablePropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & ColumnPropertiesBoxWidgetMap & FormFieldActionsBoxWidgetMap
+  & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

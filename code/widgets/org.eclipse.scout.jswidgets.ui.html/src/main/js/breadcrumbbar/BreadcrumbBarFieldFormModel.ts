@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {BreadcrumbBar, BreadcrumbBarField, BreadcrumbItem, GroupBox, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {BreadcrumbBar, BreadcrumbBarField, BreadcrumbItem, FormModel, GroupBox, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.BreadcrumbBarFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -114,3 +114,18 @@ export default () => ({
     ]
   }
 });
+
+export type BreadcrumbBarFieldFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'BreadcrumbBarField': BreadcrumbBarField;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'BreadcrumbBarProperties': GroupBox;
+  'BreadcrumbItemsField': StringField;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
+import {Button, CheckBoxField, GroupBox, GroupBoxModel, NumberField, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.GroupBoxAddMenuBox',
   objectType: GroupBox,
   label: 'Add menu',
@@ -60,3 +60,13 @@ export default () => ({
     }
   ]
 });
+
+export type GroupBoxAddMenuBoxWidgetMap = {
+  'LabelField': StringField;
+  'MenuBarItemType': SmartField<'Button' | 'Menu'>;
+  'IconIdField': SmartField<string>;
+  'HorizontalAlignmentField': NumberField;
+  'StackableField': CheckBoxField;
+  'ShrinkableField': CheckBoxField;
+  'CreateButton': Button;
+};

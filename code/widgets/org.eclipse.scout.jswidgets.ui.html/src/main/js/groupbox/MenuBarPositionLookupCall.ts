@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, StaticLookupCall} from '@eclipse-scout/core';
+import {GroupBox, GroupBoxMenuBarPosition, StaticLookupCall} from '@eclipse-scout/core';
 
-export class MenuBarPositionLookupCall extends StaticLookupCall {
+export class MenuBarPositionLookupCall extends StaticLookupCall<GroupBoxMenuBarPosition> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return MenuBarPositionLookupCall.DATA;
   }
 

@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class ImageLookupCall extends StaticLookupCall {
+export class ImageLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return ImageLookupCall.DATA;
   }
 

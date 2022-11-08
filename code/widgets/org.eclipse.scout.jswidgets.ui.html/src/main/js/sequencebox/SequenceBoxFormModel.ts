@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, SequenceBox, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, LogicalGridLayoutConfigBox, WidgetActionsBox} from '../index';
+import {FormField, FormModel, GroupBox, SequenceBox, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, LogicalGridLayoutConfigBox, LogicalGridLayoutConfigBoxWidgetMap,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.SequenceBoxForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -126,3 +129,29 @@ export default () => ({
     ]
   }
 });
+
+export type SequenceBoxFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'TopBox': GroupBox;
+    'SequenceBox': SequenceBox;
+    'StringField1': StringField;
+    'StringField2': StringField;
+    'StringField3': StringField;
+    'StringField4': StringField;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'LayoutConfigBox': LogicalGridLayoutConfigBox;
+    'FieldPropertiesTab': TabItem;
+    'Field.TargetField': SmartField<FormField>;
+    'Field.FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'Field.GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & LogicalGridLayoutConfigBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

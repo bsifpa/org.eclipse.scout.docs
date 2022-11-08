@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, NumberField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.GridDataBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -97,3 +97,20 @@ export default () => ({
     }
   ]
 });
+
+export type GridDataBoxWidgetMap = {
+  'WField': NumberField;
+  'HField': NumberField;
+  'XField': NumberField;
+  'YField': NumberField;
+  'WeightXField': NumberField;
+  'WeightYField': NumberField;
+  'HorizontalAlignmentField': NumberField;
+  'VerticalAlignmentField': NumberField;
+  'WidthInPixelField': NumberField;
+  'HeightInPixelField': NumberField;
+  'FillHorizontalField': CheckBoxField;
+  'FillVerticalField': CheckBoxField;
+  'UseUiWidthField': CheckBoxField;
+  'UseUiHeightField': CheckBoxField;
+};

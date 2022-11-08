@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class MultilinePersonLookupCall extends StaticLookupCall {
+export class MultilinePersonLookupCall extends StaticLookupCall<number> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return MultilinePersonLookupCall.DATA;
   }
 

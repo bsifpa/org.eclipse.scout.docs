@@ -8,14 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {models} from '@eclipse-scout/core';
+import {FormModel, models} from '@eclipse-scout/core';
 import {NumberFieldForm} from '../index';
 import IntegerFieldFormModel from './IntegerFieldFormModel';
 
 export class IntegerFieldForm extends NumberFieldForm {
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.extend(IntegerFieldFormModel, super._jsonModel());
   }
-
 }

@@ -8,10 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, DefaultStatus, DesktopNotification, GroupBox, models, numbers, objects, scout, Status} from '@eclipse-scout/core';
+import {arrays, DefaultStatus, DesktopNotification, FileDropEvent, FormField, GroupBox, GroupBoxModel, InitModelOf, models, numbers, objects, scout, Status} from '@eclipse-scout/core';
 import FormFieldPropertiesBoxModel from './FormFieldPropertiesBoxModel';
+import {FormFieldPropertiesBoxWidgetMap} from '../index';
 
 export class FormFieldPropertiesBox extends GroupBox {
+  declare widgetMap: FormFieldPropertiesBoxWidgetMap;
+
+  field: FormField;
+  protected _fileDropHandler: any;
 
   constructor() {
     super();
@@ -19,24 +24,21 @@ export class FormFieldPropertiesBox extends GroupBox {
     this._fileDropHandler = this._onFileDrop.bind(this);
   }
 
-  /**
-   * @returns {WidgetModel}
-   */
-  _jsonModel() {
+  protected override _jsonModel(): GroupBoxModel {
     return models.get(FormFieldPropertiesBoxModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this._setField(this.field);
   }
 
-  setField(field) {
+  setField(field: FormField) {
     this.setProperty('field', field);
   }
 
-  _setField(field) {
+  protected _setField(field: FormField) {
     if (this.field) {
       this.field.off('drop', this._fileDropHandler);
     }
@@ -102,10 +104,10 @@ export class FormFieldPropertiesBox extends GroupBox {
     labelPositionField.on('propertyChange:value', event => this.field.setLabelPosition(event.newValue));
 
     let labelWidthInPixelField = this.widget('LabelWidthInPixelField');
-    labelWidthInPixelField.setValue(this.field.labelWidthInPixel);
+    labelWidthInPixelField.setValue('' + this.field.labelWidthInPixel);
     labelWidthInPixelField.on('propertyChange:value', event => {
       if (event.source.lookupRow) {
-        this.field.setLabelWidthInPixel(event.source.lookupRow.key);
+        this.field.setLabelWidthInPixel(numbers.ensure(event.source.lookupRow.key));
       } else {
         this.field.setLabelWidthInPixel(numbers.ensure(event.newValue));
       }
@@ -136,7 +138,7 @@ export class FormFieldPropertiesBox extends GroupBox {
     statusPositionField.on('propertyChange:value', event => this.field.setStatusPosition(event.newValue));
   }
 
-  _onFileDrop(event) {
+  protected _onFileDrop(event: FileDropEvent) {
     scout.create(DesktopNotification, {
       parent: this,
       duration: 7500,
@@ -147,7 +149,7 @@ export class FormFieldPropertiesBox extends GroupBox {
     }).show();
   }
 
-  _filesToString(files) {
+  protected _filesToString(files: File[]): string {
     return arrays.format(files.map(file => {
       return `
 Name: ${file.name}

@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, NumberField, SmartField, TableCheckableStyle, TableGroupingStyle} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.TablePropertiesBox',
   objectType: GroupBox,
   label: 'Table Properties',
@@ -151,3 +151,27 @@ export default () => ({
     }
   ]
 });
+
+export type TablePropertiesBoxWidgetMap = {
+  'AutoResizeColumnsField': CheckBoxField;
+  'AutoOptimizeColumnWidthsField': CheckBoxField;
+  'CheckableField': CheckBoxField;
+  'CompactField': CheckBoxField;
+  'HeaderEnabledField': CheckBoxField;
+  'HeaderVisibleField': CheckBoxField;
+  'HeaderMenusEnabledField': CheckBoxField;
+  'MenuBarVisibleField': CheckBoxField;
+  'MultiCheckField': CheckBoxField;
+  'MultiSelectField': CheckBoxField;
+  'MultilineTextField': CheckBoxField;
+  'TruncatedCellTooltipEnabledField': CheckBoxField;
+  'ScrollToSelectionField': CheckBoxField;
+  'SortEnabledField': CheckBoxField;
+  'FooterVisibleField': CheckBoxField;
+  'RowIconVisibleField': CheckBoxField;
+  'RowIconColumnWidthField': NumberField;
+  'CheckableStyleField': SmartField<TableCheckableStyle>;
+  'GroupingStyleField': SmartField<TableGroupingStyle>;
+  'TileModeField': CheckBoxField;
+  'TextFilterEnabledField': CheckBoxField;
+};

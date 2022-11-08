@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
+import {ActionStyle, ActionTextPosition, CheckBoxField, GroupBox, GroupBoxModel, NumberField, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.ActionPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -95,3 +95,19 @@ export default () => ({
     }
   ]
 });
+
+export type ActionPropertiesBoxWidgetMap = {
+  'EnabledField': CheckBoxField;
+  'VisibleField': CheckBoxField;
+  'ToggleActionField': CheckBoxField;
+  'SelectedField': CheckBoxField;
+  'PreventDoubleClickField': CheckBoxField;
+  'InheritAccessibilityField': CheckBoxField;
+  'IconIdField': SmartField<string>;
+  'KeyStrokeField': StringField;
+  'TextField': StringField;
+  'TextPositionField': SmartField<ActionTextPosition>;
+  'TooltipTextField': StringField;
+  'HorizontalAlignmentField': NumberField;
+  'ActionStyleField': SmartField<ActionStyle>;
+};

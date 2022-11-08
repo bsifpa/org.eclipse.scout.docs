@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {AggregateTableControl, BooleanColumn, Column, DateColumn, GroupBox, IconColumn, Menu, NumberColumn, SmartColumn, SmartField, TabItem, Table, TableField} from '@eclipse-scout/core';
-import {ColumnPropertiesBox, ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TablePropertiesBox, WidgetActionsBox} from '../index';
+import {AggregateTableControl, BooleanColumn, Column, DateColumn, FormModel, GroupBox, IconColumn, Menu, NumberColumn, SmartColumn, SmartField, TabItem, Table, TableField} from '@eclipse-scout/core';
+import {
+  ColumnPropertiesBox, ColumnPropertiesBoxWidgetMap, ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox,
+  GridDataBoxWidgetMap, TablePropertiesBox, TablePropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TableForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -223,3 +226,47 @@ export default () => ({
     ]
   }
 });
+
+export type TableFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'TableField': TableField;
+    'Table': TableFieldTable;
+    'AggregateTableControl': AggregateTableControl;
+    'AddRowMenu': Menu;
+    'MoveMenu': Menu;
+    'MoveToTopMenu': Menu;
+    'MoveUpMenu': Menu;
+    'MoveDownMenu': Menu;
+    'MoveToBottomMenu': Menu;
+    'DeleteRowMenu': Menu;
+    'ConfigurationBox': ConfigurationBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': TablePropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ColumnProperties': TabItem;
+    'Column.TargetField': SmartField<Column>;
+    'Column.PropertiesBox': ColumnPropertiesBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & TablePropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & ColumnPropertiesBoxWidgetMap & FormFieldActionsBoxWidgetMap
+  & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
+
+export type TableFieldTableColumnMap = {
+  'StringColumn': Column;
+  'DateColumn': DateColumn;
+  'NumberColumn': NumberColumn;
+  'SmartColumn': SmartColumn<string>;
+  'BooleanColumn': BooleanColumn;
+  'IconColumn': IconColumn;
+  'HtmlColumn': Column;
+};
+
+export class TableFieldTable extends Table {
+  declare columnMap: TableFieldTableColumnMap;
+}

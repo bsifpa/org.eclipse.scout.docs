@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class MenuBarItemTypeLookupCall extends StaticLookupCall {
+export class MenuBarItemTypeLookupCall extends StaticLookupCall<'Button' | 'Menu'> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return MenuBarItemTypeLookupCall.DATA;
   }
 

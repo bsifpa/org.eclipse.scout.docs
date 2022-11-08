@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldPropertiesBox, GridDataBox, WatchField, WidgetActionsBox} from '../../index';
+import {FormModel, GroupBox, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WatchField, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.WatchFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -76,3 +76,16 @@ export default () => ({
     ]
   }
 });
+
+export type WatchFieldFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'WatchField': WatchField;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
