@@ -10,7 +10,7 @@
  */
 import {Button, FormModel, GroupBox, LabelField} from '@eclipse-scout/core';
 
-export default (): FormModel => (({
+export default (): FormModel => ({
   rootGroupBox: {
     objectType: GroupBox,
     borderDecoration: GroupBox.BorderDecoration.EMPTY,
@@ -36,8 +36,8 @@ export default (): FormModel => (({
       }
     }]
   }
-}));
+});
 
 export type MiniFormWidgetMap = {
-  CloseButton: Button;
+  'CloseButton': Button;
 };

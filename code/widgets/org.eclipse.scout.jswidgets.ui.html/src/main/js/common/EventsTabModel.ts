@@ -10,7 +10,7 @@
  */
 import {Button, FormField, GroupBoxModel, LabelField, StringField, TabItem} from '@eclipse-scout/core';
 
-export default (): GroupBoxModel => (({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.EventsTab',
   objectType: TabItem,
   label: 'Events',
@@ -45,10 +45,10 @@ export default (): GroupBoxModel => (({
       processButton: false
     }
   ]
-}));
+});
 
 export type EventsTabWidgetMap = {
-  EventsOverviewField: LabelField;
-  EventLogField: StringField;
-  ClearEventLogButton: Button;
+  'EventsOverviewField': LabelField;
+  'EventLogField': StringField;
+  'ClearEventLogButton': Button;
 };
