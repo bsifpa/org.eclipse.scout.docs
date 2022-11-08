@@ -19,6 +19,9 @@ export class FormFieldActionsBox extends GroupBox {
     this.field = null;
   }
 
+  /**
+   * @returns {GroupBoxModel}
+   */
   _jsonModel() {
     return models.get(FormFieldActionsBoxModel);
   }

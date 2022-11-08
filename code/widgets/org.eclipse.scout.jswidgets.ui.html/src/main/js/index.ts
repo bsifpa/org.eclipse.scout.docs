@@ -9,10 +9,12 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {ObjectFactory} from '@eclipse-scout/core';
+import * as self from './index';
 
 export * from './App';
 export * from './objectFactories';
 export * from './accordion/AccordionForm';
+export * from './accordion/AccordionFormModel';
 export * from './accordion/CollapseStyleLookupCall';
 export * from './action/ActionPropertiesBox';
 export * from './action/ActionStyleLookupCall';
@@ -174,8 +176,6 @@ export * from './breadcrumbbar/BreadcrumbBarFieldForm';
 export * from './messagebox/MessageBoxForm';
 export * from './wrappedform/WrappedFormFieldForm';
 export * from './wrappedform/WrappedFormLookupCall';
-
-import * as self from './index';
 
 export default self;
 ObjectFactory.get().registerNamespace('jswidgets', self);
