@@ -14,7 +14,7 @@ import {
 import {Chart, ChartField, ChartFieldTile, ChartPosition, ChartType, GreenAreaPosition} from '@eclipse-scout/chart';
 import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default (): FormModel => (({
+export default (): FormModel => ({
   id: 'jswidgets.ChartFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -350,7 +350,7 @@ export default (): FormModel => (({
               labelVisible: false,
               enabled: false,
               table: {
-                id: 'Table',
+                id: 'ChartDataTableField.Table',
                 objectType: Table,
                 sortEnabled: false,
                 headerMenusEnabled: false,
@@ -496,7 +496,7 @@ export default (): FormModel => (({
       }
     ]
   }
-}));
+});
 
 export type ChartFieldFormWidgetMap = {
   MainBox: GroupBox;
@@ -542,7 +542,7 @@ export type ChartFieldFormWidgetMap = {
   ChartDataBox: TabItem;
   'ChartDataBox.LeftBox': GroupBox;
   ChartDataTableField: TableField;
-  Table: Table;
+  'ChartDataTableField.Table': ChartDataTableFieldTable;
   AddDatasetMenu: Menu;
   RemoveDatasetMenu: Menu;
   AddDataMenu: Menu;
@@ -559,3 +559,11 @@ export type ChartFieldFormWidgetMap = {
   WidgetActionsBox: WidgetActionsBox;
   EventsTab: EventsTab;
 } & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
+
+export type ChartDataTableFieldTableColumnMap = {
+  DatasetLabelColumn: Column<string>;
+};
+
+export class ChartDataTableFieldTable extends Table {
+  declare columnMap: ChartDataTableFieldTableColumnMap;
+}
