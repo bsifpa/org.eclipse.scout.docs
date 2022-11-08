@@ -8,10 +8,11 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Accordion, AccordionField, CheckBoxField, Group, GroupBox, ImageField, LabelField, Menu, SmartField, TabItem} from '@eclipse-scout/core';
+
+import {Accordion, AccordionField, CheckBoxField, FormModel, Group, GroupBox, GroupCollapseStyle, ImageField, LabelField, Menu, SmartField, TabItem} from '@eclipse-scout/core';
 import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.AccordionForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -180,3 +181,29 @@ export default () => ({
     ]
   }
 });
+
+export type AccordionFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'InsertMenu': Menu;
+  'DeleteFirstMenu': Menu;
+  'CollapseExpandFirstMenu': Menu;
+  'CollapseAllMenu': Menu;
+  'SortMenu': Menu;
+  'SortAscMenu': Menu;
+  'SortDescMenu': Menu;
+  'AccordionField': AccordionField;
+  'Accordion': Accordion;
+  'ConfigurationBox': ConfigurationBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'ExclusiveExpandField': CheckBoxField;
+  'ScrollableField': CheckBoxField;
+  'CollapseStyleField': SmartField<GroupCollapseStyle>;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+};
