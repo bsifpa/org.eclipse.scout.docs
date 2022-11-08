@@ -11,7 +11,7 @@
 import {CheckBoxField} from '@eclipse-scout/core';
 
 export type WidgetPopupPropertiesBoxWidgetMap = {
-  ClosableField: CheckBoxField;
-  MovableField: CheckBoxField;
-  ResizableField: CheckBoxField;
+  'ClosableField': CheckBoxField;
+  'MovableField': CheckBoxField;
+  'ResizableField': CheckBoxField;
 };

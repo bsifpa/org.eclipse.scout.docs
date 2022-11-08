@@ -10,7 +10,7 @@
  */
 import {Button, GroupBox, GroupBoxModel, LabelField, NumberField, SequenceBox} from '@eclipse-scout/core';
 
-export default (): GroupBoxModel => (({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.WidgetActionsBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -94,17 +94,17 @@ export default (): GroupBoxModel => (({
       label: 'Scroll Top'
     }
   ]
-}));
+});
 
 export type WidgetActionsBoxWidgetMap = {
-  FocusSequenceBox: SequenceBox;
-  FocusButton: Button;
-  FocusReturnField: LabelField;
-  IsFocusableSequenceBox: SequenceBox;
-  IsFocusableButton: Button;
-  IsFocusableReturnField: LabelField;
-  RevealButton: Button;
-  ScrollToTopButton: Button;
-  ScrollToBottomButton: Button;
-  ScrollTopField: NumberField;
+  'FocusSequenceBox': SequenceBox;
+  'FocusButton': Button;
+  'FocusReturnField': LabelField;
+  'IsFocusableSequenceBox': SequenceBox;
+  'IsFocusableButton': Button;
+  'IsFocusableReturnField': LabelField;
+  'RevealButton': Button;
+  'ScrollToTopButton': Button;
+  'ScrollToBottomButton': Button;
+  'ScrollTopField': NumberField;
 };
