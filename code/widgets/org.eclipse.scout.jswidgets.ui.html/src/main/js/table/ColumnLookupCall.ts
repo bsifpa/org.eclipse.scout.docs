@@ -8,27 +8,28 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall} from '@eclipse-scout/core';
+import {Column, StaticLookupCall, Table} from '@eclipse-scout/core';
 
-export class ColumnLookupCall extends StaticLookupCall {
+export class ColumnLookupCall extends StaticLookupCall<Column> {
+  table: Table;
 
-  constructor(table) {
+  constructor(table: Table) {
     super();
 
     this.data = [];
     this.setTable(table);
   }
 
-  _data() {
+  protected override _data(): any[] {
     return this.data;
   }
 
-  setTable(table) {
+  setTable(table: Table) {
     this.table = table;
     this._rebuildData();
   }
 
-  _rebuildData() {
+  protected _rebuildData() {
     this.data = this.table.columns.map(column => {
       return [column, column.text];
     });

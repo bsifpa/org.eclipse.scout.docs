@@ -8,23 +8,28 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, BreadcrumbItem, Form, MessageBoxes, models, Status} from '@eclipse-scout/core';
+import {arrays, BreadcrumbBarField, BreadcrumbItem, Event, EventHandler, Form, FormModel, InitModelOf, MessageBoxes, models, Status} from '@eclipse-scout/core';
 import BreadcrumbBarFieldFormModel from './BreadcrumbBarFieldFormModel';
+import {BreadcrumbBarFieldFormWidgetMap} from '../index';
 
 export class BreadcrumbBarFieldForm extends Form {
+  declare widgetMap: BreadcrumbBarFieldFormWidgetMap;
+
+  breadcrumbBarField: BreadcrumbBarField;
+  protected _breadcrumbActionListener: EventHandler<Event<BreadcrumbItem>>;
 
   constructor() {
     super();
 
     this.breadcrumbBarField = null;
-    this._breacrumbActionListener = this._onBreadcrumbAction.bind(this);
+    this._breadcrumbActionListener = this._onBreadcrumbAction.bind(this);
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(BreadcrumbBarFieldFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.breadcrumbBarField = this.widget('BreadcrumbBarField');
@@ -36,7 +41,7 @@ export class BreadcrumbBarFieldForm extends Form {
 
     this.widget('BreadcrumbItemsField').on('propertyChange:value', event => {
       this.breadcrumbBarField.breadcrumbBar.breadcrumbItems.forEach(item => {
-        item.off('action', this._breacrumbActionListener);
+        item.off('action', this._breadcrumbActionListener);
       });
 
       this.breadcrumbBarField.setBreadcrumbItems(arrays.ensure(event.newValue.split('\n')).map(text => {
@@ -48,13 +53,13 @@ export class BreadcrumbBarFieldForm extends Form {
       }));
 
       this.breadcrumbBarField.breadcrumbBar.breadcrumbItems.forEach(item => {
-        item.on('action', this._breacrumbActionListener);
+        item.on('action', this._breadcrumbActionListener);
       });
     });
     this.widget('BreadcrumbItemsField').setValue('Storyboard\nFolder\nChild Folder');
   }
 
-  _onBreadcrumbAction(event) {
+  protected _onBreadcrumbAction(event: Event<BreadcrumbItem>) {
     MessageBoxes.openOk(this, this.session.text('BreadcrumbClickedX', event.source.ref), Status.Severity.INFO);
   }
 }

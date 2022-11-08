@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SequenceBox, SmartField} from '@eclipse-scout/core';
+import {Button, GroupBox, GroupBoxModel, Menu, SequenceBox, SmartField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.MenuActionsBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -48,3 +48,10 @@ export default () => ({
     }
   ]
 });
+
+export type MenuActionsBoxWidgetMap = {
+  'InsertMenuButton': Button;
+  'DeleteMenuBox': SequenceBox;
+  'MenuToDeleteField': SmartField<Menu>;
+  'DeleteMenuButton': Button;
+};

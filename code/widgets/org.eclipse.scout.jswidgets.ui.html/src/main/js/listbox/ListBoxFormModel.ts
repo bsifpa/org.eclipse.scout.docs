@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, ListBox, SmartField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TablePropertiesBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {FormModel, GroupBox, ListBox, LookupCall, SmartField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, TablePropertiesBox, TablePropertiesBoxWidgetMap,
+  ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.ListBoxForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -101,3 +104,23 @@ export default () => ({
     ]
   }
 });
+
+export type ListBoxFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'ListBox': ListBox<any>;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'LookupCallField': SmartField<LookupCall<any>>;
+    'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'PropertiesBox': TablePropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & TablePropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap
+  & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, ProposalField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, ProposalFieldPropertiesBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {FormModel, GroupBox, ProposalField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, ProposalFieldPropertiesBox, ProposalFieldPropertiesBoxWidgetMap,
+  ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.ProposalFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -90,3 +93,22 @@ export default () => ({
     ]
   }
 });
+
+export type ProposalFieldFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'ProposalField': ProposalField;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'ProposalFieldPropertiesBox': ProposalFieldPropertiesBox;
+    'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & ProposalFieldPropertiesBoxWidgetMap & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

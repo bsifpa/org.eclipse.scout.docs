@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Menu, objects, StaticLookupCall} from '@eclipse-scout/core';
+import {Menu, objects, StaticLookupCall, SubMenuVisibility} from '@eclipse-scout/core';
 
-export class SubMenuVisibilityLookupCall extends StaticLookupCall {
+export class SubMenuVisibilityLookupCall extends StaticLookupCall<SubMenuVisibility> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return SubMenuVisibilityLookupCall.DATA;
   }
 

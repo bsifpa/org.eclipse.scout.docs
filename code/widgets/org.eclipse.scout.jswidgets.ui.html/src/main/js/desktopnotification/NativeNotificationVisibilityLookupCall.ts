@@ -8,16 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
+import {DesktopNotification, NativeNotificationVisibility, StaticLookupCall} from '@eclipse-scout/core';
 
-import {DesktopNotification, StaticLookupCall} from '@eclipse-scout/core';
-
-export class NativeNotificationVisibilityLookupCall extends StaticLookupCall {
+export class NativeNotificationVisibilityLookupCall extends StaticLookupCall<NativeNotificationVisibility> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return NativeNotificationVisibilityLookupCall.DATA;
   }
 

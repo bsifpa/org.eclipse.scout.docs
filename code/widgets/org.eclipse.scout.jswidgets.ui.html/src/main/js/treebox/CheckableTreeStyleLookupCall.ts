@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, Tree} from '@eclipse-scout/core';
+import {StaticLookupCall, Tree, TreeCheckableStyle} from '@eclipse-scout/core';
 
-export class CheckableTreeStyleLookupCall extends StaticLookupCall {
+export class CheckableTreeStyleLookupCall extends StaticLookupCall<TreeCheckableStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return CheckableTreeStyleLookupCall.DATA;
   }
 

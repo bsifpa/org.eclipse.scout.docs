@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class TagLookupCall extends StaticLookupCall {
+export class TagLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     let tags = TagLookupCall.TAGS;
     tags.sort();
 

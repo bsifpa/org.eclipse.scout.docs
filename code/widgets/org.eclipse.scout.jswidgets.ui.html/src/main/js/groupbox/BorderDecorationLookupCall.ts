@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, StaticLookupCall} from '@eclipse-scout/core';
+import {GroupBox, GroupBoxBorderDecoration, StaticLookupCall} from '@eclipse-scout/core';
 
-export class BorderDecorationLookupCall extends StaticLookupCall {
+export class BorderDecorationLookupCall extends StaticLookupCall<GroupBoxBorderDecoration> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return BorderDecorationLookupCall.DATA;
   }
 

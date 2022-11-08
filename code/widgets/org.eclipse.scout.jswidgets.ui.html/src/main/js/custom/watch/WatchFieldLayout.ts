@@ -9,15 +9,17 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {NullLayout} from '@eclipse-scout/core';
+import {WatchField} from './WatchField';
 
 export class WatchFieldLayout extends NullLayout {
+  watchField: WatchField;
 
-  constructor(watchField) {
+  constructor(watchField: WatchField) {
     super();
     this.watchField = watchField;
   }
 
-  layout($container) {
+  override layout($container: JQuery) {
     let containerHeight = $container.height(),
       containerWidth = $container.width(),
       size = Math.min(containerHeight, containerWidth),

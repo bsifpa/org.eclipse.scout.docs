@@ -8,21 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, models, ProposalField} from '@eclipse-scout/core';
 import ProposalFieldFormModel from './ProposalFieldFormModel';
+import {ProposalFieldFormWidgetMap} from '../index';
 
 export class ProposalFieldForm extends Form {
+  declare widgetMap: ProposalFieldFormWidgetMap;
+
+  proposalField: ProposalField;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(ProposalFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.proposalField = this.widget('ProposalField');

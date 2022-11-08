@@ -8,10 +8,12 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, Mode, ModeSelector, ModeSelectorField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, Mode, ModeSelector, ModeSelectorField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.ModeSelectorForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -138,3 +140,28 @@ export default () => ({
     ]
   }
 });
+
+export type ModeSelectorFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'ModeSelectorField': ModeSelectorField<any>;
+  'ModeSelector': ModeSelector;
+  'Mode1': Mode;
+  'Mode2': Mode;
+  'Mode3': Mode;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'TargetField': SmartField<Mode>;
+  'TextField': StringField;
+  'IconIdField': SmartField<string>;
+  'SelectedField': CheckBoxField;
+  'EnabledField': CheckBoxField;
+  'VisibleField': CheckBoxField;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
+import {GroupBox, GroupBoxModel, NumberColumnBackgroundEffect, NumberField, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.NumberColumnPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -46,3 +46,11 @@ export default () => ({
     }
   ]
 });
+
+export type NumberColumnPropertiesBoxWidgetMap = {
+  'MinValueField': NumberField;
+  'MaxValueField': NumberField;
+  'MultiplierField': NumberField;
+  'FormatField': StringField;
+  'BackgroundEffectField': SmartField<NumberColumnBackgroundEffect>;
+};

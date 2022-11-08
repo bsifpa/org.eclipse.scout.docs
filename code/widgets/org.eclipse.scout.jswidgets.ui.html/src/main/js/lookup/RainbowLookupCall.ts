@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {icons, LookupRow, scout, StaticLookupCall} from '@eclipse-scout/core';
+import {icons, InitModelOf, LookupRow, scout, StaticLookupCall} from '@eclipse-scout/core';
 
-export class RainbowLookupCall extends StaticLookupCall {
+export class RainbowLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return RainbowLookupCall.DATA;
   }
 
@@ -39,8 +39,8 @@ export class RainbowLookupCall extends StaticLookupCall {
     ['FFDB9D', icons.ANGLE_RIGHT]
   ];
 
-  _dataToLookupRow(data, index) {
-    let model = {
+  protected override _dataToLookupRow(data: any[], index?: number): LookupRow<string> {
+    let model: InitModelOf<LookupRow<string>> = {
       key: data[0],
       text: data[0],
       backgroundColor: data[0],
@@ -52,6 +52,6 @@ export class RainbowLookupCall extends StaticLookupCall {
     if (index % 2 === 0) {
       model.foregroundColor = 'blue';
     }
-    return scout.create(LookupRow, model);
+    return scout.create(LookupRow, model) as LookupRow<string>;
   }
 }

@@ -8,14 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, graphics, Label, models, Rectangle, scout, WidgetPopup} from '@eclipse-scout/core';
+import {Form, FormModel, graphics, InitModelOf, Label, models, Rectangle, scout, WidgetPopup} from '@eclipse-scout/core';
 import PopupFormModel from './PopupFormModel';
+import {PopupFormWidgetMap} from '../index';
 
-/**
- * @typedef {Form} PopupForm
- * @property {PopupFormWidgetMap} widgetMap
- */
 export class PopupForm extends Form {
+  declare widgetMap: PopupFormWidgetMap;
+
+  popup: WidgetPopup;
+  $popupAnchor: JQuery;
 
   constructor() {
     super();
@@ -23,11 +24,11 @@ export class PopupForm extends Form {
     this.popup = null;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(PopupFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     let dummyPopup = scout.create(WidgetPopup, {
@@ -131,12 +132,12 @@ export class PopupForm extends Form {
     dummyPopup.close();
   }
 
-  _render() {
+  protected override _render() {
     super._render();
     this._updateAnchor();
   }
 
-  _remove() {
+  protected override _remove() {
     if (this.$popupAnchor) {
       this.$popupAnchor.remove();
       this.$popupAnchor = null;
@@ -144,7 +145,7 @@ export class PopupForm extends Form {
     super._remove();
   }
 
-  _onOpenPopupButtonClick(model) {
+  protected _onOpenPopupButtonClick() {
     let $anchor;
     if (this.widget('UseButtonAsAnchorField').value) {
       $anchor = this.widget('OpenPopupButton').$field;
@@ -185,15 +186,15 @@ export class PopupForm extends Form {
     this.popup.open();
   }
 
-  _getAnchorBounds(event) {
+  protected _getAnchorBounds(): Rectangle {
     let anchorBoundsRaw = this.widget('AnchorBoundsField').value;
     if (anchorBoundsRaw) {
-      anchorBoundsRaw = anchorBoundsRaw.split(',');
-      return new Rectangle(Number(anchorBoundsRaw[0]), Number(anchorBoundsRaw[1]), Number(anchorBoundsRaw[2]), Number(anchorBoundsRaw[3]));
+      let anchorBoundsRawSplit = anchorBoundsRaw.split(',');
+      return new Rectangle(Number(anchorBoundsRawSplit[0]), Number(anchorBoundsRawSplit[1]), Number(anchorBoundsRawSplit[2]), Number(anchorBoundsRawSplit[3]));
     }
   }
 
-  _updateAnchor() {
+  protected _updateAnchor() {
     let anchorBounds = this._getAnchorBounds();
     if (!anchorBounds) {
       if (this.$popupAnchor) {

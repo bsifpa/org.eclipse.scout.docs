@@ -12,7 +12,7 @@ import {
   Button, CheckBoxField, Column, FormField, FormModel, GroupBox, icons, IntegerField, LabelField, Menu, NumberField, SmartField, StringField, TabBox, TabItem, Table, TableField, TileField, TileGrid, ValueField
 } from '@eclipse-scout/core';
 import {Chart, ChartField, ChartFieldTile, ChartPosition, ChartType, GreenAreaPosition} from '@eclipse-scout/chart';
-import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
+import {EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
 export default (): FormModel => ({
   id: 'jswidgets.ChartFieldForm',
@@ -558,7 +558,7 @@ export type ChartFieldFormWidgetMap = {
   'ActionsTab': TabItem;
   'WidgetActionsBox': WidgetActionsBox;
   'EventsTab': EventsTab;
-} & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
 
 export type ChartDataTableFieldTableColumnMap = {
   'DatasetLabelColumn': Column<string>;

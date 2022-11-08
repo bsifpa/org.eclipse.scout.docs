@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, ValueField} from '@eclipse-scout/core';
+import {StaticLookupCall, ValueField, ValueFieldClearable} from '@eclipse-scout/core';
 
-export class ClearableStyleLookupCall extends StaticLookupCall {
+export class ClearableStyleLookupCall extends StaticLookupCall<ValueFieldClearable> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return ClearableStyleLookupCall.DATA;
   }
 

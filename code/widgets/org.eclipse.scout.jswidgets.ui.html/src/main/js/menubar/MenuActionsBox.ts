@@ -8,22 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, Menu, models} from '@eclipse-scout/core';
+import {Button, Event, GroupBox, GroupBoxModel, InitModelOf, Menu, models} from '@eclipse-scout/core';
 import MenuActionsBoxModel from './MenuActionsBoxModel';
-import {ChildActionsLookupCall} from '../index';
+import {ChildActionsLookupCall, MenuActionsBoxWidgetMap} from '../index';
 
 export class MenuActionsBox extends GroupBox {
+  declare widgetMap: MenuActionsBoxWidgetMap;
+
+  menu: Menu;
 
   constructor() {
     super();
     this.menu = null;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): GroupBoxModel {
     return models.get(MenuActionsBoxModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
     let insertMenuButton = this.widget('InsertMenuButton');
     insertMenuButton.on('click', this._onInsertMenuClick.bind(this));
@@ -36,23 +39,23 @@ export class MenuActionsBox extends GroupBox {
     this._setMenu((this.menu));
   }
 
-  setMenu(menu) {
+  setMenu(menu: Menu) {
     this.setProperty('menu', menu);
   }
 
-  _setMenu(menu) {
+  protected _setMenu(menu: Menu) {
     this._setProperty('menu', menu);
-    this.widget('MenuToDeleteField').lookupCall.setAction(this.menu);
+    (this.widget('MenuToDeleteField').lookupCall as ChildActionsLookupCall).setAction(this.menu);
   }
 
-  _onInsertMenuClick(event) {
+  protected _onInsertMenuClick(event: Event<Button>) {
     this.menu.insertChildAction({
       objectType: Menu,
       text: 'Menu ' + (this.menu.childActions.length + 1)
     });
   }
 
-  _onDeleteMenuClick(event) {
+  protected _onDeleteMenuClick(event: Event<Button>) {
     let menuToDeleteField = this.widget('MenuToDeleteField');
     let menu = menuToDeleteField.value;
     this.menu.deleteChildAction(menu);

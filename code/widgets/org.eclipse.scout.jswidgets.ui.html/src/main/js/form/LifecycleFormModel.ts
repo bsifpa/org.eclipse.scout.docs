@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CancelMenu, CheckBoxField, CloseMenu, DateField, GroupBox, OkMenu, ResetMenu, SaveMenu, StringField} from '@eclipse-scout/core';
+import {CancelMenu, CheckBoxField, CloseMenu, DateField, FormModel, GroupBox, OkMenu, ResetMenu, SaveMenu, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.LifecycleForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -90,3 +90,19 @@ export default () => ({
     ]
   }
 });
+
+export type LifecycleFormWidgetMap = {
+  'MainBox': GroupBox;
+  'OkMenu': OkMenu;
+  'CancelMenu': CancelMenu;
+  'SaveMenu': SaveMenu;
+  'ResetMenu': ResetMenu;
+  'CloseMenu': CloseMenu;
+  'DetailBox': GroupBox;
+  'NameField': StringField;
+  'ForenameField': StringField;
+  'BirthdayField': DateField;
+  'ExceptionField': CheckBoxField;
+  'HasCloseButtonField': CheckBoxField;
+  'AskIfNeedSaveField': CheckBoxField;
+};

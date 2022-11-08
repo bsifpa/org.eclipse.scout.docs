@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, SmartField, TabItem} from '@eclipse-scout/core';
-import {FormFieldPropertiesBox, GridDataBox, GroupBoxPropertiesBox} from '../index';
+import {CheckBoxField, SmartField, TabItem, TabItemModel} from '@eclipse-scout/core';
+import {FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, GroupBoxPropertiesBox, GroupBoxPropertiesBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): TabItemModel => ({
   id: 'jswidgets.TabItemProperties',
   objectType: TabItem,
   label: 'Tab Item Properties',
@@ -42,3 +42,11 @@ export default () => ({
     }
   ]
 });
+
+export type TabItemPropertiesWidgetMap = {
+  'TabItemProperties.TargetField': SmartField<TabItem>;
+  'TabItemProperties.MarkedField': CheckBoxField;
+  'TabItemProperties.GroupBoxPropertiesBox': GroupBoxPropertiesBox;
+  'TabItemProperties.FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'TabItemProperties.GridDataBox': GridDataBox;
+} & GroupBoxPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap;

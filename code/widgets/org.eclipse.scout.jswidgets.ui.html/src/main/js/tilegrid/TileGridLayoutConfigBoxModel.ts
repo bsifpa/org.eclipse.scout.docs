@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {NumberField} from '@eclipse-scout/core';
+import {ExtensionModel, NumberField} from '@eclipse-scout/core';
+import {LogicalGridLayoutConfigBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): ExtensionModel => ({
   id: 'jswidgets.TileGridLayoutConfigBox',
   type: 'extension',
   extensions: [
@@ -31,3 +32,7 @@ export default () => ({
     }
   ]
 });
+
+export type TileGridLayoutConfigBoxWidgetMap = {
+  'MaxWidthField': NumberField;
+} & LogicalGridLayoutConfigBoxWidgetMap;

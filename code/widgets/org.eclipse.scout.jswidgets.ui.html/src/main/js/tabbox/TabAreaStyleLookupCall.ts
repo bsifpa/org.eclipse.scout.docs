@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, TabArea} from '@eclipse-scout/core';
+import {StaticLookupCall, TabArea, TabAreaStyle} from '@eclipse-scout/core';
 
-export class TabAreaStyleLookupCall extends StaticLookupCall {
+export class TabAreaStyleLookupCall extends StaticLookupCall<TabAreaStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return TabAreaStyleLookupCall.DATA;
   }
 

@@ -8,13 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, Event, FormField, GroupBox, GroupBoxModel, InitModelOf, LabelField, models} from '@eclipse-scout/core';
+import {Button, Event, GroupBox, GroupBoxModel, InitModelOf, LabelField, models, Widget} from '@eclipse-scout/core';
 import WidgetActionsBoxModel from './WidgetActionsBoxModel';
 import {WidgetActionsBoxWidgetMap} from '../index';
 
 export class WidgetActionsBox extends GroupBox {
   declare widgetMap: WidgetActionsBoxWidgetMap;
-  field: FormField;
+  field: Widget;
 
   constructor() {
     super();
@@ -31,11 +31,11 @@ export class WidgetActionsBox extends GroupBox {
     this._setField(this.field);
   }
 
-  setField(field: FormField) {
+  setField(field: Widget) {
     this.setProperty('field', field);
   }
 
-  protected _setField(field: FormField) {
+  protected _setField(field: Widget) {
     this._setProperty('field', field);
     if (!this.field) {
       return;

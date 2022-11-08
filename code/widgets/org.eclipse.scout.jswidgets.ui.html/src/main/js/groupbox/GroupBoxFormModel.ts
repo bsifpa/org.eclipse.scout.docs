@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, Menu, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldPropertiesBox, GridDataBox, GroupBoxAddFieldBox, GroupBoxAddMenuBox, GroupBoxDeleteFieldBox, GroupBoxDeleteMenuBox, GroupBoxPropertiesBox, LogicalGridLayoutConfigBox, WidgetActionsBox} from '../index';
+import {FormField, FormModel, GroupBox, Menu, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, GroupBoxAddFieldBox, GroupBoxAddFieldBoxWidgetMap, GroupBoxAddMenuBox, GroupBoxAddMenuBoxWidgetMap,
+  GroupBoxDeleteFieldBox, GroupBoxDeleteFieldBoxWidgetMap, GroupBoxDeleteMenuBox, GroupBoxDeleteMenuBoxWidgetMap, GroupBoxPropertiesBox, GroupBoxPropertiesBoxWidgetMap, LogicalGridLayoutConfigBox, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.GroupBoxForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -143,3 +146,34 @@ export default () => ({
     ]
   }
 });
+
+export type GroupBoxFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'StringField1': StringField;
+    'StringField2': StringField;
+    'StringField3': StringField;
+    'StringField4': StringField;
+    'Menu1': Menu;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'GroupBoxPropertiesBox': GroupBoxPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'BodyLayoutConfigBox': LogicalGridLayoutConfigBox;
+    'FieldPropertiesTab': TabItem;
+    'Field.TargetField': SmartField<FormField>;
+    'Field.FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'Field.GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'Actions.AddMenuBox': GroupBoxAddMenuBox;
+    'Actions.DeleteMenuBox': GroupBoxDeleteMenuBox;
+    'Actions.AddFieldBox': GroupBoxAddFieldBox;
+    'Actions.DeleteFieldBox': GroupBoxDeleteFieldBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & GroupBoxPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap
+  & GroupBoxAddMenuBoxWidgetMap & GroupBoxDeleteMenuBoxWidgetMap & GroupBoxAddFieldBoxWidgetMap & GroupBoxDeleteFieldBoxWidgetMap
+  & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

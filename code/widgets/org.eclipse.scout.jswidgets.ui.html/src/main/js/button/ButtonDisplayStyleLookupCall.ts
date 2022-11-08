@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, StaticLookupCall} from '@eclipse-scout/core';
+import {Button, ButtonDisplayStyle, StaticLookupCall} from '@eclipse-scout/core';
 
-export class ButtonDisplayStyleLookupCall extends StaticLookupCall {
+export class ButtonDisplayStyleLookupCall extends StaticLookupCall<ButtonDisplayStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return ButtonDisplayStyleLookupCall.DATA;
   }
 

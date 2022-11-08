@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+import {Button, FormField, GroupBox, GroupBoxModel, SmartField, StringField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.GroupBoxAddFieldBox',
   objectType: GroupBox,
   label: 'Add field',
@@ -42,3 +42,10 @@ export default () => ({
     }
   ]
 });
+
+export type GroupBoxAddFieldBoxWidgetMap = {
+  'BeforeField': SmartField<FormField>;
+  'LabelField': StringField;
+  'LabelType': SmartField<string>;
+  'CreateButton': Button;
+};

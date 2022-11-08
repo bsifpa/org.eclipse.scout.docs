@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.WidgetPopupPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -37,3 +37,9 @@ export default () => ({
     }
   ]
 });
+
+export type WidgetPopupPropertiesBoxWidgetMap = {
+  'ClosableField': CheckBoxField;
+  'MovableField': CheckBoxField;
+  'ResizableField': CheckBoxField;
+};

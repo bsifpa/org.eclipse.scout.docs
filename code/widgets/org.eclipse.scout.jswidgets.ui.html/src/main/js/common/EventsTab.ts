@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App as ScoutApp, Button, comparators, Event, EventEmitter, EventListener, GroupBoxModel, InitModelOf, models, TabItem, Widget} from '@eclipse-scout/core';
+import {Button, comparators, Event, EventEmitter, EventListener, GroupBoxModel, InitModelOf, models, TabItem, Widget} from '@eclipse-scout/core';
 import EventsTabModel from './EventsTabModel';
 import {App, EventsTabWidgetMap} from '../index';
 
@@ -34,7 +34,7 @@ export class EventsTab extends TabItem {
     super._init(model);
 
     this._setField(this.field);
-    this.widget('EventsOverviewField').setValue(this.session.text('EventsOverview', (ScoutApp.get() as App).scoutVersion));
+    this.widget('EventsOverviewField').setValue(this.session.text('EventsOverview', App.get().scoutVersion));
     this.widget('ClearEventLogButton').on('click', this._onClearEventLogClick.bind(this));
   }
 

@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, NumberField, SmartField, StringField, StringFieldFormat, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.StringFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -174,3 +177,35 @@ export default () => ({
     ]
   }
 });
+
+export type StringFieldFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'StringField': StringField;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': GroupBox;
+    'HasActionField': CheckBoxField;
+    'InputMaskedField': CheckBoxField;
+    'MultilineTextField': CheckBoxField;
+    'SpellCheckEnabledField': CheckBoxField;
+    'TrimTextField': CheckBoxField;
+    'UpdateDisplayTextOnModifyField': CheckBoxField;
+    'FormatField': SmartField<StringFieldFormat>;
+    'MaxLengthField': NumberField;
+    'SelectionTrackingEnabledField': CheckBoxField;
+    'SelectionStartField': NumberField;
+    'SelectionEndField': NumberField;
+    'CustomizationBox': GroupBox;
+    'BlockFormatField': CheckBoxField;
+    'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

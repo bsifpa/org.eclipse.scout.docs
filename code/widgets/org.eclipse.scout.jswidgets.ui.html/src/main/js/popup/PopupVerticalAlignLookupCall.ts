@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Popup, StaticLookupCall} from '@eclipse-scout/core';
+import {Popup, PopupAlignment, StaticLookupCall} from '@eclipse-scout/core';
 
-export class PopupVerticalAlignLookupCall extends StaticLookupCall {
+export class PopupVerticalAlignLookupCall extends StaticLookupCall<PopupAlignment> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return PopupVerticalAlignLookupCall.DATA;
   }
 

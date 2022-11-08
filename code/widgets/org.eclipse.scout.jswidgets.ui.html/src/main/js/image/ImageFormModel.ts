@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, Image, ProposalField, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
-import {EventsTab, GridDataBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, Image, ProposalField, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.ImageForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -99,3 +99,19 @@ export default () => ({
     ]
   }
 });
+
+export type ImageFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'WidgetField': WidgetField;
+  'Image': Image;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'AutoFitField': CheckBoxField;
+  'ImageUrlField': ProposalField;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & GridDataBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

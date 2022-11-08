@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, SmartField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, LookupCall, NumberField, SmartField, SmartFieldActiveFilter, SmartFieldDisplayStyle} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.SmartFieldPropertiesBox',
   objectType: GroupBox,
   label: 'Smart Field Properties',
@@ -52,3 +52,12 @@ export default () => ({
     }
   ]
 });
+
+export type SmartFieldPropertiesBoxWidgetMap = {
+  'LookupCallField': SmartField<LookupCall<any>>;
+  'DisplayStyleField': SmartField<SmartFieldDisplayStyle>;
+  'BrowseMaxRowCountField': NumberField;
+  'SearchRequiredField': CheckBoxField;
+  'ActiveFilterEnabledField': CheckBoxField;
+  'ActiveFilterField': SmartField<SmartFieldActiveFilter>;
+};

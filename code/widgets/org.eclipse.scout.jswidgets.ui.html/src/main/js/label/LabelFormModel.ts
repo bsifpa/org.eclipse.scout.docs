@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, Label, StringField, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
-import {EventsTab, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormModel, GroupBox, Label, StringField, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.LabelForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -102,3 +102,18 @@ export default () => ({
     ]
   }
 });
+
+export type LabelFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'Label': Label;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'HtmlEnabledField': CheckBoxField;
+  'ScrollableField': CheckBoxField;
+  'ValueField': StringField;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

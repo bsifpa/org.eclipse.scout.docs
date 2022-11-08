@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Desktop, Form, Outline, StaticLookupCall} from '@eclipse-scout/core';
+import {Desktop, DisplayParent, Form, Outline, StaticLookupCall} from '@eclipse-scout/core';
 
-export class DisplayParentLookupCall extends StaticLookupCall {
+export class DisplayParentLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return DisplayParentLookupCall.DATA;
   }
 
@@ -26,7 +26,7 @@ export class DisplayParentLookupCall extends StaticLookupCall {
     ['form', 'form']
   ];
 
-  static resolveDisplayParentType(displayParent) {
+  static resolveDisplayParentType(displayParent: DisplayParent): string {
     if (displayParent instanceof Desktop) {
       return 'desktop';
     }
@@ -39,7 +39,7 @@ export class DisplayParentLookupCall extends StaticLookupCall {
     return null;
   }
 
-  static displayParentForType(form, type) {
+  static displayParentForType(form: Form, type: string): DisplayParent {
     if (type === 'desktop') {
       return form.session.desktop;
     }

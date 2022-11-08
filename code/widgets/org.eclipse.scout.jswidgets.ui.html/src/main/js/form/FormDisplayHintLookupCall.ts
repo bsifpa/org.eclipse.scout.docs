@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, StaticLookupCall} from '@eclipse-scout/core';
+import {DisplayHint, Form, StaticLookupCall} from '@eclipse-scout/core';
 
-export class FormDisplayHintLookupCall extends StaticLookupCall {
+export class FormDisplayHintLookupCall extends StaticLookupCall<DisplayHint> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return FormDisplayHintLookupCall.DATA;
   }
 

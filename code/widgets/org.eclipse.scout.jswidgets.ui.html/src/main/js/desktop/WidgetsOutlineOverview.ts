@@ -8,15 +8,18 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App, HtmlComponent, PageTileGrid, scout, TileOutlineOverview} from '@eclipse-scout/core';
+import {HtmlComponent, PageTileGrid, scout, TileOutlineOverview} from '@eclipse-scout/core';
+import {App} from '../index';
 
 export class WidgetsOutlineOverview extends TileOutlineOverview {
+
+  $description: JQuery;
 
   constructor() {
     super();
   }
 
-  _render() {
+  protected override _render() {
     super._render();
     this.$container.addClass('widgets-outline-overview');
 
@@ -29,7 +32,7 @@ export class WidgetsOutlineOverview extends TileOutlineOverview {
     HtmlComponent.install(this.$description, this.session);
   }
 
-  _createPageTileGrid() {
+  protected override _createPageTileGrid(): PageTileGrid {
     return scout.create(PageTileGrid, {
       parent: this,
       outline: this.outline,
@@ -42,7 +45,7 @@ export class WidgetsOutlineOverview extends TileOutlineOverview {
     });
   }
 
-  _updateTitle() {
+  protected override _updateTitle(animated = true) {
     // NOP
   }
 }

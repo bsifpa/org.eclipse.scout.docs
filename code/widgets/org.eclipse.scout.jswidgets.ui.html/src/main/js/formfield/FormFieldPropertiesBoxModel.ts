@@ -8,9 +8,12 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, dragAndDrop, GroupBox, NumberField, ProposalField, SmartField, StaticLookupCall, StringField} from '@eclipse-scout/core';
+import {
+  CheckBoxField, DisabledStyle, dragAndDrop, DropType, FormFieldLabelPosition, FormFieldStatusPosition, FormFieldStyle, FormFieldTooltipAnchor, GroupBox, GroupBoxModel, NumberField, ProposalField, SmartField, StaticLookupCall,
+  StatusSeverity, StringField
+} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.FormFieldPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -147,3 +150,25 @@ export default () => ({
     }
   ]
 });
+
+export type FormFieldPropertiesBoxWidgetMap = {
+  'EnabledField': CheckBoxField;
+  'VisibleField': CheckBoxField;
+  'LabelVisibleField': CheckBoxField;
+  'StatusVisibleField': CheckBoxField;
+  'MandatoryField': CheckBoxField;
+  'LoadingField': CheckBoxField;
+  'LabelHtmlEnabledField': CheckBoxField;
+  'InheritAccessibilityField': CheckBoxField;
+  'FieldStyleField': SmartField<FormFieldStyle>;
+  'DisabledStyleField': SmartField<DisabledStyle>;
+  'DropTypeField': SmartField<DropType>;
+  'DropMaximumSizeField': NumberField;
+  'LabelField': StringField;
+  'LabelPositionField': SmartField<FormFieldLabelPosition>;
+  'LabelWidthInPixelField': ProposalField;
+  'TooltipTextField': StringField;
+  'TooltipAnchorField': SmartField<FormFieldTooltipAnchor>;
+  'ErrorStatusField': SmartField<StatusSeverity>;
+  'StatusPositionField': SmartField<FormFieldStatusPosition>;
+};

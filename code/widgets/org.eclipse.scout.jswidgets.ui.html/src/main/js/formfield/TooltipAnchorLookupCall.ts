@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {FormField, StaticLookupCall} from '@eclipse-scout/core';
+import {FormField, FormFieldTooltipAnchor, StaticLookupCall} from '@eclipse-scout/core';
 
-export class TooltipAnchorLookupCall extends StaticLookupCall {
+export class TooltipAnchorLookupCall extends StaticLookupCall<FormFieldTooltipAnchor> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return TooltipAnchorLookupCall.DATA;
   }
 

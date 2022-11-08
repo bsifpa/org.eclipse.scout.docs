@@ -8,24 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, LookupCall, QueryBy, scout, StaticLookupCall} from '@eclipse-scout/core';
+import {arrays, LookupCall, LookupResult, LookupRow, QueryBy, scout, StaticLookupCall} from '@eclipse-scout/core';
 import {LocaleLookupCall, RainbowLookupCall, SalutationLookupCall, WorldLookupCall} from '../index';
+import Deferred = JQuery.Deferred;
 
-export class LookupCallLookupCall extends StaticLookupCall {
+export class LookupCallLookupCall extends StaticLookupCall<LookupCall<any>> {
 
   constructor() {
     super();
   }
 
-  _queryByKey(deferred, key) {
+  protected override _queryByKey(deferred: Deferred<LookupResult<LookupCall<any>>>, key: LookupCall<any>) {
     if (key instanceof LookupCall) {
       deferred.resolve({
         queryBy: QueryBy.KEY,
         lookupRows: [{
           key: key,
-          text: key.objectType,
+          text: key.objectType as string,
           enabled: true
-        }]
+        } as LookupRow<LookupCall<any>>]
       });
       return;
     }
@@ -42,7 +43,7 @@ export class LookupCallLookupCall extends StaticLookupCall {
     }
   }
 
-  _data() {
+  protected override _data(): any[] {
     return [
       [scout.create(LocaleLookupCall, {session: this.session}), 'jswidgets.LocaleLookupCall'],
       [scout.create(RainbowLookupCall, {session: this.session}), 'jswidgets.RainbowLookupCall'],

@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, Table} from '@eclipse-scout/core';
+import {StaticLookupCall, Table, TableGroupingStyle} from '@eclipse-scout/core';
 
-export class GroupingStyleLookupCall extends StaticLookupCall {
+export class GroupingStyleLookupCall extends StaticLookupCall<TableGroupingStyle> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return GroupingStyleLookupCall.DATA;
   }
 

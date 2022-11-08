@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {AggregateTableControl, BooleanColumn, Column, FormMenu, FormTableControl, icons, Menu, NumberColumn, PageWithTable, SmartColumn, Table} from '@eclipse-scout/core';
-import {MiniForm, SamplePageWithTableSearchForm} from '../index';
+import {AggregateTableControl, BooleanColumn, Column, FormMenu, FormTableControl, icons, Menu, NumberColumn, PageModel, PageWithTable, SmartColumn, Table} from '@eclipse-scout/core';
+import {MiniForm, SamplePageWithTableSearchForm, SamplePageWithTableSearchFormWidgetMap} from '../index';
 
-export default () => ({
+export default (): PageModel => ({
   id: 'jswidgets.SamplePageWithTable',
   objectType: PageWithTable,
   text: 'Page with Table',
@@ -119,3 +119,27 @@ export default () => ({
     ]
   }
 });
+
+export type SamplePageWithTableTableWidgetMap = {
+  'FormMenu': FormMenu;
+  'AddRowMenu': Menu;
+  'AddManyMenu': Menu;
+  'DeleteRowMenu': Menu;
+  'TileToggleMenu': Menu;
+  'SearchFormTableControl': FormTableControl;
+  'SearchForm': SamplePageWithTableSearchForm;
+  'AggregateTableControl': AggregateTableControl;
+} & SamplePageWithTableSearchFormWidgetMap;
+
+export type SamplePageWithTableTableColumnMap = {
+  'IdColumn': NumberColumn;
+  'StringColumn': Column;
+  'SmartColumn': SmartColumn<string>;
+  'NumberColumn': NumberColumn;
+  'BooleanColumn': BooleanColumn;
+};
+
+export class SamplePageWithTableTable extends Table {
+  declare widgetMap: SamplePageWithTableTableWidgetMap;
+  declare columnMap: SamplePageWithTableTableColumnMap;
+}

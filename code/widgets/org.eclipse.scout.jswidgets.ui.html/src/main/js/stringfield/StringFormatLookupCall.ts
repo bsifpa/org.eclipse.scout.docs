@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall, StringField} from '@eclipse-scout/core';
+import {StaticLookupCall, StringField, StringFieldFormat} from '@eclipse-scout/core';
 
-export class StringFormatLookupCall extends StaticLookupCall {
+export class StringFormatLookupCall extends StaticLookupCall<StringFieldFormat> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return StringFormatLookupCall.DATA;
   }
 

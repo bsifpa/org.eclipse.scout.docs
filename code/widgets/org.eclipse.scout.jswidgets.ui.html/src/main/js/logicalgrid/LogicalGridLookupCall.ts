@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class LogicalGridLookupCall extends StaticLookupCall {
+export class LogicalGridLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return LogicalGridLookupCall.DATA;
   }
 

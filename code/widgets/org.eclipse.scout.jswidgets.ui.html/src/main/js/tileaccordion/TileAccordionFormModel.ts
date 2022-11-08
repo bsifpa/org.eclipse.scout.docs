@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {AccordionField, Button, CheckBoxField, GroupBox, LabelField, Menu, NumberField, SequenceBox, SmartField, TabItem, TileAccordion} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TileGridLayoutConfigBox, WidgetActionsBox} from '../index';
+import {AccordionField, Button, CheckBoxField, FormModel, Group, GroupBox, LabelField, Menu, NumberField, SequenceBox, SmartField, TabItem, TileAccordion, TileGrid} from '@eclipse-scout/core';
+import {
+  ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, TileGridLayoutConfigBox,
+  TileGridLayoutConfigBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TileAccordionForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -281,3 +284,50 @@ export default () => ({
     ]
   }
 });
+
+export type TileAccordionFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'GroupsMenu': Menu;
+    'InsertMenu': Menu;
+    'DeleteFirstMenu': Menu;
+    'InsertTileIntoGroup0Menu': Menu;
+    'InsertTileIntoGroup1Menu': Menu;
+    'DeleteSelectedTilesMenu': Menu;
+    'SelectNextMenu': Menu;
+    'SelectAllMenu': Menu;
+    'SortMenu': Menu;
+    'SortAscMenu': Menu;
+    'SortDescMenu': Menu;
+    'AccordionField': AccordionField;
+    'Accordion': TileAccordion;
+    'StatusField': LabelField;
+    'ConfigurationBox': ConfigurationBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': GroupBox;
+    'SelectableField': CheckBoxField;
+    'MultiSelectField': CheckBoxField;
+    'ExclusiveExpandField': CheckBoxField;
+    'ScrollableField': CheckBoxField;
+    'WithPlaceholdersField': CheckBoxField;
+    'VirtualField': CheckBoxField;
+    'TextFilterEnabledField': CheckBoxField;
+    'GridColumnCountField': NumberField;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'LayoutConfigBox': TileGridLayoutConfigBox;
+    'ActionsTab': TabItem;
+    'TileAccordionActionsBox': GroupBox;
+    'InsertTileField': SequenceBox;
+    'InsertTileCountField': NumberField;
+    'InsertTileTypeField': SmartField<'default' | 'simple'>;
+    'InsertTileIntoField': SequenceBox;
+    'InsertTileTargetField': SmartField<Group<TileGrid>>;
+    'InsertTileButton': Button;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & TileGridLayoutConfigBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

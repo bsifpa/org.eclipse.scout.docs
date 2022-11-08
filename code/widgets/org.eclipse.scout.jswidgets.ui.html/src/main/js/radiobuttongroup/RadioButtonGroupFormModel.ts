@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, NumberField, RadioButton, RadioButtonGroup, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, LogicalGridLayoutConfigBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
+import {CheckBoxField, FormField, FormModel, GroupBox, NumberField, RadioButton, RadioButtonGroup, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, LogicalGridLayoutConfigBox, LogicalGridLayoutConfigBoxWidgetMap,
+  ValueFieldPropertiesBox, ValueFieldPropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.RadioButtonGroupForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -173,3 +176,36 @@ export default () => ({
     ]
   }
 });
+
+export type RadioButtonGroupFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'RadioButtonGroup': RadioButtonGroup<number>;
+    'RadioButton1': RadioButton<number>;
+    'RadioButton2': RadioButton<number>;
+    'RadioButton3': RadioButton<number>;
+    'ConfigurationBox': TabBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': GroupBox;
+    'SelectedButtonField': SmartField<FormField>;
+    'GridColumnCountField': NumberField;
+    'ValueFieldPropertiesBox': ValueFieldPropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'LayoutConfigBox': LogicalGridLayoutConfigBox;
+    'RadioButtonPropertiesTab': TabItem;
+    'Button.TargetField': SmartField<FormField>;
+    'Button.PropertiesBox': GroupBox;
+    'Button.SelectedField': CheckBoxField;
+    'Button.WrapTextField': CheckBoxField;
+    'Button.KeyStrokeField': StringField;
+    'Button.FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'Button.GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & ValueFieldPropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & LogicalGridLayoutConfigBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

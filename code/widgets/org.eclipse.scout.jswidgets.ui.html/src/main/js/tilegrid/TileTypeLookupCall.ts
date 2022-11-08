@@ -10,13 +10,13 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export class TileTypeLookupCall extends StaticLookupCall {
+export class TileTypeLookupCall extends StaticLookupCall<'default' | 'simple'> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return TileTypeLookupCall.DATA;
   }
 

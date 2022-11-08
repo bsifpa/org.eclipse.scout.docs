@@ -8,10 +8,13 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, Menu, TabItem, Tree, TreeField} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TreePropertiesBox, WidgetActionsBox} from '../index';
+import {FormModel, GroupBox, Menu, TabItem, Tree, TreeField} from '@eclipse-scout/core';
+import {
+  ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, TreePropertiesBox, TreePropertiesBoxWidgetMap,
+  WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.TreeForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -147,3 +150,28 @@ export default () => ({
     ]
   }
 });
+
+export type TreeFormWidgetMap =
+  {
+    'MainBox': GroupBox;
+    'DetailBox': GroupBox;
+    'TreeField': TreeField;
+    'Tree': Tree;
+    'AddNodeMenu': Menu;
+    'AddChildNodeMenu': Menu;
+    'DeleteNodeMenu': Menu;
+    'DeleteAllMenu': Menu;
+    'DeleteAllNodesMenu': Menu;
+    'DeleteAllChildNodesMenu': Menu;
+    'ConfigurationBox': ConfigurationBox;
+    'PropertiesTab': TabItem;
+    'PropertiesBox': TreePropertiesBox;
+    'FormFieldPropertiesBox': FormFieldPropertiesBox;
+    'GridDataBox': GridDataBox;
+    'ActionsTab': TabItem;
+    'FormFieldActionsBox': FormFieldActionsBox;
+    'WidgetActionsBox': WidgetActionsBox;
+    'EventsTab': EventsTab;
+  }
+  & TreePropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap
+  & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

@@ -8,20 +8,22 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, DesktopNotification, Form, models, scout} from '@eclipse-scout/core';
+import {Button, DesktopNotification, Event, Form, FormModel, InitModelOf, models, scout} from '@eclipse-scout/core';
 import DesktopNotificationFormModel from './DesktopNotificationFormModel';
+import {DesktopNotificationFormWidgetMap} from '../index';
 
 export class DesktopNotificationForm extends Form {
+  declare widgetMap: DesktopNotificationFormWidgetMap;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(DesktopNotificationFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     let notification = scout.create(DesktopNotification, {parent: this});
@@ -41,7 +43,7 @@ export class DesktopNotificationForm extends Form {
     button.on('click', this._onButtonClick.bind(this));
   }
 
-  _onButtonClick(event) {
+  protected _onButtonClick(event: Event<Button>) {
     let notification = scout.create(DesktopNotification, {
       parent: this,
       closable: this.widget('ClosableField').value,

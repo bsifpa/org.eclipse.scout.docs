@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {IntegerField} from '@eclipse-scout/core';
+import {ExtensionModel, IntegerField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): ExtensionModel => ({
   type: 'extension',
   id: 'IntegerFieldForm',
   extensions: [

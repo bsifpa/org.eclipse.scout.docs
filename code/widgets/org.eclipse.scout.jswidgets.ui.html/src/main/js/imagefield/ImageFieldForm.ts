@@ -8,21 +8,23 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, models} from '@eclipse-scout/core';
 import ImageFieldFormModel from './ImageFieldFormModel';
+import {ImageFieldFormWidgetMap} from '../index';
 
 export class ImageFieldForm extends Form {
+  declare widgetMap: ImageFieldFormWidgetMap;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(ImageFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     let imageField = this.widget('ImageField');

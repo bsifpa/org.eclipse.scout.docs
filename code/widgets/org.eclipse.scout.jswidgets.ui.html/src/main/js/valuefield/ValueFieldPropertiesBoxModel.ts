@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+import {GroupBox, GroupBoxModel, SmartField, StringField, ValueFieldClearable} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.ValueFieldPropertiesBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -38,3 +38,9 @@ export default () => ({
     }
   ]
 });
+
+export type ValueFieldPropertiesBoxWidgetMap = {
+  'ValueField': StringField;
+  'DisplayTextField': StringField;
+  'ClearableField': SmartField<ValueFieldClearable>;
+};

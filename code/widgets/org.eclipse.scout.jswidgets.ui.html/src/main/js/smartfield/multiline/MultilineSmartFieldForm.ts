@@ -8,21 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, models, SmartFieldMultiline} from '@eclipse-scout/core';
 import MultilineSmartFieldFormModel from './MultilineSmartFieldFormModel';
+import {MultilineSmartFieldFormWidgetMap} from '../../index';
 
 export class MultilineSmartFieldForm extends Form {
+  declare widgetMap: MultilineSmartFieldFormWidgetMap;
+
+  smartField: SmartFieldMultiline<number>;
 
   constructor() {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(MultilineSmartFieldFormModel);
   }
 
   // noinspection DuplicatedCode
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     this.smartField = this.widget('MultilineSmartField');

@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {models} from '@eclipse-scout/core';
+import {FormModel, models} from '@eclipse-scout/core';
 import {StringFieldForm} from '../index';
 import MultilineStringFieldFormModel from './MultilineStringFieldFormModel';
 
@@ -18,7 +18,7 @@ export class MultilineStringFieldForm extends StringFieldForm {
     super();
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     let parentModel = super._jsonModel();
     return models.extend(MultilineStringFieldFormModel, parentModel);
   }

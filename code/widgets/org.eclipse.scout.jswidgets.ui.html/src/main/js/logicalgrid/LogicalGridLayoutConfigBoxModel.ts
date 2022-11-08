@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, NumberField} from '@eclipse-scout/core';
+import {GroupBox, GroupBoxModel, NumberField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.LogicalGridLayoutConfigBox',
   objectType: GroupBox,
   gridColumnCount: 2,
@@ -44,3 +44,11 @@ export default () => ({
     }
   ]
 });
+
+export type LogicalGridLayoutConfigBoxWidgetMap = {
+  'HGapField': NumberField;
+  'VGapField': NumberField;
+  'ColumnWidthField': NumberField;
+  'RowHeightField': NumberField;
+  'MinWidthField': NumberField;
+};

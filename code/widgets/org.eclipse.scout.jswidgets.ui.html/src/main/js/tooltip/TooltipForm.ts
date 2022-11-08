@@ -8,21 +8,25 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models, scout, Tooltip} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, models, scout, Tooltip} from '@eclipse-scout/core';
 import TooltipFormModel from './TooltipFormModel';
+import {TooltipFormWidgetMap} from '../index';
 
 export class TooltipForm extends Form {
+  declare widgetMap: TooltipFormWidgetMap;
+
+  tooltip: Tooltip;
 
   constructor() {
     super();
     this.tooltip = null;
   }
 
-  _jsonModel() {
+  protected override _jsonModel(): FormModel {
     return models.get(TooltipFormModel);
   }
 
-  _init(model) {
+  protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
     let dummyTooltip = scout.create(Tooltip, {
@@ -46,7 +50,7 @@ export class TooltipForm extends Form {
     dummyTooltip.destroy();
   }
 
-  _render() {
+  protected override _render() {
     super._render();
     if (this.tooltip) {
       this.tooltip.$anchor = this.widget('OpenTooltipButton').$field;
@@ -55,7 +59,7 @@ export class TooltipForm extends Form {
     }
   }
 
-  _onOpenTooltipButtonClick(model) {
+  protected _onOpenTooltipButtonClick() {
     let $anchor = this.widget('OpenTooltipButton').$field;
     if (this.tooltip) {
       this.tooltip.destroy();

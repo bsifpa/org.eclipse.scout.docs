@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {CheckBoxField, GroupBox, SmartField} from '@eclipse-scout/core';
+import {CheckBoxField, GroupBox, GroupBoxModel, SmartField, TreeCheckableStyle} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => ({
   id: 'jswidgets.TreePropertiesBox',
   objectType: GroupBox,
   label: 'Tree Properties',
@@ -50,3 +50,11 @@ export default () => ({
     }
   ]
 });
+
+export type TreePropertiesBoxWidgetMap = {
+  'AutoCheckChildrenField': CheckBoxField;
+  'CheckableField': CheckBoxField;
+  'MultiCheckField': CheckBoxField;
+  'TextFilterEnabledField': CheckBoxField;
+  'CheckableStyleField': SmartField<TreeCheckableStyle>;
+};

@@ -8,10 +8,12 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {BrowserField, Button, CheckBoxField, GroupBox, HtmlField, ProposalField, StaticLookupCall, StringField, TabItem} from '@eclipse-scout/core';
-import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+import {BrowserField, Button, CheckBoxField, FormModel, GroupBox, HtmlField, ProposalField, StaticLookupCall, StringField, TabItem} from '@eclipse-scout/core';
+import {
+  ConfigurationBox, EventsTab, EventsTabWidgetMap, FormFieldActionsBox, FormFieldActionsBoxWidgetMap, FormFieldPropertiesBox, FormFieldPropertiesBoxWidgetMap, GridDataBox, GridDataBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap
+} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.BrowserFieldForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -196,3 +198,31 @@ export default () => ({
     ]
   }
 });
+
+export type BrowserFieldFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'BrowserField': BrowserField;
+  'ConfigurationBox': ConfigurationBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'ScrollBarEnabledField': CheckBoxField;
+  'SandboxEnabledField': CheckBoxField;
+  'SandboxPermissionsField': StringField;
+  'LocationField': ProposalField;
+  'TrackLocationField': CheckBoxField;
+  'ShowInExternalWindowField': CheckBoxField;
+  'AutoCloseExternalWindowField': CheckBoxField;
+  'ExternalWindowButtonTextField': StringField;
+  'ExternalWindowFieldTextField': StringField;
+  'FormFieldPropertiesBox': FormFieldPropertiesBox;
+  'GridDataBox': GridDataBox;
+  'ActionsTab': TabItem;
+  'BrowserFieldActionsBox': GroupBox;
+  'MessageDescriptionField': HtmlField;
+  'PostTextMessageButton': Button;
+  'PostJsonMessageButton': Button;
+  'FormFieldActionsBox': FormFieldActionsBox;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & FormFieldActionsBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

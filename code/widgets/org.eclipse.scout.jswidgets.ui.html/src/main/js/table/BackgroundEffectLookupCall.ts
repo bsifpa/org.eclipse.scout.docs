@@ -8,15 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {StaticLookupCall} from '@eclipse-scout/core';
+import {NumberColumnBackgroundEffect, StaticLookupCall} from '@eclipse-scout/core';
 
-export class BackgroundEffectLookupCall extends StaticLookupCall {
+export class BackgroundEffectLookupCall extends StaticLookupCall<NumberColumnBackgroundEffect> {
 
   constructor() {
     super();
   }
 
-  _data() {
+  protected override _data(): any[] {
     return BackgroundEffectLookupCall.DATA;
   }
 

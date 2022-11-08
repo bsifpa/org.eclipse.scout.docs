@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CloseMenu, GroupBox, LabelField, TabBox, TabItem} from '@eclipse-scout/core';
-import {EventsTab, FormPropertiesBox, WidgetActionsBox} from '../index';
+import {Button, CloseMenu, FormModel, GroupBox, LabelField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, FormPropertiesBox, FormPropertiesBoxWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.FormForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -108,3 +108,20 @@ export default () => ({
     ]
   }
 });
+
+export type FormFormWidgetMap = {
+  'MainBox': GroupBox;
+  'CloseMenu': CloseMenu;
+  'DetailBox': GroupBox;
+  'OpenFormButton': Button;
+  'OpenLifecycleFormButton': Button;
+  'LifecycleDataField': LabelField;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': FormPropertiesBox;
+  'CurrentFormPropertiesTab': TabItem;
+  'CurrentFormPropertiesBox': FormPropertiesBox;
+  'ActionsTab': TabItem;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & FormPropertiesBoxWidgetMap & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;

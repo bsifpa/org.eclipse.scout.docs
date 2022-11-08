@@ -8,10 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, CheckBoxField, Desktop, GroupBox, Label, ProposalField, SmartField, StaticLookupCall, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
-import {EventsTab, WidgetActionsBox} from '../index';
+import {Button, CheckBoxField, Desktop, DesktopUriAction, FormModel, GroupBox, Label, ProposalField, SmartField, StaticLookupCall, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
+import {EventsTab, EventsTabWidgetMap, WidgetActionsBox, WidgetActionsBoxWidgetMap} from '../index';
 
-export default () => ({
+export default (): FormModel => ({
   id: 'jswidgets.DesktopForm',
   displayHint: 'view',
   rootGroupBox: {
@@ -149,3 +149,23 @@ export default () => ({
     ]
   }
 });
+
+export type DesktopFormWidgetMap = {
+  'MainBox': GroupBox;
+  'DetailBox': GroupBox;
+  'Label': Label;
+  'ConfigurationBox': TabBox;
+  'PropertiesTab': TabItem;
+  'PropertiesBox': GroupBox;
+  'NavigationVisibleField': CheckBoxField;
+  'HeaderVisibleField': CheckBoxField;
+  'DenseField': CheckBoxField;
+  'ActionsTab': TabItem;
+  'DesktopActionsBox': GroupBox;
+  'OpenUriBox': GroupBox;
+  'UriField': ProposalField;
+  'UriActionField': SmartField<DesktopUriAction>;
+  'OpenUriButton': Button;
+  'WidgetActionsBox': WidgetActionsBox;
+  'EventsTab': EventsTab;
+} & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
