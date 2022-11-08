@@ -13,7 +13,7 @@ import {
 } from '@eclipse-scout/core';
 import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
-import {ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
+import {ChartDataTableFieldTable, ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
 
 export class ChartFieldForm extends Form {
   declare widgetMap: ChartFieldFormWidgetMap;
@@ -36,7 +36,7 @@ export class ChartFieldForm extends Form {
   fillTable: boolean;
   dataLabels: string[];
   chartDataTableField: TableField;
-  chartDataTable: Table;
+  chartDataTable: ChartDataTableFieldTable;
   datasetLabelColumn: Column;
   removeDataMenu: Menu;
   fulfillmentStartValuePropertyCheckbox: CheckBoxField;
@@ -502,8 +502,7 @@ export class ChartFieldForm extends Form {
     this.gridDataBox.setField(this.chartField);
 
     this.chartDataTableField = this.widget('ChartDataTableField');
-
-    this.chartDataTable = this.chartDataTableField.table;
+    this.chartDataTable = this.widget('ChartDataTableField.Table');
     this.datasetLabelColumn = this.chartDataTable.columnById('DatasetLabelColumn');
 
     this.chartDataTable.on('completeCellEdit', event => {
