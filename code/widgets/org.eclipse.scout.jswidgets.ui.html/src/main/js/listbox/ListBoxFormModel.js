@@ -1,18 +1,29 @@
+import {GroupBox, ListBox, SmartField, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  TablePropertiesBox,
+  ValueFieldPropertiesBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.ListBoxForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'ListBox',
-            objectType: 'ListBox',
+            objectType: ListBox,
             lookupCall: 'jswidgets.LocaleLookupCall',
             label: 'List Box',
             gridDataHints: {
@@ -24,7 +35,7 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         gridDataHints: {
           h: 6,
@@ -35,53 +46,53 @@ export default () => ({
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'LookupCallField',
-                objectType: 'SmartField',
+                objectType: SmartField,
                 label: 'LookupCall',
                 lookupCall: 'jswidgets.LookupCallLookupCall'
               },
               {
                 id: 'ValueFieldPropertiesBox',
-                objectType: 'jswidgets.ValueFieldPropertiesBox'
+                objectType: ValueFieldPropertiesBox
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.TablePropertiesBox',
+                objectType: TablePropertiesBox,
                 expandable: true
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

@@ -1,24 +1,27 @@
+import {Button, CloseMenu, GroupBox, LabelField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, FormPropertiesBox, WidgetActionsBox} from '../index';
+
 export default () => ({
   id: 'jswidgets.FormForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     menus: [{
       id: 'CloseMenu',
-      objectType: 'CloseMenu',
+      objectType: CloseMenu,
       tooltipText: '${textKey:CloseMenuTooltip}',
       visible: false
     }],
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'OpenFormButton',
-            objectType: 'Button',
+            objectType: Button,
             label: '${textKey:OpenForm}',
             cssClass: 'open-form-button',
             processButton: false,
@@ -28,7 +31,7 @@ export default () => ({
           },
           {
             id: 'OpenLifecycleFormButton',
-            objectType: 'Button',
+            objectType: Button,
             label: '${textKey:OpenLifecycleForm}',
             processButton: false,
             gridDataHints: {
@@ -37,7 +40,7 @@ export default () => ({
           },
           {
             id: 'LifecycleDataField',
-            objectType: 'LabelField',
+            objectType: LabelField,
             label: '${textKey:LifecycleData}',
             visible: false,
             gridDataHints: {
@@ -49,46 +52,46 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.FormPropertiesBox'
+                objectType: FormPropertiesBox
               }
             ]
           },
           {
             id: 'CurrentFormPropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties current form',
             fields: [
               {
                 id: 'CurrentFormPropertiesBox',
-                objectType: 'jswidgets.FormPropertiesBox'
+                objectType: FormPropertiesBox
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

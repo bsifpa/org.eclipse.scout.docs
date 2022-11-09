@@ -1,3 +1,4 @@
+import {CheckBoxField, SmartField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.HierarchicalTablePropertiesBox',
   type: 'extension',
@@ -12,13 +13,13 @@ export default () => ({
       extension: [
         {
           id: 'HierarchicalStyleField',
-          objectType: 'SmartField',
+          objectType: SmartField,
           label: 'Hierarchical Style',
           lookupCall: 'jswidgets.HierarchicalStyleLookupCall'
         },
         {
           id: 'ExtendedHierarchyPaddingField',
-          objectType: 'CheckBoxField',
+          objectType: CheckBoxField,
           label: 'Toggle extended hierarchy padding',
           labelVisible: false
         }

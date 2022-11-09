@@ -1,18 +1,19 @@
+import {Button, GroupBox, SmartField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.TabBoxDeleteTabItemBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   label: 'Delete Tab Item',
   expandable: true,
   gridColumnCount: 2,
   fields: [
     {
       id: 'DeleteTabItem.TabItem',
-      objectType: 'SmartField',
+      objectType: SmartField,
       label: 'Tab Item'
     },
     {
       id: 'DeleteTabItem.DeleteButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Delete',
       enabled: false,
       processButton: false,

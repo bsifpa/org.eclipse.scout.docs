@@ -25,7 +25,7 @@ export default class TooltipForm extends Form {
   _init(model) {
     super._init(model);
 
-    let dummyTooltip = scout.create('Tooltip', {
+    let dummyTooltip = scout.create(Tooltip, {
       parent: this
     });
     this.widget('OpenTooltipButton').on('click', this._onOpenTooltipButtonClick.bind(this));

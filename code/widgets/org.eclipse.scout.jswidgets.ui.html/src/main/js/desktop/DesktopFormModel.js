@@ -1,19 +1,20 @@
-import {Desktop} from '@eclipse-scout/core';
+import {Button, CheckBoxField, Desktop, GroupBox, Label, ProposalField, SmartField, StaticLookupCall, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
+import {EventsTab, WidgetActionsBox} from '../index';
 
 export default () => ({
   id: 'jswidgets.DesktopForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
-            objectType: 'WidgetField',
+            objectType: WidgetField,
             labelVisible: false,
             statusVisible: false,
             gridDataHints: {
@@ -21,7 +22,7 @@ export default () => ({
             },
             fieldWidget: {
               id: 'Label',
-              objectType: 'Label',
+              objectType: Label,
               value: '${textKey:DesktopDescription}'
             }
           }
@@ -29,37 +30,37 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'NavigationVisibleField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Navigation Visible',
                     labelVisible: false
                   },
                   {
                     id: 'HeaderVisibleField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Header Visible',
                     labelVisible: false
                   },
                   {
                     id: 'DenseField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Dense',
                     labelVisible: false
                   }
@@ -69,24 +70,24 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'DesktopActionsBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 fields: [
                   {
                     id: 'OpenUriBox',
-                    objectType: 'GroupBox',
+                    objectType: GroupBox,
                     label: 'Open Uri',
                     fields: [
                       {
                         id: 'UriField',
-                        objectType: 'ProposalField',
+                        objectType: ProposalField,
                         label: 'Uri',
                         lookupCall: {
-                          objectType: 'StaticLookupCall',
+                          objectType: StaticLookupCall,
                           data: [
                             ['https://www.eclipse.org/scout', 'https://www.eclipse.org/scout'],
                             ['http://google.com', 'http://google.com'],
@@ -100,10 +101,10 @@ export default () => ({
                       },
                       {
                         id: 'UriActionField',
-                        objectType: 'SmartField',
+                        objectType: SmartField,
                         label: 'Action',
                         lookupCall: {
-                          objectType: 'StaticLookupCall',
+                          objectType: StaticLookupCall,
                           data: [
                             [Desktop.UriAction.DOWNLOAD, 'DOWNLOAD'],
                             [Desktop.UriAction.OPEN, 'OPEN'],
@@ -115,7 +116,7 @@ export default () => ({
                       },
                       {
                         id: 'OpenUriButton',
-                        objectType: 'Button',
+                        objectType: Button,
                         processButton: false,
                         label: 'Open'
                       }
@@ -125,13 +126,13 @@ export default () => ({
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

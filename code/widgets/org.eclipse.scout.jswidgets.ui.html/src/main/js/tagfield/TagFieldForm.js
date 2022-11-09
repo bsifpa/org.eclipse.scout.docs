@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import TagFieldFormModel from './TagFieldFormModel';
-import {Form, models, scout, Status} from '@eclipse-scout/core';
+import {DesktopNotification, Form, models, scout, Status} from '@eclipse-scout/core';
 
 export default class TagFieldForm extends Form {
 
@@ -52,7 +52,7 @@ export default class TagFieldForm extends Form {
   }
 
   _onTagClick(event) {
-    scout.create('DesktopNotification', {
+    scout.create(DesktopNotification, {
       parent: this,
       duration: 7000,
       status: {

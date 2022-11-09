@@ -1,14 +1,15 @@
+import {GroupBox, NumberField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.SmartColumnPropertiesBox',
   type: 'model',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'SmartColumn Properties',
   expandable: true,
   fields: [
     {
       id: 'BrowseMaxRowCountField',
-      objectType: 'NumberField',
+      objectType: NumberField,
       label: 'Brows Max Row Count'
     }
   ]

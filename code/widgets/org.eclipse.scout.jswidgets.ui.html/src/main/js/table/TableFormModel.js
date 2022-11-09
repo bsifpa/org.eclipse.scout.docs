@@ -1,66 +1,92 @@
+import {
+  AggregateTableControl,
+  BooleanColumn,
+  Column,
+  DateColumn,
+  GroupBox,
+  IconColumn,
+  Menu,
+  NumberColumn,
+  SmartColumn,
+  SmartField,
+  TabItem,
+  Table,
+  TableField
+} from '@eclipse-scout/core';
+import {
+  ColumnPropertiesBox,
+  ConfigurationBox,
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  TablePropertiesBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.TableForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'TableField',
-            objectType: 'TableField',
+            objectType: TableField,
             labelVisible: false,
             gridDataHints: {
               h: 10
             },
             table: {
               id: 'Table',
-              objectType: 'Table',
+              objectType: Table,
               columns: [
                 {
                   id: 'StringColumn',
-                  objectType: 'Column',
+                  objectType: Column,
                   text: 'String Column',
                   width: 120
                 },
                 {
                   id: 'DateColumn',
-                  objectType: 'DateColumn',
+                  objectType: DateColumn,
                   text: 'Date Column',
                   width: 120
                 },
                 {
                   id: 'NumberColumn',
-                  objectType: 'NumberColumn',
+                  objectType: NumberColumn,
                   text: 'Number Column',
                   width: 120
                 },
                 {
                   id: 'SmartColumn',
-                  objectType: 'SmartColumn',
+                  objectType: SmartColumn,
                   text: 'Smart Column',
                   lookupCall: 'jswidgets.LocaleLookupCall',
                   width: 120
                 },
                 {
                   id: 'BooleanColumn',
-                  objectType: 'BooleanColumn',
+                  objectType: BooleanColumn,
                   text: 'Boolean Column',
                   width: 130
                 },
                 {
                   id: 'IconColumn',
-                  objectType: 'IconColumn',
+                  objectType: IconColumn,
                   text: 'Icon Column',
                   width: 110
                 },
                 {
                   id: 'HtmlColumn',
-                  objectType: 'Column',
+                  objectType: Column,
                   text: 'Html Column',
                   htmlEnabled: true,
                   width: 110
@@ -69,13 +95,13 @@ export default () => ({
               tableControls: [
                 {
                   id: 'AggregateTableControl',
-                  objectType: 'AggregateTableControl'
+                  objectType: AggregateTableControl
                 }
               ],
               menus: [
                 {
                   id: 'AddRowMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:AddRow}',
                   menuTypes: [
                     'Table.EmptySpace'
@@ -84,7 +110,7 @@ export default () => ({
                 },
                 {
                   id: 'MoveMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:Move}',
                   menuTypes: [
                     'Table.SingleSelection'
@@ -92,7 +118,7 @@ export default () => ({
                   childActions: [
                     {
                       id: 'MoveToTopMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:MoveToTop}',
                       menuTypes: [
                         'Table.SingleSelection'
@@ -100,7 +126,7 @@ export default () => ({
                     },
                     {
                       id: 'MoveUpMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:MoveUp}',
                       menuTypes: [
                         'Table.SingleSelection'
@@ -108,7 +134,7 @@ export default () => ({
                     },
                     {
                       id: 'MoveDownMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:MoveDown}',
                       menuTypes: [
                         'Table.SingleSelection'
@@ -116,7 +142,7 @@ export default () => ({
                     },
                     {
                       id: 'MoveToBottomMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:MoveToBottom}',
                       menuTypes: [
                         'Table.SingleSelection'
@@ -126,7 +152,7 @@ export default () => ({
                 },
                 {
                   id: 'DeleteRowMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:DeleteRow}',
                   menuTypes: [
                     'Table.SingleSelection',
@@ -141,29 +167,29 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.TablePropertiesBox',
+                objectType: TablePropertiesBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -171,39 +197,39 @@ export default () => ({
           },
           {
             id: 'ColumnProperties',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Column Properties',
             fields: [
               {
                 id: 'Column.TargetField',
-                objectType: 'SmartField',
+                objectType: SmartField,
                 label: 'Target'
               },
               {
                 id: 'Column.PropertiesBox',
-                objectType: 'jswidgets.ColumnPropertiesBox',
+                objectType: ColumnPropertiesBox,
                 labelVisible: true
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

@@ -8,75 +8,98 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
+import {
+  AccordionField,
+  Button,
+  CheckBoxField,
+  GroupBox,
+  LabelField,
+  Menu,
+  NumberField,
+  SequenceBox,
+  SmartField,
+  TabItem,
+  TileAccordion
+} from '@eclipse-scout/core';
+import {
+  ConfigurationBox,
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  TileGridLayoutConfigBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.TileAccordionForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         menus: [
           {
             id: 'GroupsMenu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Groups',
             childActions: [
               {
                 id: 'InsertMenu',
-                objectType: 'Menu',
+                objectType: Menu,
                 text: 'Insert group'
               },
               {
                 id: 'DeleteFirstMenu',
-                objectType: 'Menu',
+                objectType: Menu,
                 text: 'Delete first group'
               }
             ]
           },
           {
             id: 'InsertTileIntoGroup0Menu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Insert tile into group 0',
             keyStroke: 'insert'
           },
           {
             id: 'InsertTileIntoGroup1Menu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Insert tile into group 1'
           },
           {
             id: 'DeleteSelectedTilesMenu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Delete selected tiles',
             keyStroke: 'delete'
           },
           {
             id: 'SelectNextMenu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Select next tile'
           },
           {
             id: 'SelectAllMenu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Select all tiles'
           },
           {
             id: 'SortMenu',
-            objectType: 'Menu',
+            objectType: Menu,
             text: 'Sort',
             childActions: [
               {
                 id: 'SortAscMenu',
-                objectType: 'Menu',
+                objectType: Menu,
                 text: 'Ascending'
               },
               {
                 id: 'SortDescMenu',
-                objectType: 'Menu',
+                objectType: Menu,
                 text: 'Descending'
               }
             ]
@@ -85,14 +108,14 @@ export default () => ({
         fields: [
           {
             id: 'AccordionField',
-            objectType: 'AccordionField',
+            objectType: AccordionField,
             labelVisible: false,
             gridDataHints: {
               h: 8
             },
             accordion: {
               id: 'Accordion',
-              objectType: 'TileAccordion',
+              objectType: TileAccordion,
               scrollable: true,
               textFilterEnabled: true,
               cssClass: 'has-custom-tiles'
@@ -100,7 +123,7 @@ export default () => ({
           },
           {
             id: 'StatusField',
-            objectType: 'LabelField',
+            objectType: LabelField,
             labelVisible: false,
             gridDataHints: {
               horizontalAlignment: 1
@@ -110,36 +133,36 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'SelectableField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Selectable',
                     labelVisible: false
                   },
                   {
                     id: 'MultiSelectField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Multi Select',
                     labelVisible: false
                   },
                   {
                     id: 'ExclusiveExpandField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Exclusive Expand',
                     labelVisible: false,
                     tooltipText: '${textKey:ExclusiveExpandTooltip}',
@@ -149,19 +172,19 @@ export default () => ({
                   },
                   {
                     id: 'ScrollableField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Scrollable',
                     labelVisible: false
                   },
                   {
                     id: 'WithPlaceholdersField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'With Placeholders',
                     labelVisible: false
                   },
                   {
                     id: 'VirtualField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Virtual',
                     labelVisible: false,
                     tooltipText: '${textKey:TileGridVirtualTooltip}',
@@ -171,31 +194,31 @@ export default () => ({
                   },
                   {
                     id: 'TextFilterEnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Text Filter Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'GridColumnCountField',
-                    objectType: 'NumberField',
+                    objectType: NumberField,
                     label: 'Grid Column Count'
                   }
                 ]
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               },
               {
                 id: 'LayoutConfigBox',
-                objectType: 'jswidgets.TileGridLayoutConfigBox',
+                objectType: TileGridLayoutConfigBox,
                 label: 'Tile Grid Layout Config',
                 expanded: false
               }
@@ -203,21 +226,21 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'TileAccordionActionsBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 fields: [
                   {
                     id: 'InsertTileField',
-                    objectType: 'SequenceBox',
+                    objectType: SequenceBox,
                     label: 'Insert',
                     fields: [
                       {
                         id: 'InsertTileCountField',
-                        objectType: 'NumberField',
+                        objectType: NumberField,
                         labelVisible: false,
                         statusVisible: false,
                         value: 1,
@@ -228,7 +251,7 @@ export default () => ({
                       },
                       {
                         id: 'InsertTileTypeField',
-                        objectType: 'SmartField',
+                        objectType: SmartField,
                         displayStyle: 'dropdown',
                         label: 'Tile Type',
                         labelVisible: false,
@@ -240,19 +263,19 @@ export default () => ({
                   },
                   {
                     id: 'InsertTileIntoField',
-                    objectType: 'SequenceBox',
+                    objectType: SequenceBox,
                     label: 'into',
                     fields: [
                       {
                         id: 'InsertTileTargetField',
-                        objectType: 'SmartField',
+                        objectType: SmartField,
                         displayStyle: 'dropdown',
                         labelVisible: false,
                         statusVisible: false
                       },
                       {
                         id: 'InsertTileButton',
-                        objectType: 'Button',
+                        objectType: Button,
                         label: 'Insert'
                       }
                     ]
@@ -261,17 +284,17 @@ export default () => ({
               },
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

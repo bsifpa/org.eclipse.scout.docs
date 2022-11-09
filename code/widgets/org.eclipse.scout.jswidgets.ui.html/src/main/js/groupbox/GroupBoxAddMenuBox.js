@@ -76,7 +76,7 @@ export default class GroupBoxAddMenuBox extends GroupBox {
     });
 
     if (newMenu instanceof Button) {
-      newMenu = scout.create('ButtonAdapterMenu',
+      newMenu = scout.create(ButtonAdapterMenu,
         ButtonAdapterMenu.adaptButtonProperties(newMenu, {
           parent: this,
           menubar: this.menuBar,

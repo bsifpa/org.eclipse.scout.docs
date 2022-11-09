@@ -1,13 +1,15 @@
+import {Button, CheckBoxField, GroupBox, SmartField, StringField, TabItem} from '@eclipse-scout/core';
+import {ConfigurationBox, EventsTab, WidgetActionsBox} from '../index';
 export default () => ({
   id: 'jswidgets.TooltipForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         gridDataHints: {
           weightY: 1
@@ -15,7 +17,7 @@ export default () => ({
         fields: [
           {
             id: 'OpenTooltipButton',
-            objectType: 'Button',
+            objectType: Button,
             label: '${textKey:OpenTooltip}',
             cssClass: 'open-form-button',
             processButton: false,
@@ -31,42 +33,42 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'AutoRemoveField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Auto Remove',
                     labelVisible: false
                   },
                   {
                     id: 'HtmlEnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Html Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'TextField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Text',
                     value: '${textKey:TooltipText}'
                   },
                   {
                     id: 'SeverityField',
-                    objectType: 'SmartField',
+                    objectType: SmartField,
                     lookupCall: 'jswidgets.StatusSeverityLookupCall',
                     label: 'Severity'
                   }
@@ -76,18 +78,18 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

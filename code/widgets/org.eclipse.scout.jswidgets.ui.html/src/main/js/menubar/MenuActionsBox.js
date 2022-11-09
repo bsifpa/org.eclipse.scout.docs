@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, models} from '@eclipse-scout/core';
+import {GroupBox, Menu, models} from '@eclipse-scout/core';
 import MenuActionsBoxModel from './MenuActionsBoxModel';
 import ChildActionsLookupCall from '../action/ChildActionsLookupCall';
 
@@ -47,7 +47,7 @@ export default class MenuActionsBox extends GroupBox {
 
   _onInsertMenuClick(event) {
     this.menu.insertChildAction({
-      objectType: 'Menu',
+      objectType: Menu,
       text: 'Menu ' + (this.menu.childActions.length + 1)
     });
   }

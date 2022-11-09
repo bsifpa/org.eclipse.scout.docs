@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import ButtonFormModel from './ButtonFormModel';
-import {Button, Form, models, scout, Status} from '@eclipse-scout/core';
+import {Button, DesktopNotification, Form, models, scout, Status} from '@eclipse-scout/core';
 
 export default class ButtonForm extends Form {
 
@@ -82,7 +82,7 @@ export default class ButtonForm extends Form {
       // Don't show message box if it is a toggle button
       return;
     }
-    scout.create('DesktopNotification', {
+    scout.create(DesktopNotification, {
       parent: this,
       duration: 7000,
       status: {

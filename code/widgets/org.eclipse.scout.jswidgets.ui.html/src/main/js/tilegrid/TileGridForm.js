@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, comparators, Form, models, scout} from '@eclipse-scout/core';
+import {arrays, comparators, Form, HtmlTile, models, scout} from '@eclipse-scout/core';
 import TileGridFormModel from './TileGridFormModel';
 import $ from 'jquery';
+import {CustomTile} from '../index';
 
 export default class TileGridForm extends Form {
 
@@ -137,14 +138,14 @@ export default class TileGridForm extends Form {
         content: 'New <i>Html Tile</i> ' + this.insertedTileCount++
       };
       model = $.extend({}, defaults, model);
-      return scout.create('HtmlTile', model);
+      return scout.create(HtmlTile, model);
     }
     defaults = {
       parent: this.tileGrid,
       label: 'New Tile ' + this.insertedTileCount++
     };
     model = $.extend({}, defaults, model);
-    return scout.create('jswidgets.CustomTile', model);
+    return scout.create(CustomTile, model);
   }
 
   _onInsertManyMenuAction(event) {

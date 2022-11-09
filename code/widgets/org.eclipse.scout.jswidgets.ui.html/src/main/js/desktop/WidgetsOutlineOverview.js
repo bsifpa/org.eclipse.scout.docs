@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App, HtmlComponent, scout, TileOutlineOverview} from '@eclipse-scout/core';
+import {App, HtmlComponent, PageTileGrid, scout, TileOutlineOverview} from '@eclipse-scout/core';
 
 export default class WidgetsOutlineOverview extends TileOutlineOverview {
 
@@ -30,7 +30,7 @@ export default class WidgetsOutlineOverview extends TileOutlineOverview {
   }
 
   _createPageTileGrid() {
-    return scout.create('PageTileGrid', {
+    return scout.create(PageTileGrid, {
       parent: this,
       outline: this.outline,
       layoutConfig: {

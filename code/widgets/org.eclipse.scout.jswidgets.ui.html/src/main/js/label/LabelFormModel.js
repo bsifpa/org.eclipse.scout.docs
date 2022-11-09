@@ -1,17 +1,19 @@
+import {CheckBoxField, GroupBox, Label, StringField, TabBox, TabItem, WidgetField} from '@eclipse-scout/core';
+import {EventsTab, WidgetActionsBox} from '../index';
 export default () => ({
   id: 'jswidgets.LabelForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
-            objectType: 'WidgetField',
+            objectType: WidgetField,
             labelVisible: false,
             statusVisible: false,
             gridDataHints: {
@@ -19,7 +21,7 @@ export default () => ({
             },
             fieldWidget: {
               id: 'Label',
-              objectType: 'Label',
+              objectType: Label,
               value: '${textKey:LabelValue}'
             }
           }
@@ -27,37 +29,37 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'HtmlEnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Html Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'ScrollableField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Scrollable',
                     labelVisible: false
                   },
                   {
                     id: 'ValueField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Value',
                     multilineText: true,
                     gridDataHints: {
@@ -71,18 +73,18 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

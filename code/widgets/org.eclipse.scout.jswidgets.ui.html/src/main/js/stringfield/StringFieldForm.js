@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, models, scout} from '@eclipse-scout/core';
+import {Form, MessageBox, models, scout} from '@eclipse-scout/core';
 import StringFieldFormModel from './StringFieldFormModel';
 
 export default class StringFieldForm extends Form {
@@ -108,7 +108,7 @@ export default class StringFieldForm extends Form {
   }
 
   _onFieldAction(event) {
-    let msgBox = scout.create('scout.MessageBox', {
+    let msgBox = scout.create(MessageBox, {
       parent: this,
       yesButtonText: this.session.text('Thanks') + '!',
       body: this.session.text('StringFieldHasActionMessage')

@@ -8,24 +8,24 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBoxModel, LabelField, NumberField, SequenceBox} from '@eclipse-scout/core';
+import {Button, GroupBox, GroupBoxModel, LabelField, NumberField, SequenceBox} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): GroupBoxModel => (({
   id: 'jswidgets.WidgetActionsBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Widget Actions',
   expandable: true,
   fields: [
     {
       id: 'FocusSequenceBox',
-      objectType: 'SequenceBox',
+      objectType: SequenceBox,
       labelVisible: false,
       statusVisible: false,
       fields: [
         {
           id: 'FocusButton',
-          objectType: 'Button',
+          objectType: Button,
           label: 'Focus',
           displayStyle: 3,
           processButton: false,
@@ -37,20 +37,20 @@ export default () => ({
         },
         {
           id: 'FocusReturnField',
-          objectType: 'LabelField',
+          objectType: LabelField,
           labelVisible: false
         }
       ]
     },
     {
       id: 'IsFocusableSequenceBox',
-      objectType: 'SequenceBox',
+      objectType: SequenceBox,
       labelVisible: false,
       statusVisible: false,
       fields: [
         {
           id: 'IsFocusableButton',
-          objectType: 'Button',
+          objectType: Button,
           label: 'Is Focusable',
           displayStyle: 3,
           processButton: false,
@@ -61,14 +61,14 @@ export default () => ({
         },
         {
           id: 'IsFocusableReturnField',
-          objectType: 'LabelField',
+          objectType: LabelField,
           labelVisible: false
         }
       ]
     },
     {
       id: 'RevealButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Reveal',
       displayStyle: 3,
       processButton: false,
@@ -76,25 +76,25 @@ export default () => ({
     },
     {
       id: 'ScrollToTopButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Scroll To Top',
       displayStyle: 3,
       processButton: false
     },
     {
       id: 'ScrollToBottomButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Scroll To Bottom',
       displayStyle: 3,
       processButton: false
     },
     {
       id: 'ScrollTopField',
-      objectType: 'NumberField',
+      objectType: NumberField,
       label: 'Scroll Top'
     }
   ]
-}) as GroupBoxModel;
+}));
 
 export type WidgetActionsBoxWidgetMap = {
   FocusSequenceBox: SequenceBox;

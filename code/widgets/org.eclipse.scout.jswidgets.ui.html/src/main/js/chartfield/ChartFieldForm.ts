@@ -8,7 +8,30 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App, arrays, CheckBoxField, colorSchemes, Column, DesktopNotification, Form, FormModel, GridData, Menu, models, NumberColumn, objects, scout, Status, strings, Table, TableField} from '@eclipse-scout/core';
+import {
+  App,
+  arrays,
+  CancelMenu,
+  CheckBoxField,
+  colorSchemes,
+  Column,
+  DesktopNotification,
+  Form,
+  FormModel,
+  GridData,
+  GroupBox,
+  Menu,
+  models,
+  NumberColumn,
+  objects,
+  OkMenu,
+  scout,
+  Status,
+  StringField,
+  strings,
+  Table,
+  TableField
+} from '@eclipse-scout/core';
 import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
 import {ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
@@ -535,25 +558,25 @@ export default class ChartFieldForm extends Form {
 
     let addDataMenu = this.widget('AddDataMenu');
     addDataMenu.on('action', event => {
-      let inputForm = scout.create('Form', {
+      let inputForm = scout.create(Form, {
         parent: this,
         title: 'Data label',
         rootGroupBox: {
-          objectType: 'GroupBox',
+          objectType: GroupBox,
           borderDecoration: 'empty',
           menus: [
             {
               id: 'OkMenu',
-              objectType: 'OkMenu'
+              objectType: OkMenu
             },
             {
               id: 'CancelMenu',
-              objectType: 'CancelMenu'
+              objectType: CancelMenu
             }
           ],
           fields: [{
             id: 'InputField',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'Data label',
             labelVisible: false,
             mandatory: true
@@ -563,7 +586,7 @@ export default class ChartFieldForm extends Form {
       inputForm.open()
         .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
       inputForm.whenSave()
-        .then(() => this._addColumn(inputForm.widget('InputField').value))
+        .then(() => this._addColumn(inputForm.widget('InputField', StringField).value))
         .catch((...args: [any | IArguments | any[], any[]]) => App.get().errorHandler.handle(...args));
     });
 
@@ -1510,7 +1533,7 @@ export default class ChartFieldForm extends Form {
   }
 
   protected _updateColumnStructure() {
-    let columns = [this.datasetLabelColumn, ...this.dataLabels.map(label => scout.create('NumberColumn', {
+    let columns = [this.datasetLabelColumn, ...this.dataLabels.map(label => scout.create(NumberColumn, {
       session: this.session,
       editable: true,
       width: 120,

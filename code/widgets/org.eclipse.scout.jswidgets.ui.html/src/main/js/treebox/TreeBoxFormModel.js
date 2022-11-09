@@ -1,19 +1,30 @@
+import {GroupBox, SmartField, TabBox, TabItem, TreeBox} from '@eclipse-scout/core';
+import {
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  TreePropertiesBox,
+  ValueFieldPropertiesBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.TreeBoxForm',
   type: 'model',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'TreeBox',
-            objectType: 'TreeBox',
+            objectType: TreeBox,
             lookupCall: 'jswidgets.WorldLookupCall',
             label: 'Tree Box',
             gridDataHints: {
@@ -25,7 +36,7 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         gridDataHints: {
           h: 6,
@@ -36,34 +47,34 @@ export default () => ({
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'LookupCallField',
-                objectType: 'SmartField',
+                objectType: SmartField,
                 label: 'LookupCall',
                 lookupCall: 'jswidgets.LookupCallLookupCall'
               },
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.TreePropertiesBox',
+                objectType: TreePropertiesBox,
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'ValueFieldPropertiesBox',
-                objectType: 'jswidgets.ValueFieldPropertiesBox',
+                objectType: ValueFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -71,22 +82,22 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

@@ -1,25 +1,26 @@
+import {GroupBox, SmartField, StringField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.ValueFieldPropertiesBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Value Field Properties',
   expandable: true,
   fields: [
     {
       id: 'ValueField',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Value',
       enabled: false
     },
     {
       id: 'DisplayTextField',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'DisplayText',
       enabled: false
     },
     {
       id: 'ClearableField',
-      objectType: 'SmartField',
+      objectType: SmartField,
       lookupCall: 'jswidgets.ClearableStyleLookupCall',
       label: 'Clearable',
       displayStyle: 'dropdown'

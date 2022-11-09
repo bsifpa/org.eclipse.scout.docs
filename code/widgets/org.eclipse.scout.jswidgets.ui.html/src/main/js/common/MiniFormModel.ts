@@ -8,18 +8,18 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, FormModel, GroupBox} from '@eclipse-scout/core';
+import {Button, FormModel, GroupBox, LabelField} from '@eclipse-scout/core';
 
-export default () => ({
+export default (): FormModel => (({
   rootGroupBox: {
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     borderDecoration: GroupBox.BorderDecoration.EMPTY,
     gridColumnCount: 1,
     gridDataHints: {
       useUiWidth: true
     },
     fields: [{
-      objectType: 'LabelField',
+      objectType: LabelField,
       labelVisible: false,
       value: 'Hi there!',
       gridDataHints: {
@@ -27,7 +27,7 @@ export default () => ({
       }
     }, {
       id: 'CloseButton',
-      objectType: 'Button',
+      objectType: Button,
       displayStyle: Button.DisplayStyle.LINK,
       processButton: false,
       label: 'Close me please.',
@@ -36,7 +36,7 @@ export default () => ({
       }
     }]
   }
-}) as FormModel;
+}));
 
 export type MiniFormWidgetMap = {
   CloseButton: Button;

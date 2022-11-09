@@ -9,6 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {arrays, LookupCall, QueryBy, scout, StaticLookupCall} from '@eclipse-scout/core';
+import {LocaleLookupCall, RainbowLookupCall, SalutationLookupCall, WorldLookupCall} from '../index';
 
 export default class LookupCallLookupCall extends StaticLookupCall {
 
@@ -43,10 +44,10 @@ export default class LookupCallLookupCall extends StaticLookupCall {
 
   _data() {
     return [
-      [scout.create('jswidgets.LocaleLookupCall', {session: this.session}), 'jswidgets.LocaleLookupCall'],
-      [scout.create('jswidgets.RainbowLookupCall', {session: this.session}), 'jswidgets.RainbowLookupCall'],
-      [scout.create('jswidgets.SalutationLookupCall', {session: this.session}), 'jswidgets.SalutationLookupCall'],
-      [scout.create('jswidgets.WorldLookupCall', {session: this.session}), 'jswidgets.WorldLookupCall']
+      [scout.create(LocaleLookupCall, {session: this.session}), 'jswidgets.LocaleLookupCall'],
+      [scout.create(RainbowLookupCall, {session: this.session}), 'jswidgets.RainbowLookupCall'],
+      [scout.create(SalutationLookupCall, {session: this.session}), 'jswidgets.SalutationLookupCall'],
+      [scout.create(WorldLookupCall, {session: this.session}), 'jswidgets.WorldLookupCall']
     ];
   }
 }

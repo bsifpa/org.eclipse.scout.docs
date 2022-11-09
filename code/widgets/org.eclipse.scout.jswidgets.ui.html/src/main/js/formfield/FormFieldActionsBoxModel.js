@@ -8,18 +8,18 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button} from '@eclipse-scout/core';
+import {Button, GroupBox, SequenceBox, SmartField} from '@eclipse-scout/core';
 
 export default () => ({
   id: 'jswidgets.FormFieldActionsBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Form Field Actions',
   expandable: true,
   fields: [
     {
       id: 'InsertMenuButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Insert new menu',
       labelVisible: false,
       processButton: false,
@@ -27,18 +27,18 @@ export default () => ({
     },
     {
       id: 'DeleteMenuBox',
-      objectType: 'SequenceBox',
+      objectType: SequenceBox,
       labelVisible: false,
       fields: [
         {
           id: 'MenuToDeleteField',
-          objectType: 'SmartField',
+          objectType: SmartField,
           labelVisible: false,
           statusVisible: false
         },
         {
           id: 'DeleteMenuButton',
-          objectType: 'Button',
+          objectType: Button,
           label: 'Delete menu',
           labelVisible: false,
           processButton: false,

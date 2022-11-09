@@ -1,3 +1,4 @@
+import {CheckBoxField, NumberField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.ProposalFieldPropertiesBox',
   type: 'extension',
@@ -12,12 +13,12 @@ export default () => ({
       extension: [
         {
           id: 'MaxLengthField',
-          objectType: 'NumberField',
+          objectType: NumberField,
           label: 'Max Length'
         },
         {
           id: 'TrimTextField',
-          objectType: 'CheckBoxField',
+          objectType: CheckBoxField,
           label: 'Trim Text'
         }
       ]

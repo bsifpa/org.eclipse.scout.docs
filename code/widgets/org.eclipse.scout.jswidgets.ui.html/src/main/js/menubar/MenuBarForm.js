@@ -8,8 +8,18 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {EllipsisMenu, Form, Menu, MenuBar, models, scout, Status} from '@eclipse-scout/core';
+import {
+  DesktopNotification,
+  EllipsisMenu,
+  Form,
+  Menu,
+  MenuBar,
+  models,
+  scout,
+  Status
+} from '@eclipse-scout/core';
 import MenuBarFormModel from './MenuBarFormModel';
+import {MiniForm} from '../index';
 
 export default class MenuBarForm extends Form {
 
@@ -50,7 +60,7 @@ export default class MenuBarForm extends Form {
     let formMenu = this.widget('FormMenu');
     formMenu.on('propertyChange:selected', event => {
       if (event.newValue && !formMenu.form) {
-        formMenu.setForm(scout.create('jswidgets.MiniForm', {
+        formMenu.setForm(scout.create(MiniForm, {
           parent: formMenu
         }));
       }
@@ -89,7 +99,7 @@ export default class MenuBarForm extends Form {
         newMenus.push(this.replaceMenu);
       }
       for (; i < menuCount; i++) {
-        newMenus.push(scout.create('Menu', {
+        newMenus.push(scout.create(Menu, {
           parent: this,
           text: 'DynMenu ' + i,
           enabled: true
@@ -104,7 +114,7 @@ export default class MenuBarForm extends Form {
       // Don't show message box if it is a toggle action
       return;
     }
-    scout.create('DesktopNotification', {
+    scout.create(DesktopNotification, {
       parent: this,
       status: {
         severity: Status.Severity.OK,

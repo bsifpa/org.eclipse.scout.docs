@@ -1,21 +1,34 @@
-import {icons} from '@eclipse-scout/core';
+import {
+  AggregateTableControl,
+  BooleanColumn,
+  Column,
+  FormMenu,
+  FormTableControl,
+  icons,
+  Menu,
+  NumberColumn,
+  PageWithTable,
+  SmartColumn,
+  Table
+} from '@eclipse-scout/core';
+import {MiniForm, SamplePageWithTableSearchForm} from '../index';
 
 export default () => ({
   id: 'jswidgets.SamplePageWithTable',
-  objectType: 'PageWithTable',
+  objectType: PageWithTable,
   text: 'Page with Table',
   detailTable: {
     id: 'jswidgets.SamplePageWithTable.Table',
-    objectType: 'Table',
+    objectType: Table,
     columns: [
       {
         id: 'IdColumn',
-        objectType: 'NumberColumn',
+        objectType: NumberColumn,
         displayable: false
       },
       {
         id: 'StringColumn',
-        objectType: 'Column',
+        objectType: Column,
         text: 'String Column',
         width: 300,
         sortActive: true,
@@ -23,20 +36,20 @@ export default () => ({
       },
       {
         id: 'SmartColumn',
-        objectType: 'SmartColumn',
+        objectType: SmartColumn,
         lookupCall: 'jswidgets.LocaleLookupCall',
         text: 'Smart Column',
         width: 300
       },
       {
         id: 'NumberColumn',
-        objectType: 'NumberColumn',
+        objectType: NumberColumn,
         text: 'Number Column',
         width: 300
       },
       {
         id: 'BooleanColumn',
-        objectType: 'BooleanColumn',
+        objectType: BooleanColumn,
         text: 'Boolean Column',
         width: 150
       }
@@ -44,18 +57,18 @@ export default () => ({
     menus: [
       {
         id: 'FormMenu',
-        objectType: 'FormMenu',
+        objectType: FormMenu,
         text: 'Form menu',
         menuTypes: [
           'Table.EmptySpace', 'Table.SingleSelection'
         ],
         form: {
-          objectType: 'jswidgets.MiniForm'
+          objectType: MiniForm
         }
       },
       {
         id: 'AddRowMenu',
-        objectType: 'Menu',
+        objectType: Menu,
         text: '${textKey:AddRow}',
         menuTypes: [
           'Table.EmptySpace'
@@ -64,7 +77,7 @@ export default () => ({
       },
       {
         id: 'AddManyMenu',
-        objectType: 'Menu',
+        objectType: Menu,
         text: 'Add many',
         menuTypes: [
           'Table.EmptySpace'
@@ -72,7 +85,7 @@ export default () => ({
       },
       {
         id: 'DeleteRowMenu',
-        objectType: 'Menu',
+        objectType: Menu,
         text: '${textKey:DeleteRow}',
         menuTypes: [
           'Table.SingleSelection',
@@ -82,7 +95,7 @@ export default () => ({
       },
       {
         id: 'TileToggleMenu',
-        objectType: 'Menu',
+        objectType: Menu,
         iconId: icons.SQUARE_BOLD,
         stackable: false,
         horizontalAlignment: 1,
@@ -94,16 +107,16 @@ export default () => ({
     tableControls: [
       {
         id: 'SearchFormTableControl',
-        objectType: 'FormTableControl',
+        objectType: FormTableControl,
         iconId: icons.SEARCH,
         form: {
           id: 'SearchForm',
-          objectType: 'jswidgets.SamplePageWithTableSearchForm'
+          objectType: SamplePageWithTableSearchForm
         }
       },
       {
         id: 'AggregateTableControl',
-        objectType: 'AggregateTableControl'
+        objectType: AggregateTableControl
       }
     ]
   }

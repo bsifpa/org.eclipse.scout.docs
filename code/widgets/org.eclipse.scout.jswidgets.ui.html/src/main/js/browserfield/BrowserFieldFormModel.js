@@ -1,20 +1,21 @@
-import {Button} from '@eclipse-scout/core';
+import {BrowserField, Button, CheckBoxField, GroupBox, HtmlField, ProposalField, StaticLookupCall, StringField, TabItem} from '@eclipse-scout/core';
+import {ConfigurationBox, EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
 
 export default () => ({
   id: 'jswidgets.BrowserFieldForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 2,
         fields: [
           {
             id: 'BrowserField',
-            objectType: 'BrowserField',
+            objectType: BrowserField,
             labelVisible: false,
             location: 'html/Scout.html',
             sandboxEnabled: false,
@@ -27,44 +28,44 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'ScrollBarEnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Scroll Bar Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'SandboxEnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Sandbox Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'SandboxPermissionsField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Sandbox Permissions'
                   },
                   {
                     id: 'LocationField',
-                    objectType: 'ProposalField',
+                    objectType: ProposalField,
                     label: 'Location',
                     lookupCall: {
-                      objectType: 'StaticLookupCall',
+                      objectType: StaticLookupCall,
                       data: [
                         ['https://www.example.net', 'https://www.example.net'],
                         ['https://www.bing.com/search?q=Eclipse%20Scout', 'https://www.bing.com/search?q=Eclipse%20Scout'],
@@ -76,7 +77,7 @@ export default () => ({
                   },
                   {
                     id: 'TrackLocationField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Track Location',
                     labelVisible: false,
                     tooltipText: '${textKey:TrackLocationTooltipText}',
@@ -86,36 +87,36 @@ export default () => ({
                   },
                   {
                     id: 'ShowInExternalWindowField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Show External Window',
                     labelVisible: false
                   },
                   {
                     id: 'AutoCloseExternalWindowField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Auto Close External Window',
                     labelVisible: false
                   },
                   {
                     id: 'ExternalWindowButtonTextField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'External Window Button Text'
                   },
                   {
                     id: 'ExternalWindowFieldTextField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'External Window Field Text'
                   }
                 ]
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -123,19 +124,19 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'BrowserFieldActionsBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 gridColumnCount: 2,
                 label: 'Browser Field Actions',
                 expandable: true,
                 fields: [
                   {
                     id: 'MessageDescriptionField',
-                    objectType: 'HtmlField',
+                    objectType: HtmlField,
                     labelVisible: false,
                     gridDataHints: {
                       useUiHeight: true,
@@ -150,7 +151,7 @@ export default () => ({
                   },
                   {
                     id: 'PostTextMessageButton',
-                    objectType: 'Button',
+                    objectType: Button,
                     label: 'Post text message',
                     labelVisible: false,
                     processButton: false,
@@ -158,7 +159,7 @@ export default () => ({
                   },
                   {
                     id: 'PostJsonMessageButton',
-                    objectType: 'Button',
+                    objectType: Button,
                     label: 'Post JSON message',
                     labelVisible: false,
                     processButton: false,
@@ -168,17 +169,17 @@ export default () => ({
               },
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

@@ -8,8 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {dates, Form, icons, MessageBoxes, models, scout} from '@eclipse-scout/core';
-import {ColumnLookupCall, LocaleLookupCall} from '../index';
+import {dates, Form, HtmlTile, icons, MessageBoxes, models, scout} from '@eclipse-scout/core';
+import {
+  BooleanColumnPropertiesBox,
+  ColumnLookupCall,
+  DateColumnPropertiesBox,
+  LocaleLookupCall,
+  NumberColumnPropertiesBox,
+  SmartColumnPropertiesBox
+} from '../index';
 import TableFormModel from './TableFormModel';
 
 export default class TableForm extends Form {
@@ -77,32 +84,32 @@ export default class TableForm extends Form {
           '<div class="font-icon" style="font-size: 50px; text-align: center;">' + icon.iconCharacter + '</div>' +
           '<div style="text-align: center;"><p>' + row.cells[1].text + '</p></div>'
       };
-      return scout.create('HtmlTile', model);
+      return scout.create(HtmlTile, model);
     };
   }
 
   _createPropertiesBox(newColumn, parent) {
     switch (newColumn.objectType) {
       case 'BooleanColumn':
-        return scout.create('jswidgets.BooleanColumnPropertiesBox', {
+        return scout.create(BooleanColumnPropertiesBox, {
           id: 'BooleanColumnPropertyField',
           label: 'Boolean Column Properties',
           parent: parent
         });
       case 'DateColumn':
-        return scout.create('jswidgets.DateColumnPropertiesBox', {
+        return scout.create(DateColumnPropertiesBox, {
           id: 'DateColumnPropertyField',
           label: 'Date Column Properties',
           parent: parent
         });
       case 'NumberColumn':
-        return scout.create('jswidgets.NumberColumnPropertiesBox', {
+        return scout.create(NumberColumnPropertiesBox, {
           id: 'NumberColumnPropertyField',
           label: 'Number Column Properties',
           parent: parent
         });
       case 'SmartColumn':
-        return scout.create('jswidgets.SmartColumnPropertiesBox', {
+        return scout.create(SmartColumnPropertiesBox, {
           id: 'SmartColumnPropertyField',
           label: 'Smart Column Properties',
           parent: parent

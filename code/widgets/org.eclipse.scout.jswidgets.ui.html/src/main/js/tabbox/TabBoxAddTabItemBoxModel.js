@@ -1,28 +1,29 @@
+import {Button, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.TabBoxAddTabItemBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   label: 'Add Tab Item',
   expandable: true,
   gridColumnCount: 2,
   fields: [
     {
       id: 'AddTabItem.Label',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Label'
     },
     {
       id: 'AddTabItem.SubLabel',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Sub Label'
     },
     {
       id: 'AddTabItem.TabItemSmartField',
-      objectType: 'SmartField',
+      objectType: SmartField,
       label: 'Before'
     },
     {
       id: 'AddTabItem.CreateButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Add',
       processButton: false,
       keyStroke: 'ctrl-insert'

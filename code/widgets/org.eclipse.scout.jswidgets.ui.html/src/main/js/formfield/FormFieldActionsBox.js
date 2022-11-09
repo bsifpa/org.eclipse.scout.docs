@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, models} from '@eclipse-scout/core';
+import {GroupBox, Menu, models} from '@eclipse-scout/core';
 import FormFieldActionsBoxModel from './FormFieldActionsBoxModel';
 import {FormFieldMenuLookupCall} from '../index';
 
@@ -50,7 +50,7 @@ export default class FormFieldActionsBox extends GroupBox {
 
   _onInsertMenuClick(event) {
     this.field.insertMenu({
-      objectType: 'Menu',
+      objectType: Menu,
       text: 'Menu ' + (this.field.menus.length + 1)
     });
   }

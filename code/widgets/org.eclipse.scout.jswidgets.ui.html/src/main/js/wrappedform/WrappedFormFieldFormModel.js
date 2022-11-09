@@ -8,8 +8,14 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, GroupBox, SmartField, TabItem, WrappedFormField} from '@eclipse-scout/core';
-import {WrappedFormLookupCall} from '../index';
+import {Button, GroupBox, SmartField, TabBox, TabItem, WrappedFormField} from '@eclipse-scout/core';
+import {
+  EventsTab,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  WidgetActionsBox,
+  WrappedFormLookupCall
+} from '../index';
 
 export default () => ({
   id: 'jswidgets.WrappedFormFieldForm',
@@ -36,7 +42,7 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'WrappedFormFieldPropertiesBox',
         tabItems: [{
@@ -63,23 +69,23 @@ export default () => ({
             },
             {
               id: 'FormFieldPropertiesBox',
-              objectType: 'jswidgets.FormFieldPropertiesBox',
+              objectType: FormFieldPropertiesBox,
               expanded: false
             },
             {
               id: 'GridDataBox',
-              objectType: 'jswidgets.GridDataBox',
+              objectType: GridDataBox,
               label: 'Grid Data Hints'
             }
           ]
         }, {
           id: 'ActionsTab',
-          objectType: 'TabItem',
+          objectType: TabItem,
           label: 'Actions',
           fields: [
             {
               id: 'WidgetActionsBox',
-              objectType: 'jswidgets.WidgetActionsBox',
+              objectType: WidgetActionsBox,
               expandable: false,
               labelVisible: false,
               borderVisible: false
@@ -87,7 +93,7 @@ export default () => ({
           ]
         }, {
           id: 'EventsTab',
-          objectType: 'jswidgets.EventsTab'
+          objectType: EventsTab
         }]
       }
     ]

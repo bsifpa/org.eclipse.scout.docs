@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {GroupBox, models, objects, scout, Status} from '@eclipse-scout/core';
+import {GroupBox, models, Notification, objects, scout, Status} from '@eclipse-scout/core';
 import GroupBoxPropertiesBoxModel from './GroupBoxPropertiesBoxModel';
 
 export default class GroupBoxPropertiesBox extends GroupBox {
@@ -99,7 +99,7 @@ export default class GroupBoxPropertiesBox extends GroupBox {
     if (!severity) {
       return null;
     }
-    return scout.create('Notification', {
+    return scout.create(Notification, {
       parent: this,
       severity: severity,
       iconId: this.widget('NotificationIconField').value,

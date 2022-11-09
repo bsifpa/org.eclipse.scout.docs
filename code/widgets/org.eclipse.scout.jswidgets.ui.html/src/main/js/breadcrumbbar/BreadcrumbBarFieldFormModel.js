@@ -1,39 +1,42 @@
+import {BreadcrumbBar, BreadcrumbBarField, BreadcrumbItem, GroupBox, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, FormFieldPropertiesBox, GridDataBox, WidgetActionsBox} from '../index';
+
 export default () => ({
   id: 'jswidgets.BreadcrumbBarFieldForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 2,
         fields: [
           {
             id: 'BreadcrumbBarField',
-            objectType: 'BreadcrumbBarField',
+            objectType: BreadcrumbBarField,
             label: 'Breadcrumb Bar Field',
             breadcrumbBar: {
-              objectType: 'BreadcrumbBar',
+              objectType: BreadcrumbBar,
               breadcrumbItems: [
                 {
-                  objectType: 'BreadcrumbItem',
+                  objectType: BreadcrumbItem,
                   text: 'Root Folder',
                   ref: null
                 },
                 {
-                  objectType: 'BreadcrumbItem',
+                  objectType: BreadcrumbItem,
                   text: 'Subfolder',
                   ref: 'sub-id'
                 },
                 {
-                  objectType: 'BreadcrumbItem',
+                  objectType: BreadcrumbItem,
                   text: 'Sub-Subfolder',
                   ref: 'sub-sub-id'
                 },
                 {
-                  objectType: 'BreadcrumbItem',
+                  objectType: BreadcrumbItem,
                   text: 'Sub-Sub-Subfolder',
                   ref: 'sub-sub-sub-id'
                 }
@@ -44,23 +47,23 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'BreadcrumbBarProperties',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Breadcrumb Bar Configuration',
                 fields: [
                   {
                     id: 'BreadcrumbItemsField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Breadcrumb Items',
                     multilineText: true,
                     tooltipText: 'Separate breadcrumbs by new line character',
@@ -72,29 +75,29 @@ export default () => ({
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

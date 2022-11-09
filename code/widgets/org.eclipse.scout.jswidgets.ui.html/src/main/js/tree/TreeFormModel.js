@@ -8,32 +8,43 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
+import {GroupBox, Menu, TabItem, Tree, TreeField} from '@eclipse-scout/core';
+import {
+  ConfigurationBox,
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  TreePropertiesBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.TreeForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'TreeField',
-            objectType: 'TreeField',
+            objectType: TreeField,
             labelVisible: false,
             gridDataHints: {
               h: 10
             },
             tree: {
               id: 'Tree',
-              objectType: 'Tree',
+              objectType: Tree,
               menus: [
                 {
                   id: 'AddNodeMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:AddNode}',
                   menuTypes: [
                     'Tree.EmptySpace'
@@ -42,7 +53,7 @@ export default () => ({
                 },
                 {
                   id: 'AddChildNodeMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:AddChildNode}',
                   menuTypes: [
                     'Tree.EmptySpace'
@@ -51,7 +62,7 @@ export default () => ({
                 },
                 {
                   id: 'DeleteNodeMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:DeleteNode}',
                   menuTypes: [
                     'Tree.SingleSelection',
@@ -61,7 +72,7 @@ export default () => ({
                 },
                 {
                   id: 'DeleteAllMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:DeleteAll}',
                   menuTypes: [
                     'Tree.EmptySpace'
@@ -69,7 +80,7 @@ export default () => ({
                   childActions: [
                     {
                       id: 'DeleteAllNodesMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:DeleteAllNodes}',
                       menuTypes: [
                         'Tree.EmptySpace'
@@ -77,7 +88,7 @@ export default () => ({
                     },
                     {
                       id: 'DeleteAllChildNodesMenu',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: '${textKey:DeleteAllChildNodes}',
                       menuTypes: [
                         'Tree.EmptySpace'
@@ -92,29 +103,29 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.TreePropertiesBox',
+                objectType: TreePropertiesBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -122,22 +133,22 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

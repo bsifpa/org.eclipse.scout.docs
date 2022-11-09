@@ -1,66 +1,68 @@
+import {CancelMenu, CheckBoxField, CloseMenu, DateField, GroupBox, OkMenu, ResetMenu, SaveMenu, StringField} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.LifecycleForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     menus: [
       {
         id: 'OkMenu',
-        objectType: 'OkMenu',
+        objectType: OkMenu,
         tooltipText: '${textKey:OkMenuTooltip}'
       },
       {
         id: 'CancelMenu',
-        objectType: 'CancelMenu',
+        objectType: CancelMenu,
         tooltipText: '${textKey:CancelMenuTooltip}'
       },
       {
         id: 'SaveMenu',
-        objectType: 'SaveMenu',
+        objectType: SaveMenu,
         tooltipText: '${textKey:SaveMenuTooltip}'
       },
       {
         id: 'ResetMenu',
-        objectType: 'ResetMenu',
+        objectType: ResetMenu,
         tooltipText: '${textKey:ResetMenuTooltip}'
       },
       {
         id: 'CloseMenu',
-        objectType: 'CloseMenu',
+        objectType: CloseMenu,
         tooltipText: '${textKey:CloseMenuTooltip}'
       }
     ],
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'NameField',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'Name',
             mandatory: true
           },
           {
             id: 'ForenameField',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'Forename'
           },
           {
             id: 'BirthdayField',
-            objectType: 'DateField',
+            objectType: DateField,
             label: 'Birthday'
           },
           {
             id: 'ExceptionField',
-            objectType: 'CheckBoxField',
+            objectType: CheckBoxField,
             label: '${textKey:ExceptionWhileSaving}'
           },
           {
             id: 'HasCloseButtonField',
-            objectType: 'CheckBoxField',
+            objectType: CheckBoxField,
             label: '${textKey:HasCloseButton}',
             tooltipText: '${textKey:HasCloseButtonTooltip}',
             value: true,
@@ -70,7 +72,7 @@ export default () => ({
           },
           {
             id: 'AskIfNeedSaveField',
-            objectType: 'CheckBoxField',
+            objectType: CheckBoxField,
             label: '${textKey:AskToSaveChangesOnCancel}'
           }
         ]

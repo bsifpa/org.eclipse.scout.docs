@@ -1,6 +1,7 @@
 import {arrays, models, objects, PageWithNodes, scout} from '@eclipse-scout/core';
 import SamplePageWithNodesModel from './SamplePageWithNodesModel';
 import $ from 'jquery';
+import {SamplePageWithTable} from '../index';
 
 export default class SamplePageWithNodes extends PageWithNodes {
 
@@ -14,8 +15,8 @@ export default class SamplePageWithNodes extends PageWithNodes {
 
   _createChildPages() {
     return $.resolvedPromise([
-      scout.create('jswidgets.SamplePageWithTable', this._pageParam()),
-      scout.create('jswidgets.SamplePageWithNodes', this._pageParam())
+      scout.create(SamplePageWithTable, this._pageParam()),
+      scout.create(SamplePageWithNodes, this._pageParam())
     ]);
   }
 

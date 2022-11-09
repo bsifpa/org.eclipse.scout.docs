@@ -1,20 +1,20 @@
-import {FormField} from '@eclipse-scout/core';
+import {Button, FormField, GroupBox, StringField} from '@eclipse-scout/core';
 
 export default () => ({
   id: 'jswidgets.RestForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 3,
         fields: [
           {
             id: 'GetButton',
-            objectType: 'Button',
+            objectType: Button,
             label: 'Do a GET request',
             processButton: false,
             gridDataHints: {
@@ -24,7 +24,7 @@ export default () => ({
           },
           {
             id: 'PostButton',
-            objectType: 'Button',
+            objectType: Button,
             label: 'Do a POST request',
             processButton: false,
             gridDataHints: {
@@ -34,7 +34,7 @@ export default () => ({
           },
           {
             id: 'PutButton',
-            objectType: 'Button',
+            objectType: Button,
             label: 'Do a PUT request',
             processButton: false,
             gridDataHints: {
@@ -44,7 +44,7 @@ export default () => ({
           },
           {
             id: 'DeleteButton',
-            objectType: 'Button',
+            objectType: Button,
             label: 'Do a DELETE request',
             processButton: false,
             gridDataHints: {
@@ -54,13 +54,13 @@ export default () => ({
           },
           {
             id: 'FailButton',
-            objectType: 'Button',
+            objectType: Button,
             label: 'Do a failing request',
             processButton: false
           },
           {
             id: 'LogField',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'Log',
             labelPosition: FormField.LabelPosition.TOP,
             enabled: false,

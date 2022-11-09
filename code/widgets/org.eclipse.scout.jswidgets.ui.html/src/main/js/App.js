@@ -8,7 +8,15 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App as ScoutApp, models, ResponsiveManager, router, scout} from '@eclipse-scout/core';
+import {
+  App as ScoutApp,
+  Desktop,
+  DesktopResponsiveHandler,
+  models,
+  ResponsiveManager,
+  router,
+  scout
+} from '@eclipse-scout/core';
 import {WidgetsRoute} from './index';
 import DesktopModel from './desktop/DesktopModel';
 
@@ -20,13 +28,13 @@ export default class App extends ScoutApp {
   }
 
   _createDesktop(parent) {
-    let desktop = scout.create('Desktop',
+    let desktop = scout.create(Desktop,
       models.get(DesktopModel, parent));
 
     router.register(new WidgetsRoute(desktop));
     router.activate();
 
-    ResponsiveManager.get().registerHandler(desktop, scout.create('DesktopResponsiveHandler', {
+    ResponsiveManager.get().registerHandler(desktop, scout.create(DesktopResponsiveHandler, {
       widget: desktop
     }));
 

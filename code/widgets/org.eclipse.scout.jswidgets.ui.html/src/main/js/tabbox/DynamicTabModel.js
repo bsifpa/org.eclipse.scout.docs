@@ -1,16 +1,17 @@
+import {LabelField, StringField, TabItem} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.DynamicTab',
-  objectType: 'TabItem',
+  objectType: TabItem,
   label: 'Dyn Tab',
   fields: [
     {
       id: 'label',
-      objectType: 'LabelField',
+      objectType: LabelField,
       labelVisible: false
     },
     {
       id: 'StringField',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Sample Field'
     }
   ]
