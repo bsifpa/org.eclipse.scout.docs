@@ -11,7 +11,7 @@
 import {Form, models} from '@eclipse-scout/core';
 import FileChooserFieldFormModel from './FileChooserFieldFormModel';
 
-export default class FileChooserFieldForm extends Form {
+export class FileChooserFieldForm extends Form {
 
   constructor() {
     super();

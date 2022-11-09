@@ -8,12 +8,11 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, Event, FormField, GroupBox, GroupBoxModel, LabelField, models} from '@eclipse-scout/core';
+import {Button, Event, FormField, GroupBox, GroupBoxModel, InitModelOf, LabelField, models} from '@eclipse-scout/core';
 import WidgetActionsBoxModel from './WidgetActionsBoxModel';
 import {WidgetActionsBoxWidgetMap} from '../index';
-import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
-export default class WidgetActionsBox extends GroupBox {
+export class WidgetActionsBox extends GroupBox {
   declare widgetMap: WidgetActionsBoxWidgetMap;
   field: FormField;
 

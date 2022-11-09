@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import ValueFieldPropertiesBoxModel from './ValueFieldPropertiesBoxModel';
 
-export default class ValueFieldPropertiesBox extends GroupBox {
+export class ValueFieldPropertiesBox extends GroupBox {
 
   constructor() {
     super();

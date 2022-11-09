@@ -21,7 +21,7 @@ import {
 import MenuBarFormModel from './MenuBarFormModel';
 import {MiniForm} from '../index';
 
-export default class MenuBarForm extends Form {
+export class MenuBarForm extends Form {
 
   constructor() {
     super();

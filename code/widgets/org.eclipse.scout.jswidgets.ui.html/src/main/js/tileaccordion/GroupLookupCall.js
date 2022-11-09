@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class GroupLookupCall extends StaticLookupCall {
+export class GroupLookupCall extends StaticLookupCall {
 
   constructor(accordion) {
     super();

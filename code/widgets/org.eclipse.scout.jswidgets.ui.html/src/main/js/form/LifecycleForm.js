@@ -12,7 +12,7 @@ import {Form, models} from '@eclipse-scout/core';
 import $ from 'jquery';
 import LifecycleFormModel from './LifecycleFormModel';
 
-export default class LifecycleForm extends Form {
+export class LifecycleForm extends Form {
 
   constructor() {
     super();

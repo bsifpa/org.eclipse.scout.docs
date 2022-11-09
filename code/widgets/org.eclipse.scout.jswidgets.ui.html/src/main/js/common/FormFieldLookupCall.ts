@@ -10,7 +10,7 @@
  */
 import {FormField, GroupBox, RadioButtonGroup, SequenceBox, StaticLookupCall} from '@eclipse-scout/core';
 
-export default class FormFieldLookupCall extends StaticLookupCall<FormField> {
+export class FormFieldLookupCall extends StaticLookupCall<FormField> {
   compositeField: GroupBox | SequenceBox | RadioButtonGroup<any>;
   protected _rebuildDataHandler: () => void;
 

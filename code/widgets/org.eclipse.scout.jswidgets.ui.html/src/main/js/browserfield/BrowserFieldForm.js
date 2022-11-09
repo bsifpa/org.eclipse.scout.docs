@@ -11,7 +11,7 @@
 import {dates, Form, models, numbers} from '@eclipse-scout/core';
 import BrowserFieldFormModel from './BrowserFieldFormModel';
 
-export default class BrowserFieldForm extends Form {
+export class BrowserFieldForm extends Form {
 
   constructor() {
     super();

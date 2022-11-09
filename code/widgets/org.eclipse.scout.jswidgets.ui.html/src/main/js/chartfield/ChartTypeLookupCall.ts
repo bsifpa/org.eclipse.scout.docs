@@ -11,7 +11,7 @@
 import {StaticLookupCall} from '@eclipse-scout/core';
 import {Chart, ChartType} from '@eclipse-scout/chart';
 
-export default class ChartTypeLookupCall extends StaticLookupCall<ChartType> {
+export class ChartTypeLookupCall extends StaticLookupCall<ChartType> {
 
   constructor() {
     super();

@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import BooleanColumnPropertiesBoxModel from './BooleanColumnPropertiesBoxModel';
 
-export default class BooleanColumnPropertiesBox extends GroupBox {
+export class BooleanColumnPropertiesBox extends GroupBox {
 
   constructor() {
     super();

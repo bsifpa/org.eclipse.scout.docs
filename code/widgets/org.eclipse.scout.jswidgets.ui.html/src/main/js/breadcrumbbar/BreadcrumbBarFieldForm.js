@@ -11,7 +11,7 @@
 import {arrays, BreadcrumbItem, Form, MessageBoxes, models, Status} from '@eclipse-scout/core';
 import BreadcrumbBarFieldFormModel from './BreadcrumbBarFieldFormModel';
 
-export default class BreadcrumbBarFieldForm extends Form {
+export class BreadcrumbBarFieldForm extends Form {
 
   constructor() {
     super();

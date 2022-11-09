@@ -11,7 +11,7 @@
 import {GroupBox, MenuBarBox, models} from '@eclipse-scout/core';
 import ActionPropertiesBoxModel from './ActionPropertiesBoxModel';
 
-export default class ActionPropertiesBox extends GroupBox {
+export class ActionPropertiesBox extends GroupBox {
 
   constructor() {
     super();

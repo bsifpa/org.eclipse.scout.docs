@@ -12,7 +12,7 @@ import {Form, models} from '@eclipse-scout/core';
 import {ModeLookupCall} from '../index';
 import ModeSelectorFormModel from './ModeSelectorFormModel';
 
-export default class ModeSelectorForm extends Form {
+export class ModeSelectorForm extends Form {
 
   constructor() {
     super();

@@ -13,7 +13,7 @@ import TileGridFormModel from './TileGridFormModel';
 import $ from 'jquery';
 import {CustomTile} from '../index';
 
-export default class TileGridForm extends Form {
+export class TileGridForm extends Form {
 
   constructor() {
     super();

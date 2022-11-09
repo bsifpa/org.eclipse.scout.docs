@@ -12,7 +12,7 @@ import {GroupBox, models} from '@eclipse-scout/core';
 import {FormFieldLookupCall} from '../index';
 import GroupBoxDeleteFieldBoxModel from './GroupBoxDeleteFieldBoxModel';
 
-export default class GroupBoxDeleteFieldBox extends GroupBox {
+export class GroupBoxDeleteFieldBox extends GroupBox {
 
   constructor() {
     super();

@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class ModeLookupCall extends StaticLookupCall {
+export class ModeLookupCall extends StaticLookupCall {
 
   constructor(modeSelector) {
     super();

@@ -12,7 +12,7 @@ import {models} from '@eclipse-scout/core';
 import HierarchicalTablePropertiesBoxModel from './HierarchicalTablePropertiesBoxModel';
 import {TablePropertiesBox} from '../../index';
 
-export default class HierarchicalTablePropertiesBox extends TablePropertiesBox {
+export class HierarchicalTablePropertiesBox extends TablePropertiesBox {
 
   constructor() {
     super();

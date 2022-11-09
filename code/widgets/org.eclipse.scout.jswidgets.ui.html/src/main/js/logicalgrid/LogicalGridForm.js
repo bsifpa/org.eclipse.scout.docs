@@ -12,7 +12,7 @@ import {Form, models, scout} from '@eclipse-scout/core';
 import LogicalGridFormModel from './LogicalGridFormModel';
 import {FormFieldLookupCall} from '../index';
 
-export default class LogicalGridForm extends Form {
+export class LogicalGridForm extends Form {
 
   constructor() {
     super();

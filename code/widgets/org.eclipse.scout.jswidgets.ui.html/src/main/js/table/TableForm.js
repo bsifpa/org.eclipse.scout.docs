@@ -19,7 +19,7 @@ import {
 } from '../index';
 import TableFormModel from './TableFormModel';
 
-export default class TableForm extends Form {
+export class TableForm extends Form {
 
   constructor() {
     super();

@@ -12,7 +12,7 @@ import {Form, models, numbers, RadioButtonGroup} from '@eclipse-scout/core';
 import {FormFieldLookupCall} from '../index';
 import RadioButtonGroupFormModel from './RadioButtonGroupFormModel';
 
-export default class RadioButtonGroupForm extends Form {
+export class RadioButtonGroupForm extends Form {
 
   constructor() {
     super();

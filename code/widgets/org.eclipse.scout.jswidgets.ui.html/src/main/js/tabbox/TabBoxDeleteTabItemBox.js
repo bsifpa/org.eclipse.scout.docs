@@ -12,7 +12,7 @@ import {GroupBox, models} from '@eclipse-scout/core';
 import TabBoxDeleteTabItemBoxModel from './TabBoxDeleteTabItemBoxModel';
 import {TabItemLookupCall} from '../index';
 
-export default class TabBoxDeleteTabItemBox extends GroupBox {
+export class TabBoxDeleteTabItemBox extends GroupBox {
 
   constructor() {
     super();

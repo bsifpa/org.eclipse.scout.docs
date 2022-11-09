@@ -11,7 +11,7 @@
 import {StaticLookupCall} from '@eclipse-scout/core';
 import {LifecycleForm, MiniForm} from '../index';
 
-export default class WrappedFormLookupCall extends StaticLookupCall {
+export class WrappedFormLookupCall extends StaticLookupCall {
 
   constructor() {
     super();

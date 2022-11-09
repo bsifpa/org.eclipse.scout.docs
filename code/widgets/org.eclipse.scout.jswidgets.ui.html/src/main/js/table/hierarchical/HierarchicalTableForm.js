@@ -12,7 +12,7 @@ import {Form, icons, models} from '@eclipse-scout/core';
 import HierarchicalTableFormModel from './HierarchicalTableFormModel';
 import {ColumnLookupCall} from '../../index';
 
-export default class HierarchicalTableForm extends Form {
+export class HierarchicalTableForm extends Form {
 
   constructor() {
     super();

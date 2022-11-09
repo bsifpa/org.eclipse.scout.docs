@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class ChildActionsLookupCall extends StaticLookupCall {
+export class ChildActionsLookupCall extends StaticLookupCall {
 
   constructor(action) {
     super();
