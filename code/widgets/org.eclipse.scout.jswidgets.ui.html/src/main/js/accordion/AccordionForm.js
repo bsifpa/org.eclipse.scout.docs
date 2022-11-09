@@ -8,9 +8,10 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {comparators, Form, models, scout} from '@eclipse-scout/core';
+import {comparators, Form, Group, models, scout, TileGrid} from '@eclipse-scout/core';
 import AccordionFormModel from './AccordionFormModel';
 import $ from 'jquery';
+import {CustomTile} from '../index';
 
 export default class AccordionForm extends Form {
 
@@ -117,11 +118,11 @@ export default class AccordionForm extends Form {
     if (this.insertedGroupCount > 0) {
       title += ' ' + this.insertedGroupCount;
     }
-    let group = scout.create('Group', {
+    let group = scout.create(Group, {
       parent: this.accordion,
       title: title,
       body: {
-        objectType: 'TileGrid',
+        objectType: TileGrid,
         gridColumnCount: 6,
         layoutConfig: {
           columnWidth: 100,
@@ -144,7 +145,7 @@ export default class AccordionForm extends Form {
       colorScheme: this.accordion.groups.length % 2 === 0 ? 'default' : 'alternative'
     };
     model = $.extend({}, defaults, model);
-    return scout.create('jswidgets.CustomTile', model);
+    return scout.create(CustomTile, model);
   }
 
   // noinspection DuplicatedCode

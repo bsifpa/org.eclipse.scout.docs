@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {GroupBox, models, scout} from '@eclipse-scout/core';
-import {TabItemLookupCall} from '../index';
+import {DynamicTab, TabItemLookupCall} from '../index';
 import TabBoxAddTabItemBoxModel from './TabBoxAddTabItemBoxModel';
 
 export default class TabBoxAddTabItemBox extends GroupBox {
@@ -59,7 +59,7 @@ export default class TabBoxAddTabItemBox extends GroupBox {
   addTabItem(label, subLabel, beforeTabItem) {
     let tabItems = this.tabBox.tabItems || [],
       beforeIndex,
-      tabItem = scout.create('jswidgets.DynamicTab', {
+      tabItem = scout.create(DynamicTab, {
         parent: this.tabBox,
         label: label || 'DynTab ' + this.dynamicTabCounter,
         subLabel: subLabel

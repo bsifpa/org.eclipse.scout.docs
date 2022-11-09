@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import FileChooserFormModel from './FileChooserFormModel';
-import {FileInput, Form, models, scout, strings} from '@eclipse-scout/core';
+import {FileChooser, FileInput, Form, models, scout, strings} from '@eclipse-scout/core';
 import {DisplayParentLookupCall} from '../index';
 
 export default class FileChooserForm extends Form {
@@ -33,7 +33,7 @@ export default class FileChooserForm extends Form {
   }
 
   _onButtonClick(event) {
-    let fileChooser = scout.create('FileChooser', {
+    let fileChooser = scout.create(FileChooser, {
       parent: this.session.desktop,
       acceptTypes: this.widget('AcceptTypesField').value,
       displayParent: DisplayParentLookupCall.displayParentForType(this, this.widget('DisplayParentField').value),

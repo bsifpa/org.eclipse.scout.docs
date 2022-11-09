@@ -9,7 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {Form, models, scout} from '@eclipse-scout/core';
-import {DisplayParentLookupCall} from '../index';
+import {DisplayParentLookupCall, LifecycleForm} from '../index';
 import FormFormModel from './FormFormModel';
 
 export default class FormForm extends Form {
@@ -34,7 +34,7 @@ export default class FormForm extends Form {
 
     // form properties of the form will be opened with OpenFormButton
     this.propertiesBox = this.widget('PropertiesBox');
-    this.propertiesBox.setForm(scout.create('Form', {parent: this}));
+    this.propertiesBox.setForm(scout.create(Form, {parent: this}));
     this.propertiesBox.titleField.setValue('Title');
 
     // form properties of current form
@@ -57,7 +57,7 @@ export default class FormForm extends Form {
   }
 
   _onOpenFormButtonClick(model) {
-    let form = scout.create('jswidgets.FormForm', $.extend({
+    let form = scout.create(FormForm, $.extend({
       parent: this,
       openedByButton: true,
       closeMenuVisible: true
@@ -68,7 +68,7 @@ export default class FormForm extends Form {
   }
 
   _onOpenLifecycleFormButtonClick(model) {
-    let form = scout.create('jswidgets.LifecycleForm', $.extend({
+    let form = scout.create(LifecycleForm, $.extend({
       parent: this,
       data: this.LifecycleData
     }, this._settings()));

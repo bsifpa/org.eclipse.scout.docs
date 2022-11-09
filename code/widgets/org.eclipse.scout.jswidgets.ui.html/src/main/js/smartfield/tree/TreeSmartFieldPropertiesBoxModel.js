@@ -1,3 +1,4 @@
+import {CheckBoxField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.TreeSmartFieldPropertiesBox',
   type: 'extension',
@@ -12,12 +13,12 @@ export default () => ({
       extension: [
         {
           id: 'BrowseAutoExpandAllField',
-          objectType: 'CheckBoxField',
+          objectType: CheckBoxField,
           label: 'Browse Auto Expand All'
         },
         {
           id: 'BrowseLoadIncrementalField',
-          objectType: 'CheckBoxField',
+          objectType: CheckBoxField,
           label: 'Browse Load Incremental'
         }
       ]

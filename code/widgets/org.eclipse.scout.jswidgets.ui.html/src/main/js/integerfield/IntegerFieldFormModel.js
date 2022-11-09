@@ -1,3 +1,4 @@
+import {IntegerField} from '@eclipse-scout/core';
 export default () => ({
   type: 'extension',
   id: 'IntegerFieldForm',
@@ -6,7 +7,7 @@ export default () => ({
       operation: 'appendTo',
       target: {id: 'NumberField'},
       extension: {
-        objectType: 'IntegerField',
+        objectType: IntegerField,
         label: '${textKey:IntegerField}'
       }
     },
@@ -14,21 +15,21 @@ export default () => ({
       operation: 'appendTo',
       target: {id: 'CalculatorField'},
       extension: {
-        objectType: 'IntegerField'
+        objectType: IntegerField
       }
     },
     {
       operation: 'appendTo',
       target: {id: 'MinValueField'},
       extension: {
-        objectType: 'IntegerField'
+        objectType: IntegerField
       }
     },
     {
       operation: 'appendTo',
       target: {id: 'MaxValueField'},
       extension: {
-        objectType: 'IntegerField'
+        objectType: IntegerField
       }
     }
   ]

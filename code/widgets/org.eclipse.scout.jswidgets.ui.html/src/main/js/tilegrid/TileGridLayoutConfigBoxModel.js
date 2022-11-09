@@ -1,3 +1,4 @@
+import {NumberField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.TileGridLayoutConfigBox',
   type: 'extension',
@@ -12,7 +13,7 @@ export default () => ({
       extension: [
         {
           id: 'MaxWidthField',
-          objectType: 'NumberField',
+          objectType: NumberField,
           label: 'Max Width'
         }
       ]

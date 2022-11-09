@@ -1,79 +1,101 @@
+import {
+  AggregateTableControl,
+  BooleanColumn,
+  Column,
+  GroupBox,
+  Menu,
+  SmartField,
+  TabItem,
+  Table,
+  TableField
+} from '@eclipse-scout/core';
+import {
+  ColumnPropertiesBox,
+  ConfigurationBox,
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  HierarchicalTablePropertiesBox,
+  WidgetActionsBox
+} from '../../index';
+
 export default () => ({
   id: 'jswidgets.HierarchicalTableForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'TableField',
-            objectType: 'TableField',
+            objectType: TableField,
             labelVisible: false,
             gridDataHints: {
               h: 10
             },
             table: {
               id: 'Table',
-              objectType: 'Table',
+              objectType: Table,
               columns: [
                 {
                   text: '${textKey:Name}',
                   id: 'Name',
                   width: 200,
-                  objectType: 'Column'
+                  objectType: Column
                 },
                 {
                   text: '${textKey:Detail}',
                   id: 'Detail',
                   width: 175,
-                  objectType: 'Column'
+                  objectType: Column
                 },
                 {
                   text: 'Date',
                   id: 'Date',
                   width: 200,
-                  objectType: 'Column'
+                  objectType: Column
                 },
                 {
                   text: 'Active',
                   id: 'Active',
                   width: 100,
-                  objectType: 'BooleanColumn'
+                  objectType: BooleanColumn
                 }
               ],
               tableControls: [
                 {
                   id: 'AggregateTableControl',
-                  objectType: 'AggregateTableControl'
+                  objectType: AggregateTableControl
                 }
               ],
               menus: [
                 {
                   id: 'ContentMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: 'Content',
                   menuTypes: ['Table.EmptySpace'],
                   childActions: [
                     {
                       id: 'RemoveAll',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: 'Remove all rows',
                       menuTypes: ['Table.EmptySpace']
                     },
                     {
                       id: 'InsertFew',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: 'Insert few',
                       menuTypes: ['Table.EmptySpace']
                     },
                     {
                       id: 'InsertMany',
-                      objectType: 'Menu',
+                      objectType: Menu,
                       text: 'Insert many',
                       menuTypes: ['Table.EmptySpace']
                     }
@@ -81,14 +103,14 @@ export default () => ({
                 },
                 {
                   id: 'AddRowMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:AddRow}',
                   menuTypes: ['Table.EmptySpace'],
                   keyStroke: 'insert'
                 },
                 {
                   id: 'DeleteRowMenu',
-                  objectType: 'Menu',
+                  objectType: Menu,
                   text: '${textKey:DeleteRow}',
                   menuTypes: ['Table.SingleSelection', 'Table.MultiSelection'],
                   keyStroke: 'delete'
@@ -100,29 +122,29 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'jswidgets.HierarchicalTablePropertiesBox',
+                objectType: HierarchicalTablePropertiesBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox',
+                objectType: FormFieldPropertiesBox,
                 expanded: false
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -130,39 +152,39 @@ export default () => ({
           },
           {
             id: 'ColumnProperties',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Column Properties',
             fields: [
               {
                 id: 'Column.TargetField',
-                objectType: 'SmartField',
+                objectType: SmartField,
                 label: 'Target'
               },
               {
                 id: 'Column.PropertiesBox',
-                objectType: 'jswidgets.ColumnPropertiesBox',
+                objectType: ColumnPropertiesBox,
                 labelVisible: false
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

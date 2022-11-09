@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {App, Desktop as Desktop_1, icons, models, scout} from '@eclipse-scout/core';
+import {App, Desktop as Desktop_1, Form, GroupBox, icons, LabelField, models, scout} from '@eclipse-scout/core';
 import DesktopModel from './DesktopModel';
 
 export default class Desktop extends Desktop_1 {
@@ -56,15 +56,15 @@ export default class Desktop extends Desktop_1 {
   }
 
   _onLogoAction(event) {
-    let form = scout.create('Form', {
+    let form = scout.create(Form, {
       parent: this,
       resizable: false,
       title: 'Scout JS Widgets Application',
       rootGroupBox: {
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         borderDecoration: 'empty',
         fields: [{
-          objectType: 'LabelField',
+          objectType: LabelField,
           value: this.session.text('AboutText', App.get().scoutVersion),
           labelVisible: false,
           wrapText: true,

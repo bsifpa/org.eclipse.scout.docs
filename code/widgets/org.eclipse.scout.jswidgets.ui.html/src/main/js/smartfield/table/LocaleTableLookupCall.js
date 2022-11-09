@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {scout} from '@eclipse-scout/core';
+import {LookupRow, scout} from '@eclipse-scout/core';
 import {LocaleLookupCall} from '../../index';
 
 export default class LocaleTableLookupCall extends LocaleLookupCall {
@@ -18,7 +18,7 @@ export default class LocaleTableLookupCall extends LocaleLookupCall {
   }
 
   _dataToLookupRow(data) {
-    return scout.create('LookupRow', {
+    return scout.create(LookupRow, {
       key: data[0],
       text: data[1],
       additionalTableRowData: {

@@ -1,25 +1,26 @@
+import {CheckBoxField, GroupBox} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.WidgetPopupPropertiesBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Widget Popup Properties',
   expandable: true,
   fields: [
     {
       id: 'ClosableField',
-      objectType: 'CheckBoxField',
+      objectType: CheckBoxField,
       label: 'Closable',
       labelVisible: false
     },
     {
       id: 'MovableField',
-      objectType: 'CheckBoxField',
+      objectType: CheckBoxField,
       label: 'Movable',
       labelVisible: false
     },
     {
       id: 'ResizableField',
-      objectType: 'CheckBoxField',
+      objectType: CheckBoxField,
       label: 'Resizable',
       labelVisible: false
     }

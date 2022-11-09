@@ -1,14 +1,15 @@
+import {CheckBoxField, GroupBox} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.BooleanColumnPropertiesBox',
   type: 'model',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Boolean Column Properties',
   expandable: true,
   fields: [
     {
       id: 'TriStateEnabledField',
-      objectType: 'CheckBoxField',
+      objectType: CheckBoxField,
       label: 'Tri State Enabled',
       labelVisible: false
     }

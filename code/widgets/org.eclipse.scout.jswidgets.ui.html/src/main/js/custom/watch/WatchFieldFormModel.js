@@ -1,18 +1,21 @@
+import {GroupBox, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, FormFieldPropertiesBox, GridDataBox, WatchField, WidgetActionsBox} from '../../index';
+
 export default () => ({
   id: 'jswidgets.WatchFieldForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'WatchField',
-            objectType: 'jswidgets.WatchField',
+            objectType: WatchField,
             label: 'Watch',
             gridDataHints: {
               h: 5
@@ -22,22 +25,22 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints',
                 expanded: false
               }
@@ -45,18 +48,18 @@ export default () => ({
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

@@ -1,29 +1,31 @@
+import {Button, GroupBox, SmartField, StringField} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.GroupBoxAddFieldBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   label: 'Add field',
   expandable: true,
   gridColumnCount: 2,
   fields: [
     {
       id: 'BeforeField',
-      objectType: 'SmartField',
+      objectType: SmartField,
       label: 'Before'
     },
     {
       id: 'LabelField',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Label'
     },
     {
       id: 'LabelType',
-      objectType: 'SmartField',
+      objectType: SmartField,
       lookupCall: 'jswidgets.FormFieldTypeLookupCall',
       label: 'Type'
     },
     {
       id: 'CreateButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Add',
       processButton: false,
       keyStroke: 'ctrl-insert'

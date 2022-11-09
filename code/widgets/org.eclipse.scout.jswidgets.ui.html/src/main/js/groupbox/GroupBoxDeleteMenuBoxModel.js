@@ -1,18 +1,20 @@
+import {Button, GroupBox, SmartField} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.GroupBoxDeleteMenuBox',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   label: 'Delete menu',
   expandable: true,
   gridColumnCount: 2,
   fields: [
     {
       id: 'MenuToDeleteField',
-      objectType: 'SmartField',
+      objectType: SmartField,
       label: 'Menubar Item'
     },
     {
       id: 'DeleteButton',
-      objectType: 'Button',
+      objectType: Button,
       label: 'Delete',
       enabled: false,
       processButton: false,

@@ -1,34 +1,35 @@
+import {GroupBox, NumberField, SmartField, StringField} from '@eclipse-scout/core';
 export default () => ({
   id: 'jswidgets.NumberColumnPropertiesBox',
   type: 'model',
-  objectType: 'GroupBox',
+  objectType: GroupBox,
   gridColumnCount: 2,
   label: 'NumberColumn Properties',
   expandable: true,
   fields: [
     {
       id: 'MinValueField',
-      objectType: 'NumberField',
+      objectType: NumberField,
       label: 'Min Value'
     },
     {
       id: 'MaxValueField',
-      objectType: 'NumberField',
+      objectType: NumberField,
       label: 'Max Value'
     },
     {
       id: 'MultiplierField',
-      objectType: 'NumberField',
+      objectType: NumberField,
       label: 'Multiplier'
     },
     {
       id: 'FormatField',
-      objectType: 'StringField',
+      objectType: StringField,
       label: 'Format'
     },
     {
       id: 'BackgroundEffectField',
-      objectType: 'SmartField',
+      objectType: SmartField,
       lookupCall: 'jswidgets.BackgroundEffectLookupCall',
       label: 'Background Effect',
       displayStyle: 'default'

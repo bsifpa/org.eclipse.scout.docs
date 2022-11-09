@@ -24,7 +24,7 @@ export default class ConfigurationBox extends TabBox {
   protected override _init(model: InitModelOf<this>) {
     super._init(model);
 
-    this.toggleMenu = scout.create('Menu', {
+    this.toggleMenu = scout.create(Menu, {
       parent: this,
       cssClass: 'configuration-box-toggle-menu',
       menuTypes: [

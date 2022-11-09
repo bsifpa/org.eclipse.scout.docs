@@ -1,6 +1,7 @@
-import {models, PageWithTable, scout, strings} from '@eclipse-scout/core';
+import {HtmlTile, models, PageWithTable, scout, strings} from '@eclipse-scout/core';
 import SamplePageWithTableModel from './SamplePageWithTableModel';
 import $ from 'jquery';
+import {MiniForm, SamplePageWithNodes} from '../index';
 
 export default class SamplePageWithTable extends PageWithTable {
 
@@ -22,7 +23,7 @@ export default class SamplePageWithTable extends PageWithTable {
     let formMenu = table.widget('FormMenu');
     formMenu.on('propertyChange:selected', event => {
       if (event.newValue && !formMenu.form) {
-        formMenu.setForm(scout.create('jswidgets.MiniForm', {
+        formMenu.setForm(scout.create(MiniForm, {
           parent: formMenu
         }));
       }
@@ -39,7 +40,7 @@ export default class SamplePageWithTable extends PageWithTable {
         row.data.number + '<br><b>Boolean Column:</b> ' +
         row.data.bool
     };
-    return scout.create('HtmlTile', model);
+    return scout.create(HtmlTile, model);
   }
 
   _onAddRowMenuAction() {
@@ -144,7 +145,7 @@ export default class SamplePageWithTable extends PageWithTable {
   }
 
   createChildPage(row) {
-    return scout.create('jswidgets.SamplePageWithNodes', {
+    return scout.create(SamplePageWithNodes, {
       parent: this.getOutline()
     });
   }

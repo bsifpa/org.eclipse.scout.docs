@@ -8,7 +8,6 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-
 import {StaticLookupCall} from '@eclipse-scout/core';
 import DesktopNotification from '@eclipse-scout/core/src/desktop/notification/DesktopNotification';
 

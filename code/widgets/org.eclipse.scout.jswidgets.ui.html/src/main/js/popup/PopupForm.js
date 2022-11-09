@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, graphics, models, Rectangle, scout} from '@eclipse-scout/core';
+import {Form, graphics, Label, models, Rectangle, scout, WidgetPopup} from '@eclipse-scout/core';
 import PopupFormModel from './PopupFormModel';
 
 /**
@@ -30,7 +30,7 @@ export default class PopupForm extends Form {
   _init(model) {
     super._init(model);
 
-    let dummyPopup = scout.create('WidgetPopup', {
+    let dummyPopup = scout.create(WidgetPopup, {
       parent: this
     });
     this.widget('OpenPopupButton').on('click', this._onOpenPopupButtonClick.bind(this));
@@ -150,7 +150,7 @@ export default class PopupForm extends Form {
       $anchor = this.widget('OpenPopupButton').$field;
     }
     let anchorBounds = this._getAnchorBounds();
-    this.popup = scout.create('WidgetPopup', {
+    this.popup = scout.create(WidgetPopup, {
       parent: this,
       $anchor: $anchor,
       anchorBounds: anchorBounds,
@@ -171,7 +171,7 @@ export default class PopupForm extends Form {
       withGlassPane: this.widget('WithGlassPaneField').value,
       cssClass: 'popup-form-popup',
       content: {
-        objectType: 'Label',
+        objectType: Label,
         htmlEnabled: true,
         value: '<h2>Hi, I\'m a popup!</h2>' +
           '<p>This widget popup contains a label to display some text.</p>' +

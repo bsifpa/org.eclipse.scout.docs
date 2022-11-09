@@ -1,40 +1,43 @@
+import {GroupBox, Menu, SmartField, StringField, TabBox, TabItem} from '@eclipse-scout/core';
+import {EventsTab, FormFieldPropertiesBox, GridDataBox, GroupBoxAddFieldBox, GroupBoxAddMenuBox, GroupBoxDeleteFieldBox, GroupBoxDeleteMenuBox, GroupBoxPropertiesBox, LogicalGridLayoutConfigBox, WidgetActionsBox} from '../index';
+
 export default () => ({
   id: 'jswidgets.GroupBoxForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         label: 'Group Box',
         fields: [
           {
             id: 'StringField1',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'String Field 1'
           },
           {
             id: 'StringField2',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'String Field 2'
           },
           {
             id: 'StringField3',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'String Field 3'
           },
           {
             id: 'StringField4',
-            objectType: 'StringField',
+            objectType: StringField,
             label: 'String Field 4'
           }
         ],
         menus: [
           {
             id: 'Menu1',
-            objectType: 'scout.Menu',
+            objectType: Menu,
             text: 'Menu',
             horizontalAlignment: 1
           }
@@ -42,88 +45,88 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Group Box Properties',
             fields: [
               {
                 id: 'GroupBoxPropertiesBox',
-                objectType: 'jswidgets.GroupBoxPropertiesBox',
+                objectType: GroupBoxPropertiesBox,
                 expandable: true,
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               },
               {
                 id: 'BodyLayoutConfigBox',
-                objectType: 'jswidgets.LogicalGridLayoutConfigBox'
+                objectType: LogicalGridLayoutConfigBox
               }
             ]
           },
           {
             id: 'FieldPropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Field Properties',
             fields: [
               {
                 id: 'Field.TargetField',
-                objectType: 'SmartField',
+                objectType: SmartField,
                 label: 'Target'
               },
               {
                 id: 'Field.FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'Field.GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'Actions.AddMenuBox',
-                objectType: 'jswidgets.GroupBoxAddMenuBox'
+                objectType: GroupBoxAddMenuBox
               },
               {
                 id: 'Actions.DeleteMenuBox',
-                objectType: 'jswidgets.GroupBoxDeleteMenuBox'
+                objectType: GroupBoxDeleteMenuBox
               },
               {
                 id: 'Actions.AddFieldBox',
-                objectType: 'jswidgets.GroupBoxAddFieldBox'
+                objectType: GroupBoxAddFieldBox
               },
               {
                 id: 'Actions.DeleteFieldBox',
-                objectType: 'jswidgets.GroupBoxDeleteFieldBox'
+                objectType: GroupBoxDeleteFieldBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

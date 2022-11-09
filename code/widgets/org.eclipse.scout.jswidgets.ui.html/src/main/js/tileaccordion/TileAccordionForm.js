@@ -8,9 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, comparators, Form, models, scout} from '@eclipse-scout/core';
+import {arrays, comparators, Form, Group, HtmlTile, models, scout, TileGrid} from '@eclipse-scout/core';
 import TileAccordionFormModel from './TileAccordionFormModel';
-import {GroupLookupCall} from '../index';
+import {CustomTile, GroupLookupCall} from '../index';
 import $ from 'jquery';
 
 export default class TileAccordionForm extends Form {
@@ -205,11 +205,11 @@ export default class TileAccordionForm extends Form {
         label: 'Tile ' + i
       }));
     }
-    let group = scout.create('Group', {
+    let group = scout.create(Group, {
       parent: this.accordion,
       title: 'Group ' + this.insertedGroupCount++,
       body: {
-        objectType: 'TileGrid',
+        objectType: TileGrid,
         gridColumnCount: 6,
         layoutConfig: {
           columnWidth: 100,
@@ -239,7 +239,7 @@ export default class TileAccordionForm extends Form {
         }
       };
       model = $.extend({}, defaults, model);
-      return scout.create('HtmlTile', model);
+      return scout.create(HtmlTile, model);
     }
     defaults = {
       parent: this.accordion,
@@ -250,7 +250,7 @@ export default class TileAccordionForm extends Form {
       colorScheme: this.accordion.groups.length % 2 === 0 ? 'default' : 'alternative'
     };
     model = $.extend({}, defaults, model);
-    return scout.create('jswidgets.CustomTile', model);
+    return scout.create(CustomTile, model);
   }
 
   _updateStatus() {

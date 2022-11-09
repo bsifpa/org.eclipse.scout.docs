@@ -8,7 +8,6 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-
 import {Button, Form, models, scout} from '@eclipse-scout/core';
 import DesktopNotificationFormModel from './DesktopNotificationFormModel';
 import DesktopNotification from '@eclipse-scout/core/src/desktop/notification/DesktopNotification';
@@ -26,7 +25,7 @@ export default class DesktopNotificationForm extends Form {
   _init(model) {
     super._init(model);
 
-    let notification = scout.create('DesktopNotification', {parent: this});
+    let notification = scout.create(DesktopNotification, {parent: this});
     this.widget('ClosableField').setValue(notification.closable);
     this.widget('MessageField').setValue('Hi there!');
     this.widget('DurationField').setValue(notification.duration);
@@ -44,7 +43,7 @@ export default class DesktopNotificationForm extends Form {
   }
 
   _onButtonClick(event) {
-    let notification = scout.create('DesktopNotification', {
+    let notification = scout.create(DesktopNotification, {
       parent: this,
       closable: this.widget('ClosableField').value,
       duration: this.widget('DurationField').value,

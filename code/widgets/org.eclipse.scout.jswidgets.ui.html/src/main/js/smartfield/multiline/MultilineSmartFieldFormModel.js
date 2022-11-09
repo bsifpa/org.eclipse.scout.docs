@@ -1,18 +1,29 @@
+import {GroupBox, SmartFieldMultiline, TabBox, TabItem} from '@eclipse-scout/core';
+import {
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  SmartFieldPropertiesBox,
+  ValueFieldPropertiesBox,
+  WidgetActionsBox
+} from '../../index';
+
 export default () => ({
   id: 'jswidgets.MultilineSmartFieldForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'MultilineSmartField',
-            objectType: 'SmartFieldMultiline',
+            objectType: SmartFieldMultiline,
             lookupCall: 'jswidgets.MultilinePersonLookupCall',
             label: 'Multiline Smart Field',
             gridDataHints: {
@@ -24,7 +35,7 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         labelVisible: false,
         cssClass: 'jswidgets-configuration',
         gridColumnCount: 1,
@@ -32,49 +43,49 @@ export default () => ({
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'SmartFieldPropertiesBox',
-                objectType: 'jswidgets.SmartFieldPropertiesBox',
+                objectType: SmartFieldPropertiesBox,
                 label: 'Smart Field Properties',
                 labelVisible: false,
                 borderVisible: false
               },
               {
                 id: 'ValueFieldPropertiesBox',
-                objectType: 'jswidgets.ValueFieldPropertiesBox'
+                objectType: ValueFieldPropertiesBox
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

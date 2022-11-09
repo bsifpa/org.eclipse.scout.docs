@@ -8,16 +8,19 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
+import {Button, CheckBoxField, GroupBox, SmartField, StringField, TabItem} from '@eclipse-scout/core';
+import {ConfigurationBox, EventsTab, WidgetActionsBox, WidgetPopupPropertiesBox} from '../index';
+
 export default () => ({
   id: 'jswidgets.PopupForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         gridDataHints: {
           weightY: 1
@@ -25,7 +28,7 @@ export default () => ({
         fields: [
           {
             id: 'OpenPopupButton',
-            objectType: 'Button',
+            objectType: Button,
             label: '${textKey:OpenPopup}',
             cssClass: 'open-form-button',
             processButton: false,
@@ -41,103 +44,103 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'jswidgets.ConfigurationBox',
+        objectType: ConfigurationBox,
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'UseButtonAsAnchorField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Use button as anchor',
                     labelVisible: false
                   },
                   {
                     id: 'AnchorBoundsField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Anchor Bounds',
                     tooltipText: '${textKey:AnchorBoundsTooltip}'
                   },
                   {
                     id: 'ModalField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Modal',
                     tooltipText: 'If set, the following properties are overruled: "closeOnAnchorMouseDown", "closeOnMouseDownOutside", "closeOnOtherPopupOpen" and "withGlassPane".',
                     labelVisible: false
                   },
                   {
                     id: 'CloseOnAnchorMouseDownField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Close on Anchor Mouse Down',
                     labelVisible: false
                   },
                   {
                     id: 'CloseOnMouseDownOutsideField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Close on Mouse Down Outside',
                     labelVisible: false
                   },
                   {
                     id: 'CloseOnOtherPopupOpenField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Close on Other Popup Open',
                     labelVisible: false
                   },
                   {
                     id: 'HorizontalSwitchField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Horizontal Switch',
                     labelVisible: false
                   },
                   {
                     id: 'VerticalSwitchField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Vertical Switch',
                     labelVisible: false
                   },
                   {
                     id: 'TrimWidthField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Trim Width',
                     labelVisible: false
                   },
                   {
                     id: 'TrimHeightField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Trim Height',
                     labelVisible: false
                   },
                   {
                     id: 'WithArrowField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'With Arrow',
                     labelVisible: false
                   },
                   {
                     id: 'WithGlassPaneField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'With Glass Pane',
                     labelVisible: false
                   },
                   {
                     id: 'HorizontalAlignmentField',
-                    objectType: 'SmartField',
+                    objectType: SmartField,
                     lookupCall: 'jswidgets.PopupHorizontalAlignLookupCall',
                     label: 'Horizontal Alignment'
                   },
                   {
                     id: 'VerticalAlignmentField',
-                    objectType: 'SmartField',
+                    objectType: SmartField,
                     lookupCall: 'jswidgets.PopupVerticalAlignLookupCall',
                     label: 'Vertical Alignment'
                   }
@@ -145,24 +148,24 @@ export default () => ({
               },
               {
                 id: 'WidgetPopupPropertiesBox',
-                objectType: 'jswidgets.WidgetPopupPropertiesBox'
+                objectType: WidgetPopupPropertiesBox
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

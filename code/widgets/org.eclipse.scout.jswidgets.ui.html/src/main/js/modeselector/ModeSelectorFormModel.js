@@ -1,35 +1,54 @@
+import {
+  CheckBoxField,
+  GroupBox,
+  Mode,
+  ModeSelector,
+  ModeSelectorField,
+  SmartField,
+  StringField,
+  TabBox,
+  TabItem
+} from '@eclipse-scout/core';
+import {
+  EventsTab,
+  FormFieldActionsBox,
+  FormFieldPropertiesBox,
+  GridDataBox,
+  WidgetActionsBox
+} from '../index';
+
 export default () => ({
   id: 'jswidgets.ModeSelectorForm',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
-    objectType: 'GroupBox',
+    objectType: GroupBox,
     fields: [
       {
         id: 'DetailBox',
-        objectType: 'GroupBox',
+        objectType: GroupBox,
         gridColumnCount: 1,
         fields: [
           {
             id: 'ModeSelectorField',
-            objectType: 'ModeSelectorField',
+            objectType: ModeSelectorField,
             labelVisible: false,
             statusVisible: false,
             modeSelector: {
               id: 'ModeSelector',
-              objectType: 'ModeSelector',
+              objectType: ModeSelector,
               selectedMode: 'Mode1',
               modes: [{
                 id: 'Mode1',
-                objectType: 'Mode',
+                objectType: Mode,
                 text: 'Mode 1'
               }, {
                 id: 'Mode2',
-                objectType: 'Mode',
+                objectType: Mode,
                 text: 'Mode 2'
               }, {
                 id: 'Mode3',
-                objectType: 'Mode',
+                objectType: Mode,
                 text: 'Mode 3'
               }]
             }
@@ -38,53 +57,53 @@ export default () => ({
       },
       {
         id: 'ConfigurationBox',
-        objectType: 'TabBox',
+        objectType: TabBox,
         cssClass: 'jswidgets-configuration',
         selectedTab: 'PropertiesTab',
         tabItems: [
           {
             id: 'PropertiesTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Properties',
             fields: [
               {
                 id: 'PropertiesBox',
-                objectType: 'GroupBox',
+                objectType: GroupBox,
                 label: 'Properties',
                 labelVisible: false,
                 borderVisible: false,
                 fields: [
                   {
                     id: 'TargetField',
-                    objectType: 'SmartField',
+                    objectType: SmartField,
                     label: 'Target'
                   },
                   {
                     id: 'TextField',
-                    objectType: 'StringField',
+                    objectType: StringField,
                     label: 'Text'
                   },
                   {
                     id: 'IconIdField',
-                    objectType: 'SmartField',
+                    objectType: SmartField,
                     lookupCall: 'jswidgets.IconIdLookupCall',
                     label: 'Icon Id'
                   },
                   {
                     id: 'SelectedField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Selected',
                     labelVisible: false
                   },
                   {
                     id: 'EnabledField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Enabled',
                     labelVisible: false
                   },
                   {
                     id: 'VisibleField',
-                    objectType: 'CheckBoxField',
+                    objectType: CheckBoxField,
                     label: 'Visible',
                     labelVisible: false
                   }
@@ -92,33 +111,33 @@ export default () => ({
               },
               {
                 id: 'FormFieldPropertiesBox',
-                objectType: 'jswidgets.FormFieldPropertiesBox'
+                objectType: FormFieldPropertiesBox
               },
               {
                 id: 'GridDataBox',
-                objectType: 'jswidgets.GridDataBox',
+                objectType: GridDataBox,
                 label: 'Grid Data Hints'
               }
             ]
           },
           {
             id: 'ActionsTab',
-            objectType: 'TabItem',
+            objectType: TabItem,
             label: 'Actions',
             fields: [
               {
                 id: 'FormFieldActionsBox',
-                objectType: 'jswidgets.FormFieldActionsBox'
+                objectType: FormFieldActionsBox
               },
               {
                 id: 'WidgetActionsBox',
-                objectType: 'jswidgets.WidgetActionsBox'
+                objectType: WidgetActionsBox
               }
             ]
           },
           {
             id: 'EventsTab',
-            objectType: 'jswidgets.EventsTab'
+            objectType: EventsTab
           }
         ]
       }

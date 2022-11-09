@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {arrays, Form, MessageBoxes, models, Status} from '@eclipse-scout/core';
+import {arrays, BreadcrumbItem, Form, MessageBoxes, models, Status} from '@eclipse-scout/core';
 import BreadcrumbBarFieldFormModel from './BreadcrumbBarFieldFormModel';
 
 export default class BreadcrumbBarFieldForm extends Form {
@@ -41,7 +41,7 @@ export default class BreadcrumbBarFieldForm extends Form {
 
       this.breadcrumbBarField.setBreadcrumbItems(arrays.ensure(event.newValue.split('\n')).map(text => {
         return {
-          objectType: 'BreadcrumbItem',
+          objectType: BreadcrumbItem,
           text: text,
           ref: text
         };

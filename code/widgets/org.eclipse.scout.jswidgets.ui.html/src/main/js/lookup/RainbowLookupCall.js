@@ -8,7 +8,7 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {icons, scout, StaticLookupCall} from '@eclipse-scout/core';
+import {icons, LookupRow, scout, StaticLookupCall} from '@eclipse-scout/core';
 
 export default class RainbowLookupCall extends StaticLookupCall {
 
@@ -52,6 +52,6 @@ export default class RainbowLookupCall extends StaticLookupCall {
     if (index % 2 === 0) {
       model.foregroundColor = 'blue';
     }
-    return scout.create('LookupRow', model);
+    return scout.create(LookupRow, model);
   }
 }
