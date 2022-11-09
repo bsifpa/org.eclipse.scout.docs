@@ -11,7 +11,7 @@
 import {GridData, GroupBox, models} from '@eclipse-scout/core';
 import GridDataBoxModel from './GridDataBoxModel';
 
-export default class GridDataBox extends GroupBox {
+export class GridDataBox extends GroupBox {
 
   constructor() {
     super();

@@ -11,7 +11,7 @@
 import {Form, models} from '@eclipse-scout/core';
 import LabelFieldFormModel from './LabelFieldFormModel';
 
-export default class LabelFieldForm extends Form {
+export class LabelFieldForm extends Form {
 
   constructor() {
     super();

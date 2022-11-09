@@ -11,7 +11,7 @@
 import NumberFieldFormModel from './NumberFieldFormModel';
 import {Form, models} from '@eclipse-scout/core';
 
-export default class NumberFieldForm extends Form {
+export class NumberFieldForm extends Form {
 
   constructor() {
     super();

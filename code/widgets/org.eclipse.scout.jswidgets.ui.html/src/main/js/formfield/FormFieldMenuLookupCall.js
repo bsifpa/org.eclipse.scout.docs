@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class FormFieldMenuLookupCall extends StaticLookupCall {
+export class FormFieldMenuLookupCall extends StaticLookupCall {
 
   constructor(formField) {
     super();

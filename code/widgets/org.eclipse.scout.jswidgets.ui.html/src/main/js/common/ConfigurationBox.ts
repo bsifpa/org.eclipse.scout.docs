@@ -8,10 +8,9 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Action, Event, GridData, icons, Menu, scout, TabBox} from '@eclipse-scout/core';
-import {InitModelOf} from '@eclipse-scout/core/src/scout';
+import {Action, Event, GridData, icons, InitModelOf, Menu, scout, TabBox} from '@eclipse-scout/core';
 
-export default class ConfigurationBox extends TabBox {
+export class ConfigurationBox extends TabBox {
 
   toggleMenu: Menu;
   protected _origWeightY: number;

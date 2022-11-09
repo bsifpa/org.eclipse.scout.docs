@@ -11,7 +11,7 @@
 import {DateFormat, dates, Form, models, scout} from '@eclipse-scout/core';
 import DateFieldFormModel from './DateFieldFormModel';
 
-export default class DateFieldForm extends Form {
+export class DateFieldForm extends Form {
 
   constructor() {
     super();

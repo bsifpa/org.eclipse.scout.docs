@@ -11,7 +11,7 @@
 import {GroupBox, models, Notification, objects, scout, Status} from '@eclipse-scout/core';
 import GroupBoxPropertiesBoxModel from './GroupBoxPropertiesBoxModel';
 
-export default class GroupBoxPropertiesBox extends GroupBox {
+export class GroupBoxPropertiesBox extends GroupBox {
 
   constructor() {
     super();

@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class ValuesProviderLookupCall extends StaticLookupCall<number> {
+export class ValuesProviderLookupCall extends StaticLookupCall<number> {
 
   constructor() {
     super();

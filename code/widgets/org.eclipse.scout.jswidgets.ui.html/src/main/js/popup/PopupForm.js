@@ -15,7 +15,7 @@ import PopupFormModel from './PopupFormModel';
  * @typedef {Form} PopupForm
  * @property {PopupFormWidgetMap} widgetMap
  */
-export default class PopupForm extends Form {
+export class PopupForm extends Form {
 
   constructor() {
     super();

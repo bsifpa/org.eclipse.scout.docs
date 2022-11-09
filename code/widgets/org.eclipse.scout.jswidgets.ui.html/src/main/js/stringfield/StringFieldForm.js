@@ -11,7 +11,7 @@
 import {Form, MessageBox, models, scout} from '@eclipse-scout/core';
 import StringFieldFormModel from './StringFieldFormModel';
 
-export default class StringFieldForm extends Form {
+export class StringFieldForm extends Form {
 
   constructor() {
     super();

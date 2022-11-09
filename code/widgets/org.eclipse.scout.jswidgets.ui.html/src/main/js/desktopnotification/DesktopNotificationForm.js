@@ -3,16 +3,15 @@
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Distribution License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/org/documents/edl-v10.html
+ * https://www.eclipse.org/org/documents/edl-v10.html
  *
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Button, Form, models, scout} from '@eclipse-scout/core';
+import {Button, DesktopNotification, Form, models, scout} from '@eclipse-scout/core';
 import DesktopNotificationFormModel from './DesktopNotificationFormModel';
-import DesktopNotification from '@eclipse-scout/core/src/desktop/notification/DesktopNotification';
 
-export default class DesktopNotificationForm extends Form {
+export class DesktopNotificationForm extends Form {
 
   constructor() {
     super();

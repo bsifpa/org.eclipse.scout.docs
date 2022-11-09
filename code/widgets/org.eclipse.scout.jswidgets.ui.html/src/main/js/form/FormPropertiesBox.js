@@ -12,7 +12,7 @@ import {GroupBox, models} from '@eclipse-scout/core';
 import FormPropertiesBoxModel from './FormPropertiesBoxModel';
 import {DisplayParentLookupCall} from '../index';
 
-export default class FormPropertiesBox extends GroupBox {
+export class FormPropertiesBox extends GroupBox {
 
   // noinspection DuplicatedCode
   constructor() {

@@ -11,7 +11,7 @@
 import {arrays, DefaultStatus, DesktopNotification, GroupBox, models, numbers, objects, scout, Status} from '@eclipse-scout/core';
 import FormFieldPropertiesBoxModel from './FormFieldPropertiesBoxModel';
 
-export default class FormFieldPropertiesBox extends GroupBox {
+export class FormFieldPropertiesBox extends GroupBox {
 
   constructor() {
     super();

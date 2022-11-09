@@ -11,7 +11,7 @@
 import {Form, models, scout} from '@eclipse-scout/core';
 import WrappedFormFieldFormModel from './WrappedFormFieldFormModel';
 
-export default class WrappedFormFieldForm extends Form {
+export class WrappedFormFieldForm extends Form {
 
   constructor() {
     super();

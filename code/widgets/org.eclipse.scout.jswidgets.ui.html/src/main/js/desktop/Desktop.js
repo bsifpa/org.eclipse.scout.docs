@@ -11,7 +11,7 @@
 import {App, Desktop as Desktop_1, Form, GroupBox, icons, LabelField, models, scout} from '@eclipse-scout/core';
 import DesktopModel from './DesktopModel';
 
-export default class Desktop extends Desktop_1 {
+export class Desktop extends Desktop_1 {
 
   constructor() {
     super();

@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import LogicalGridLayoutConfigBoxModel from './LogicalGridLayoutConfigBoxModel';
 
-export default class LogicalGridLayoutConfigBox extends GroupBox {
+export class LogicalGridLayoutConfigBox extends GroupBox {
 
   constructor() {
     super();

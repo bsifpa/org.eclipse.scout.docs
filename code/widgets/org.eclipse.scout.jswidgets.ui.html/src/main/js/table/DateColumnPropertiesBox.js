@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import DateColumnPropertiesBoxModel from './DateColumnPropertiesBoxModel';
 
-export default class DateColumnPropertiesBox extends GroupBox {
+export class DateColumnPropertiesBox extends GroupBox {
 
   constructor() {
     super();

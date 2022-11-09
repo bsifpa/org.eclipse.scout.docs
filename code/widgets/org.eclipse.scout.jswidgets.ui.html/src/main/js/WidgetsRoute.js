@@ -10,7 +10,7 @@
  */
 import {arrays, ObjectFactory, objects, Route, router, strings, Tree} from '@eclipse-scout/core';
 
-export default class WidgetsRoute extends Route {
+export class WidgetsRoute extends Route {
 
   constructor(desktop) {
     super();

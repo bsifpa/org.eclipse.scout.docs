@@ -11,7 +11,7 @@
 import {StaticLookupCall} from '@eclipse-scout/core';
 import {Chart, ChartPosition} from '@eclipse-scout/chart';
 
-export default class LegendPositionLookupCall extends StaticLookupCall<ChartPosition> {
+export class LegendPositionLookupCall extends StaticLookupCall<ChartPosition> {
 
   constructor() {
     super();

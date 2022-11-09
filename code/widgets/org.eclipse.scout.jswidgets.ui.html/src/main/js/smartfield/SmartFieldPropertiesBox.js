@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import SmartFieldPropertiesBoxModel from './SmartFieldPropertiesBoxModel';
 
-export default class SmartFieldPropertiesBox extends GroupBox {
+export class SmartFieldPropertiesBox extends GroupBox {
 
   constructor() {
     super();

@@ -11,7 +11,7 @@
 import CarouselFormModel from './CarouselFormModel';
 import {Form, models} from '@eclipse-scout/core';
 
-export default class CarouselForm extends Form {
+export class CarouselForm extends Form {
 
   constructor() {
     super();

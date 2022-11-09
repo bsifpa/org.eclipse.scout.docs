@@ -12,7 +12,7 @@ import {models} from '@eclipse-scout/core';
 import ProposalFieldPropertiesBoxModel from './ProposalFieldPropertiesBoxModel';
 import {SmartFieldPropertiesBox} from '../index';
 
-export default class ProposalFieldPropertiesBox extends SmartFieldPropertiesBox {
+export class ProposalFieldPropertiesBox extends SmartFieldPropertiesBox {
 
   constructor() {
     super();

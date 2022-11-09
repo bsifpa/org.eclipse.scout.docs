@@ -12,7 +12,7 @@ import TreeSmartFieldPropertiesBoxModel from './TreeSmartFieldPropertiesBoxModel
 import {models} from '@eclipse-scout/core';
 import {SmartFieldPropertiesBox} from '../../index';
 
-export default class TreeSmartFieldPropertiesBox extends SmartFieldPropertiesBox {
+export class TreeSmartFieldPropertiesBox extends SmartFieldPropertiesBox {
 
   constructor() {
     super();

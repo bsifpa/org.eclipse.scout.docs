@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import NumberColumnPropertiesBoxModel from './NumberColumnPropertiesBoxModel';
 
-export default class NumberColumnPropertiesBox extends GroupBox {
+export class NumberColumnPropertiesBox extends GroupBox {
 
   constructor() {
     super();

@@ -8,12 +8,11 @@
  * Contributors:
  *     BSI Business Systems Integration AG - initial API and implementation
  */
-import {Form, FormModel, models} from '@eclipse-scout/core';
+import {Form, FormModel, InitModelOf, models} from '@eclipse-scout/core';
 import MiniFormModel from './MiniFormModel';
 import {MiniFormWidgetMap} from '../index';
-import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
-export default class MiniForm extends Form {
+export class MiniForm extends Form {
   declare widgetMap: MiniFormWidgetMap;
 
   protected override _jsonModel(): FormModel {

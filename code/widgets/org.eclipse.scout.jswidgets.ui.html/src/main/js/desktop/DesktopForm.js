@@ -11,7 +11,7 @@
 import {Form, models} from '@eclipse-scout/core';
 import DesktopFormModel from './DesktopFormModel';
 
-export default class DesktopForm extends Form {
+export class DesktopForm extends Form {
 
   constructor() {
     super();

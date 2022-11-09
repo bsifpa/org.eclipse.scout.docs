@@ -11,7 +11,7 @@
 import {Form, models} from '@eclipse-scout/core';
 import CheckBoxFieldFormModel from './CheckBoxFieldFormModel';
 
-export default class CheckBoxFieldForm extends Form {
+export class CheckBoxFieldForm extends Form {
 
   constructor() {
     super();

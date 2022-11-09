@@ -12,7 +12,7 @@ import {models, TabItem} from '@eclipse-scout/core';
 import TabItemPropertiesModel from './TabItemPropertiesModel';
 import {TabItemLookupCall} from '../index';
 
-export default class TabItemProperties extends TabItem {
+export class TabItemProperties extends TabItem {
 
   constructor() {
     super();

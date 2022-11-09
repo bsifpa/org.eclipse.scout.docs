@@ -20,7 +20,7 @@ import {
 import {WidgetsRoute} from './index';
 import DesktopModel from './desktop/DesktopModel';
 
-export default class App extends ScoutApp {
+export class App extends ScoutApp {
 
   constructor() {
     super();

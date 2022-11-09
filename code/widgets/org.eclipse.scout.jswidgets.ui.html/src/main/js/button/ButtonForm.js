@@ -11,7 +11,7 @@
 import ButtonFormModel from './ButtonFormModel';
 import {Button, DesktopNotification, Form, models, scout, Status} from '@eclipse-scout/core';
 
-export default class ButtonForm extends Form {
+export class ButtonForm extends Form {
 
   constructor() {
     super();

@@ -12,7 +12,7 @@ import {Form, MessageBoxes, models, scout} from '@eclipse-scout/core';
 import {FormFieldLookupCall} from '../index';
 import GroupBoxFormModel from './GroupBoxFormModel';
 
-export default class GroupBoxForm extends Form {
+export class GroupBoxForm extends Form {
 
   constructor() {
     super();

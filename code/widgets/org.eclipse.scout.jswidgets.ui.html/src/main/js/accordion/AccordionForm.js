@@ -13,7 +13,7 @@ import AccordionFormModel from './AccordionFormModel';
 import $ from 'jquery';
 import {CustomTile} from '../index';
 
-export default class AccordionForm extends Form {
+export class AccordionForm extends Form {
 
   constructor() {
     super();

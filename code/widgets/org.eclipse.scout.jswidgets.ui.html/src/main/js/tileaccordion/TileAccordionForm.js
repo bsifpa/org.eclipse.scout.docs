@@ -13,7 +13,7 @@ import TileAccordionFormModel from './TileAccordionFormModel';
 import {CustomTile, GroupLookupCall} from '../index';
 import $ from 'jquery';
 
-export default class TileAccordionForm extends Form {
+export class TileAccordionForm extends Form {
 
   constructor() {
     super();

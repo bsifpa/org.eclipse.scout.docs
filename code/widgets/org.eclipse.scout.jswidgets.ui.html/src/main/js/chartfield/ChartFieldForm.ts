@@ -9,35 +9,13 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {
-  App,
-  arrays,
-  CancelMenu,
-  CheckBoxField,
-  colorSchemes,
-  Column,
-  DesktopNotification,
-  Form,
-  FormModel,
-  GridData,
-  GroupBox,
-  Menu,
-  models,
-  NumberColumn,
-  objects,
-  OkMenu,
-  scout,
-  Status,
-  StringField,
-  strings,
-  Table,
-  TableField
+  App, arrays, CancelMenu, CheckBoxField, colorSchemes, Column, DesktopNotification, Form, FormModel, GridData, GroupBox, InitModelOf, Menu, models, NumberColumn, objects, OkMenu, scout, Status, StringField, strings, Table, TableField
 } from '@eclipse-scout/core';
 import {Chart, ChartConfig, ChartData, ChartField, ChartPosition, ChartValueClickEvent, ChartValueGroup} from '@eclipse-scout/chart';
 import ChartFieldFormModel from './ChartFieldFormModel';
 import {ChartFieldFormWidgetMap, EventsTab, FormFieldPropertiesBox, GridDataBox, ValuesProviderLookupCall, WidgetActionsBox} from '../index';
-import {InitModelOf} from '@eclipse-scout/core/src/scout';
 
-export default class ChartFieldForm extends Form {
+export class ChartFieldForm extends Form {
   declare widgetMap: ChartFieldFormWidgetMap;
 
   chart: Chart;

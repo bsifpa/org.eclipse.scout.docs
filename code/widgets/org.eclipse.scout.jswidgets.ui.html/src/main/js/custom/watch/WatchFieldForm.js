@@ -11,7 +11,7 @@
 import {Form, models} from '@eclipse-scout/core';
 import WatchFieldFormModel from './WatchFieldFormModel';
 
-export default class WatchFieldForm extends Form {
+export class WatchFieldForm extends Form {
 
   constructor() {
     super();

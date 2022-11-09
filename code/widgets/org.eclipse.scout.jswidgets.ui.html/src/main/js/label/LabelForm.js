@@ -11,7 +11,7 @@
 import LabelFormModel from './LabelFormModel';
 import {Form, GridData, MessageBoxes, models} from '@eclipse-scout/core';
 
-export default class LabelForm extends Form {
+export class LabelForm extends Form {
 
   constructor() {
     super();

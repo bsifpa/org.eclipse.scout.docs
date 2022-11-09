@@ -11,7 +11,7 @@
 import {GroupBox, models} from '@eclipse-scout/core';
 import TablePropertiesBoxModel from './TablePropertiesBoxModel';
 
-export default class TablePropertiesBox extends GroupBox {
+export class TablePropertiesBox extends GroupBox {
 
   constructor() {
     super();

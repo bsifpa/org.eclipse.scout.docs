@@ -11,7 +11,7 @@
 import {StaticLookupCall} from '@eclipse-scout/core';
 import {GreenAreaPosition, SpeedoChartRenderer} from '@eclipse-scout/chart';
 
-export default class SpeedoGreenAreaPositionLookupCall extends StaticLookupCall<GreenAreaPosition> {
+export class SpeedoGreenAreaPositionLookupCall extends StaticLookupCall<GreenAreaPosition> {
 
   constructor() {
     super();

@@ -12,7 +12,7 @@ import TileGridLayoutConfigBoxModel from './TileGridLayoutConfigBoxModel';
 import {models} from '@eclipse-scout/core';
 import {LogicalGridLayoutConfigBox} from '../index';
 
-export default class TileGridLayoutConfigBox extends LogicalGridLayoutConfigBox {
+export class TileGridLayoutConfigBox extends LogicalGridLayoutConfigBox {
 
   constructor() {
     super();

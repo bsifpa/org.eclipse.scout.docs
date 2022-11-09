@@ -10,7 +10,7 @@
  */
 import {StaticLookupCall} from '@eclipse-scout/core';
 
-export default class TabItemLookupCall extends StaticLookupCall {
+export class TabItemLookupCall extends StaticLookupCall {
 
   constructor(tabBox) {
     super();

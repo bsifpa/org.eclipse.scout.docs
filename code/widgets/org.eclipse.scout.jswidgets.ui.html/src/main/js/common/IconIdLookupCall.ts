@@ -10,7 +10,7 @@
  */
 import {icons, StaticLookupCall, strings} from '@eclipse-scout/core';
 
-export default class IconIdLookupCall extends StaticLookupCall<string> {
+export class IconIdLookupCall extends StaticLookupCall<string> {
 
   constructor() {
     super();

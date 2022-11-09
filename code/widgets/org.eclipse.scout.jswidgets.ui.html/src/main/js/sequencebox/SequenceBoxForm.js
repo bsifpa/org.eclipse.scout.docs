@@ -12,7 +12,7 @@ import {Form, models} from '@eclipse-scout/core';
 import {FormFieldLookupCall} from '../index';
 import SequenceBoxFormModel from './SequenceBoxFormModel';
 
-export default class SequenceBoxForm extends Form {
+export class SequenceBoxForm extends Form {
 
   constructor() {
     super();
