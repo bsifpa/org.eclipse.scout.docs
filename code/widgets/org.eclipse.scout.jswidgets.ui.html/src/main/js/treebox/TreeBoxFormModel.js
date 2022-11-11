@@ -1,17 +1,8 @@
 import {GroupBox, SmartField, TabBox, TabItem, TreeBox} from '@eclipse-scout/core';
-import {
-  EventsTab,
-  FormFieldActionsBox,
-  FormFieldPropertiesBox,
-  GridDataBox,
-  TreePropertiesBox,
-  ValueFieldPropertiesBox,
-  WidgetActionsBox
-} from '../index';
+import {EventsTab, FormFieldActionsBox, FormFieldPropertiesBox, GridDataBox, TreePropertiesBox, ValueFieldPropertiesBox, WidgetActionsBox} from '../index';
 
 export default () => ({
   id: 'jswidgets.TreeBoxForm',
-  type: 'model',
   displayHint: 'view',
   rootGroupBox: {
     id: 'MainBox',
