@@ -1,7 +1,7 @@
 import {CheckBoxField, GroupBox} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.BooleanColumnPropertiesBox',
-  type: 'model',
   objectType: GroupBox,
   gridColumnCount: 2,
   label: 'Boolean Column Properties',

@@ -12,7 +12,6 @@ import {CheckBoxField, GroupBox, SmartField} from '@eclipse-scout/core';
 
 export default () => ({
   id: 'jswidgets.TreePropertiesBox',
-  type: 'model',
   objectType: GroupBox,
   label: 'Tree Properties',
   fields: [

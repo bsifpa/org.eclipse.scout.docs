@@ -1,7 +1,7 @@
 import {CheckBoxField, GroupBox, StringField} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.DateColumnPropertiesBox',
-  type: 'model',
   objectType: GroupBox,
   gridColumnCount: 2,
   label: 'DateColumn Properties',

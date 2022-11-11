@@ -1,7 +1,7 @@
 import {GroupBox, NumberField} from '@eclipse-scout/core';
+
 export default () => ({
   id: 'jswidgets.SmartColumnPropertiesBox',
-  type: 'model',
   objectType: GroupBox,
   gridColumnCount: 2,
   label: 'SmartColumn Properties',
