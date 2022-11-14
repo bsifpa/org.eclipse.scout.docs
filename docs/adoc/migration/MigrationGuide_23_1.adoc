@@ -91,19 +91,69 @@ To install the Scout SDK into your existing Eclipse IDE, use this P2 update site
 
 // ----------------------------------------------------------------------------
 
-== Rename WidgetTooltip.widget (Scout JS)
+=== RegisterNamespace
 
-The `widget` property of `WidgetTooltip` has been renamed to `content`.
-Together with the property itself the corresponding setter has been renamed from `setWidget` to `setContent`.
+In all your `index.js` files, replace the last line as follows:
+
+.From
+[source,javascript]
+----
+window.yourNamespace = Object.assign(window.yourNamespace || {}, self);
+----
+
+.To
+[source,javascript]
+----
+ObjectFactory.get().registerNamespace('yourNamespace', self);
+----
+
+See the JsDoc of the `registerNamespace` method if you are curious what it does.
 
 == ObjectType as Class Reference (Scout JS)
 
 As described in the {release-notes-link}, it is now possible to use class references for the `objectType`.
 Even though the string based style still works and a migration is not necessary, the class reference style is the preferred way for the future.
 
-If you would like to migrate your code, here is how we did it (we used IntelliJ for the process).
+We highly recommend you migrate your code, so you can benefit of the improved type safety and code completion.
 
-. Find and replace all occurrences of `scout.create()`, `objectType:` and `lookupCall:` (use Ctrl-Shift-R in IntelliJ and enable Regex).
+To do so, you can use the Scout migration tool, which migrates the strings and also tries to add the required imports automatically.
+Alternatively, you can do it by yourself using your IDE and Find/Replace.
+
+To use the migration tool, follow these steps:
+
+. Open the `package.json` of your ui module (e.g. `your.project.ui.html`).
+. Add a devDependency to `@eclipse-scout/migrate` with the version `~23.1.0`.
+. Add a script as described in <<lst-objectTypeMigration>>.
+. Adjust the `moduleMap` argument by replacing `yourNamespace` with the namespace in your `index.js` file and `your.project.ui.html` with the name of your module. +
+The moduleMap entry is used to add imports to your index.js automatically.
+. If you have dependencies to other Scout based modules, you can add them to the `moduleMap` to have the imports to these modules created automatically.
+Just add the namespace of the other module and the name of the npm package as follows: `--moduleMap.otherNamespace @other/npm-module`
+. Add a devDependency to `@eclipse-scout/tsconfig`.
+. Create a `tsconfig.json` beside your `package.json` according to the `Readme.md` of the `@eclipse-scout/tsconfig` module.
+. Run the `migrate` script by pressing the play button next to it in IntelliJ or using the command line: `npm run migrate`
+. Review the changes and add the missing imports, if there are any.
+. Remove the script and added dependencies from you `package.json`.
+Also remove the `tsconfig.json` unless you want to use TypeScript anyway.
+
+[[lst-objectTypeMigration]]
+.Object Type Migration Script
+[source,json]
+----
+{
+  "scripts": {
+    "migrate": "migrate --migrate objectType --sources src/main/js/**/*.js --moduleMap.yourNamespace path:your.project.ui.html/src/main/js/index.js"
+  },
+  "devDependencies": {
+    "@eclipse-scout/migrate": "~23.1.0"
+  }
+}
+----
+
+=== Alternative Way to Migrate ObjectType
+
+If the above script somehow does not work for you, you can do the migration by yourself as follows:
+
+. Find and replace all occurrences of `scout.create()`, `objectType:`, `lookupCall:` and `logicalGrid:` (use Ctrl-Shift-R in IntelliJ and enable Regex).
 +
 [source]
 ----
@@ -122,7 +172,13 @@ Replace: objectType: $2
 Find: lookupCall: '(.*\.)?(.*)'
 Replace: lookupCall: $2
 ----
-
++
+[source]
+----
+Find: logicalGrid: '(.*\.)?(.*)'
+Replace: logicalGrid: $2
+----
++
 The regex considers objectTypes with and without namespace.
 
 . Add imports  +
@@ -208,9 +264,10 @@ menus.filter(this.menus, allowedTypes, {onlyVisible, enableDisableKeyStrokes});
 
 ----
 
-=== Namespace
+== Rename WidgetTooltip.widget (Scout JS)
 
-TODO describe registerNamespace
+The `widget` property of `WidgetTooltip` has been renamed to `content`.
+Together with the property itself the corresponding setter has been renamed from `setWidget` to `setContent`.
 
 == Rename WidgetPopup.widget (Scout JS & Scout Classic)
 
