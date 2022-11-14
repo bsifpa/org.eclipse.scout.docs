@@ -191,7 +191,7 @@ export type HierarchicalTableFormWidgetMap =
     'MainBox': GroupBox;
     'DetailBox': GroupBox;
     'TableField': TableField;
-    'Table': Table;
+    'Table': HierarchicalTableFieldTable;
     'AggregateTableControl': AggregateTableControl;
     'ContentMenu': Menu;
     'RemoveAll': Menu;
@@ -214,3 +214,14 @@ export type HierarchicalTableFormWidgetMap =
   }
   & HierarchicalTablePropertiesBoxWidgetMap & FormFieldPropertiesBoxWidgetMap & GridDataBoxWidgetMap & ColumnPropertiesBoxWidgetMap & FormFieldActionsBoxWidgetMap
   & WidgetActionsBoxWidgetMap & EventsTabWidgetMap;
+
+export type HierarchicalTableFieldTableColumnMap = {
+  'Name': Column;
+  'Detail': Column;
+  'Date': Column;
+  'Active': BooleanColumn;
+};
+
+export class HierarchicalTableFieldTable extends Table {
+  declare columnMap: HierarchicalTableFieldTableColumnMap;
+}

@@ -105,7 +105,7 @@ export default (): FormModel => ({
           gridColumnCount: 4,
           fields: [
             {
-              id: 'LeftBox',
+              id: 'ChartPropertiesBox.LeftBox',
               objectType: GroupBox,
               gridDataHints: {
                 w: 2
@@ -208,7 +208,7 @@ export default (): FormModel => ({
               ]
             },
             {
-              id: 'RightBox',
+              id: 'ChartPropertiesBox.RightBox',
               objectType: GroupBox,
               gridDataHints: {
                 w: 2
@@ -336,7 +336,7 @@ export default (): FormModel => ({
           label: 'Data',
           gridColumnCount: 3,
           fields: [{
-            id: 'LeftBox',
+            id: 'ChartDataBox.LeftBox',
             objectType: GroupBox,
             gridDataHints: {
               w: 2,
@@ -407,7 +407,7 @@ export default (): FormModel => ({
               }
             }]
           }, {
-            id: 'RightBox',
+            id: 'ChartDataBox.RightBox',
             objectType: GroupBox,
             gridDataHints: {
               w: 1,
