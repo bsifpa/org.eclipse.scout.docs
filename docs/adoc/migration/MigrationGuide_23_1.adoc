@@ -91,7 +91,17 @@ To install the Scout SDK into your existing Eclipse IDE, use this P2 update site
 
 // ----------------------------------------------------------------------------
 
-=== RegisterNamespace
+== 3rd party dependency updates
+
+Scout 23.1 has the following new minimum runtime requirements:
+
+* Node: >=16.13.0
+* npm: >=8.1.0
+* pnpm: >=6.22.2
+
+The support for the Maven build plugin `org.kuali.maven.plugins:properties-maven-plugin` has been replaced with `org.codehaus.mojo:properties-maven-plugin`. Update the groupId accordingly. Please consult the plugin documentation for the http://site.kuali.org/maven/plugins/properties-maven-plugin/2.0.1/plugin-info.html[old] and the https://www.mojohaus.org/properties-maven-plugin/plugin-info.html[new] plugin for instruction on how to migrate the plugin configuration.
+
+== RegisterNamespace
 
 In all your `index.js` files, replace the last line as follows:
 
