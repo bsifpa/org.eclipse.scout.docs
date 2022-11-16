@@ -9,18 +9,20 @@
     "url": "https://github.com/bsi-software/org.eclipse.scout.docs"
   },
   "license": "EDL-1.0",
-  "publishConfig": {
-    "registry": "https://scout.bsiag.com/repository/api/npm/org.eclipse.scout-npm-local/"
-  },
   "engines": {
     "node": ">=18.12.1",
     "npm": ">=9.1.1",
     "pnpm": ">=7.16.0"
   },
   "main": "./src/main/js/index.ts",
+  "publishConfig": {
+    "main": "./target/dist/dev/eclipse-scout-demo-jswidgets.js",
+    "types": "./target/dist/d.ts/index.d.ts"
+  },
   "files": [
     "src/main/resources/WebContent",
-    "src/main/js"
+    "src/main/js",
+    "target/dist"
   ],
   "scripts": {
     "testserver:start": "scout-scripts test-server:start",
