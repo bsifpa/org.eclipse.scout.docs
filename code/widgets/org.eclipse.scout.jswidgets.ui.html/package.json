@@ -10,7 +10,8 @@
   },
   "license": "EDL-1.0",
   "publishConfig": {
-    "registry": "https://scout.bsiag.com/repository/api/npm/org.eclipse.scout-npm-local/"
+    "registry": "https://scout.bsiag.com/repository/api/npm/org.eclipse.scout-npm-local/",
+    "main": "./target/dist/dev/eclipse-scout-demo-jswidgets.js"
   },
   "engines": {
     "node": ">=18.12.1",
