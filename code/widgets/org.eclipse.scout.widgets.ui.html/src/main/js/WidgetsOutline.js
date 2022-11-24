@@ -9,6 +9,7 @@
  *     BSI Business Systems Integration AG - initial API and implementation
  */
 import {Outline, scout} from '@eclipse-scout/core';
+import {WidgetsTileOutlineOverview} from './WidgetsTileOutlineOverview';
 
 export class WidgetsOutline extends Outline {
 
@@ -17,7 +18,7 @@ export class WidgetsOutline extends Outline {
   }
 
   _createOutlineOverview() {
-    return scout.create('widgets.WidgetsTileOutlineOverview', {
+    return scout.create(WidgetsTileOutlineOverview, {
       parent: this,
       outline: this
     });
